@@ -1,27 +1,50 @@
 <script setup lang="ts">
-import * as Disclosure from '@/components/Disclosure'
+import {
+  Accordion,
+  AccordionPanel,
+  AccordionContent,
+  AccordionButton
+} from '@/components/Accordion'
+import { Badge } from '@/components/Badge'
+import { Avatar, AvatarGroup } from '@/components/Avatar'
 </script>
 
 <template>
   <main class="space-y-4">
-    <Disclosure.Container :single="true">
-      <Disclosure.Panel :open="true">
-        <Disclosure.Button>This is awesome</Disclosure.Button>
-        <Disclosure.Content>
-          <div>Sophia Williams</div>
-          <div>sophia.williams@company.com</div>
-          <div>(501) 555-9128</div>
-        </Disclosure.Content>
-      </Disclosure.Panel>
+    <Avatar :name="`Aleksej Dix`" />
 
-      <Disclosure.Panel :open="true">
-        <Disclosure.Button>This is awesome</Disclosure.Button>
-        <Disclosure.Content>
+    <AvatarGroup
+      :users="[
+        { name: 'Aleksej Dix' },
+        { name: 'Lidia Dix' },
+        { name: 'Daniel Woo' },
+        { name: 'Harry Potter' }
+      ]"
+    />
+
+    <Badge>1231</Badge>
+
+    <Accordion :single="true">
+      <AccordionPanel :open="true">
+        <AccordionButton>
+          This is awesome
+          <Badge>123123</Badge>
+        </AccordionButton>
+        <AccordionContent>
           <div>Sophia Williams</div>
           <div>sophia.williams@company.com</div>
           <div>(501) 555-9128</div>
-        </Disclosure.Content>
-      </Disclosure.Panel>
-    </Disclosure.Container>
+        </AccordionContent>
+      </AccordionPanel>
+
+      <AccordionPanel :open="true">
+        <AccordionButton>This is awesome</AccordionButton>
+        <AccordionContent>
+          <div>Sophia Williams</div>
+          <div>sophia.williams@company.com</div>
+          <div>(501) 555-9128</div>
+        </AccordionContent>
+      </AccordionPanel>
+    </Accordion>
   </main>
 </template>

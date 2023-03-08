@@ -3,7 +3,7 @@
     :aria-controls="`content-${id}`"
     :aria-expanded="value"
     :id="`accordion-control-${id}`"
-    class="flex w-full items-center justify-between px-6 py-4 text-xl font-bold bg-black text-white"
+    class="w-full px-6 py-4 text-xl font-bold bg-black text-white text-left"
     @click="toggle"
   >
     <span>
