@@ -7,10 +7,13 @@ import {
 } from '@/components/Accordion'
 import { Badge } from '@/components/Badge'
 import { Avatar, AvatarGroup } from '@/components/Avatar'
+import { AspectRatio } from '@/components/AspectRatio'
 </script>
 
 <template>
   <main class="space-y-4">
+    <AspectRatio width="3" height="1"></AspectRatio>
+
     <Avatar :name="`Aleksej Dix`" />
 
     <AvatarGroup
