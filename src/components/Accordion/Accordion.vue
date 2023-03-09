@@ -6,6 +6,7 @@
 
 <script setup lang="ts">
 import { reactive, provide } from 'vue'
+import { AccordionKey } from './symbols'
 
 const props = defineProps({
   single: {
@@ -31,7 +32,7 @@ function create(id: string, state: boolean) {
   panels[id] = state
 }
 
-provide('container', {
+provide(AccordionKey, {
   panels,
   create,
   update

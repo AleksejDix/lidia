@@ -1,23 +1,35 @@
 <template>
-  <div class="bg-white shadow" ref="animate">
+  <component :is="tag" class="bg-white shadow" ref="animate">
     <slot></slot>
-  </div>
+  </component>
 </template>
 
 <script lang="ts" setup>
+import type { PropType, VNodeTypes } from 'vue'
 import { provide, inject, toRef, ref, onMounted } from 'vue'
 import { v4 as uuidv4 } from 'uuid'
 import autoAnimate from '@formkit/auto-animate'
+import { AccordionKey, PanelKey } from './symbols'
 
 const props = defineProps({
   open: {
     type: Boolean,
     default: false,
     required: false
+  },
+  tag: {
+    type: [String, Object] as PropType<VNodeTypes>,
+    default: 'div'
   }
 })
 
-const { panels, create, update } = inject('container')
+const accordion = inject(AccordionKey)
+
+if (!accordion) {
+  throw new Error(`Could not resolve ${accordion}`)
+}
+
+const { panels, create, update } = accordion
 
 const id = uuidv4()
 
@@ -27,7 +39,7 @@ function toggle() {
 
 create(id, props.open)
 
-provide('panel', {
+provide(PanelKey, {
   value: toRef(panels, id),
   id,
   toggle

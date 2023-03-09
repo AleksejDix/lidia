@@ -24,8 +24,8 @@ import { Avatar, AvatarGroup } from '@/components/Avatar'
 
     <Badge>1231</Badge>
 
-    <Accordion :single="true">
-      <AccordionPanel :open="true">
+    <Accordion>
+      <AccordionPanel tag="section">
         <AccordionButton>
           This is awesome
           <Badge>123123</Badge>
@@ -37,7 +37,7 @@ import { Avatar, AvatarGroup } from '@/components/Avatar'
         </AccordionContent>
       </AccordionPanel>
 
-      <AccordionPanel :open="true">
+      <AccordionPanel tag="section">
         <AccordionButton>This is awesome</AccordionButton>
         <AccordionContent>
           <div>Sophia Williams</div>
