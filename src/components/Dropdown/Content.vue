@@ -1,5 +1,5 @@
 <template>
-  <div class="shadow p-4" v-if="isVisible" ref="content" v-on-click-outside="close">
+  <div v-if="isVisible" ref="content" class="shadow p-4 bg-white">
     <FocusTrap>
       <slot></slot>
     </FocusTrap>
@@ -8,7 +8,6 @@
 
 <script setup lang="ts">
 import { inject } from 'vue'
-import { vOnClickOutside } from '@vueuse/components'
 import { DropdownKey } from './symbols'
 import { FocusTrap } from '@/components/FocusTrap'
 

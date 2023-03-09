@@ -2,10 +2,11 @@
   <button
     :id="`dropdown-button-${id}`"
     :aria-expanded="isVisible"
-    @click.stop="toggle"
+    @click="toggle"
     @keyup.down="open"
     ref="button"
   >
+    <div v-if="isVisible" class="fixed inset-0" @click.stop="close"></div>
     <slot></slot>
   </button>
 </template>
@@ -20,5 +21,5 @@ if (!dropdown) {
   throw new Error(`Could not resolve ${dropdown}`)
 }
 
-const { isVisible, id, open, toggle, button } = dropdown
+const { isVisible, id, open, toggle, button, close } = dropdown
 </script>
