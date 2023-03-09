@@ -1,9 +1,9 @@
 <template>
-  <button
-    class="bg-black text-white rounded-full h-10 w-10 overflow-hidden border-2 border-white text-xs"
+  <div
+    class="bg-black text-white rounded-full h-10 w-10 overflow-hidden border-2 border-white text-xs flex items-center justify-center"
   >
     <abbr :title="name" class="no-underline font-medium">{{ abbr }}</abbr>
-  </button>
+  </div>
 </template>
 
 <script setup lang="ts">

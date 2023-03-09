@@ -3,8 +3,8 @@
     :id="`accordion-content-${id}`"
     :aria-labelledby="`accordion-button-${id}`"
     class="px-6 py-4"
-    v-if="value"
-    :aria-hidden="value"
+    v-if="isVisible"
+    :aria-hidden="isVisible"
   >
     <slot></slot>
   </div>
@@ -19,5 +19,5 @@ if (!panel) {
   throw new Error(`Could not resolve ${panel}`)
 }
 
-const { value, id } = panel
+const { isVisible, id } = panel
 </script>

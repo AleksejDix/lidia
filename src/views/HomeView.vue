@@ -7,14 +7,55 @@ import {
 } from '@/components/Accordion'
 import { Badge } from '@/components/Badge'
 import { Avatar, AvatarGroup } from '@/components/Avatar'
-import { AspectRatio } from '@/components/AspectRatio'
+import { Dropdown, DropdownButton, DropdownContent } from '@/components/Dropdown'
 </script>
 
 <template>
   <main class="space-y-4">
-    <AspectRatio width="3" height="1"></AspectRatio>
+    <Dropdown>
+      <DropdownButton>
+        <Avatar :name="`Aleksej Dix`" />
+      </DropdownButton>
+      <DropdownContent>
+        <Accordion>
+          <AccordionPanel tag="section">
+            <AccordionButton>
+              This is awesome
+              <Badge>123123</Badge>
+            </AccordionButton>
+            <AccordionContent>
+              <div>Sophia Williams</div>
+              <div>sophia.williams@company.com</div>
+              <div>(501) 555-9128</div>
+            </AccordionContent>
+          </AccordionPanel>
 
-    <Avatar :name="`Aleksej Dix`" />
+          <AccordionPanel tag="section">
+            <AccordionButton>This is awesome</AccordionButton>
+            <AccordionContent>
+              <div>Sophia Williams</div>
+              <div>sophia.williams@company.com</div>
+              <div>(501) 555-9128</div>
+            </AccordionContent>
+          </AccordionPanel>
+        </Accordion>
+      </DropdownContent>
+    </Dropdown>
+
+    <Dropdown>
+      <DropdownButton> clicke me </DropdownButton>
+      <DropdownContent> wurst </DropdownContent>
+    </Dropdown>
+
+    <AvatarGroup
+      :users="[
+        { name: 'Aleksej Dix' },
+        { name: 'Lidia Dix' },
+        { name: 'Daniel Woo' },
+        { name: 'Harry Potter' }
+      ]"
+    />
+    <Badge>1231</Badge>
 
     <AvatarGroup
       :users="[
@@ -26,28 +67,5 @@ import { AspectRatio } from '@/components/AspectRatio'
     />
 
     <Badge>1231</Badge>
-
-    <Accordion>
-      <AccordionPanel tag="section">
-        <AccordionButton>
-          This is awesome
-          <Badge>123123</Badge>
-        </AccordionButton>
-        <AccordionContent>
-          <div>Sophia Williams</div>
-          <div>sophia.williams@company.com</div>
-          <div>(501) 555-9128</div>
-        </AccordionContent>
-      </AccordionPanel>
-
-      <AccordionPanel tag="section">
-        <AccordionButton>This is awesome</AccordionButton>
-        <AccordionContent>
-          <div>Sophia Williams</div>
-          <div>sophia.williams@company.com</div>
-          <div>(501) 555-9128</div>
-        </AccordionContent>
-      </AccordionPanel>
-    </Accordion>
   </main>
 </template>

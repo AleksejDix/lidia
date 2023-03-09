@@ -14,7 +14,7 @@ export const AccordionKey: InjectionKey<AccordionType> = Symbol('Accordion');
 
 
 export interface PanelType {
-  value: Ref<boolean>;
+  isVisible: Ref<boolean>;
   id: string;
   toggle: () => void;
 }

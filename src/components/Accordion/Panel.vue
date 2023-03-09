@@ -40,7 +40,7 @@ function toggle() {
 create(id, props.open)
 
 provide(PanelKey, {
-  value: toRef(panels, id),
+  isVisible: toRef(panels, id),
   id,
   toggle
 })

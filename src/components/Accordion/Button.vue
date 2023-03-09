@@ -2,8 +2,8 @@
   <button
     :id="`accordion-button-${id}`"
     :aria-controls="`accordion-content-${id}`"
-    :aria-expanded="value"
-    class="w-full px-6 py-4 text-xl font-bold bg-black text-white text-left"
+    :aria-expanded="isVisible"
+    class="w-full px-6 py-4 text-xl font-bold bg-black text-white text-left focus:bg-pink-800 focus:outline-none"
     @click="toggle"
   >
     <span>
@@ -25,5 +25,5 @@ if (!panel) {
   throw new Error(`Could not resolve ${panel}`)
 }
 
-const { toggle, value, id } = panel
+const { toggle, isVisible, id } = panel
 </script>

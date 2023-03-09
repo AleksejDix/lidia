@@ -1,0 +1,3 @@
+<template>
+  <ul></ul>
+</template>
