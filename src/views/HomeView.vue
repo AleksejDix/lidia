@@ -12,40 +12,42 @@ import { Dropdown, DropdownButton, DropdownContent } from '@/components/Dropdown
 
 <template>
   <main class="space-y-4">
-    <Dropdown>
-      <DropdownButton>
-        <Avatar :name="`Aleksej Dix`" />
-      </DropdownButton>
-      <DropdownContent>
-        <Accordion>
-          <AccordionPanel tag="section">
-            <AccordionButton>
-              This is awesome
-              <Badge>123123</Badge>
-            </AccordionButton>
-            <AccordionContent>
-              <div>Sophia Williams</div>
-              <div>sophia.williams@company.com</div>
-              <div>(501) 555-9128</div>
-            </AccordionContent>
-          </AccordionPanel>
+    <div class="flex">
+      <Dropdown>
+        <DropdownButton>
+          <Avatar :name="`Aleksej Dix`" />
+        </DropdownButton>
+        <DropdownContent>
+          <Accordion>
+            <AccordionPanel tag="section">
+              <AccordionButton>
+                This is awesome
+                <Badge>123123</Badge>
+              </AccordionButton>
+              <AccordionContent>
+                <div>Sophia Williams</div>
+                <div>sophia.williams@company.com</div>
+                <div>(501) 555-9128</div>
+              </AccordionContent>
+            </AccordionPanel>
 
-          <AccordionPanel tag="section">
-            <AccordionButton>This is awesome</AccordionButton>
-            <AccordionContent>
-              <div>Sophia Williams</div>
-              <div>sophia.williams@company.com</div>
-              <div>(501) 555-9128</div>
-            </AccordionContent>
-          </AccordionPanel>
-        </Accordion>
-      </DropdownContent>
-    </Dropdown>
+            <AccordionPanel tag="section">
+              <AccordionButton>This is awesome</AccordionButton>
+              <AccordionContent>
+                <div>Sophia Williams</div>
+                <div>sophia.williams@company.com</div>
+                <div>(501) 555-9128</div>
+              </AccordionContent>
+            </AccordionPanel>
+          </Accordion>
+        </DropdownContent>
+      </Dropdown>
 
-    <Dropdown>
-      <DropdownButton> clicke me </DropdownButton>
-      <DropdownContent> wurst </DropdownContent>
-    </Dropdown>
+      <Dropdown>
+        <DropdownButton> clicke me </DropdownButton>
+        <DropdownContent> wurst </DropdownContent>
+      </Dropdown>
+    </div>
 
     <AvatarGroup
       :users="[

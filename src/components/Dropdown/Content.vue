@@ -17,5 +17,5 @@ if (!dropdown) {
   throw new Error(`Could not resolve ${dropdown}`)
 }
 
-const { isVisible, close } = dropdown
+const { isVisible } = dropdown
 </script>

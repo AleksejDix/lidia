@@ -1,5 +1,5 @@
 <template>
-  <div class="relative" ref="animate">
+  <div>
     <slot></slot>
   </div>
 </template>
@@ -48,11 +48,5 @@ useEventListener(document, 'keydown', (e) => {
   if (e.key === 'Escape') {
     close()
   }
-})
-
-const animate = ref()
-
-onMounted(() => {
-  autoAnimate(animate.value)
 })
 </script>
