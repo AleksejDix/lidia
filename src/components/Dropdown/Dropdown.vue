@@ -10,6 +10,7 @@ import { DropdownKey } from './symbols'
 import { v4 as uuidv4 } from 'uuid'
 import { useEscKey } from '@/use/useEscKey'
 import { useElementBounding } from '@vueuse/core'
+import autoAnimate from '@formkit/auto-animate'
 
 const zip = (a: any[], b: any[]) => a.map((k, i) => [k, b[i]])
 
@@ -71,18 +72,13 @@ async function close() {
 const buttonRect = reactive(useElementBounding(button))
 const boxRect = reactive(useElementBounding(content))
 
-const x = computed(() => [
-  buttonRect.left - boxRect.width,
-  buttonRect.left + buttonRect.width - boxRect.width,
-  buttonRect.left,
-  buttonRect.left + buttonRect.width
-])
+const x = computed(() => [-boxRect.width, buttonRect.width - boxRect.width, 0, buttonRect.width])
 
 const y = computed(() => [
-  buttonRect.top - boxRect.height,
-  buttonRect.top + buttonRect.height - boxRect.height,
-  buttonRect.top,
-  buttonRect.top + buttonRect.height
+  -boxRect.height,
+  buttonRect.height - boxRect.height,
+  0,
+  buttonRect.height
 ])
 
 const collisionDetectionRect = computed(() => ({
@@ -125,8 +121,10 @@ const dropdownRect = computed(() => {
   console.log(isCollidingFixed(getViewportRect(), collisionDetectionRect.value))
 
   return {
-    '--vuedin-dropdown-reset-x': buttonRect.left, // xFlip.value[3][1][0],
-    '--vuedin-dropdown-reset-y': buttonRect.top // xFlip.value[3][1][1]
+    '--vuedin-dropdown-reset-x': buttonRect.left + 'px', // xFlip.value[3][1][0],
+    '--vuedin-dropdown-reset-y': buttonRect.top + 'px', // xFlip.value[3][1][1]
+    '--vuedin-translate-x': pos.value[3][1][0] + 'px',
+    '--vuedin-translate-y': pos.value[3][1][1] + 'px'
   }
 })
 

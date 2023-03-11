@@ -28,11 +28,7 @@ const { isVisible, contentRef, dropdownRect, close } = dropdown
 
 <style>
 .d3 {
-  transform: translate3d(
-      calc(var(--vuedin-dropdown-reset-x) * 1px),
-      calc(var(--vuedin-dropdown-reset-y) * 1px),
-      0
-    )
-    translate3d(20px, 0%, 0);
+  transform: translate3d(var(--vuedin-dropdown-reset-x), var(--vuedin-dropdown-reset-y), 0)
+    translate3d(var(--vuedin-translate-x), var(--vuedin-translate-y), 0);
 }
 </style>
