@@ -1,8 +1,8 @@
 <template>
-  <div class="container">
-    <RouterView />
-    <Focus />
-  </div>
+  <RouterView />
+
+  <portal-target name="dropdown"></portal-target>
+  <Focus />
 </template>
 
 <script setup lang="ts">
@@ -16,5 +16,6 @@ import { Focus } from '@/components/Focus'
 }
 body {
   overflow-y: scroll;
+  height: 300000px;
 }
 </style>

@@ -1,7 +1,4 @@
 @tailwind base;
 
-*, ::before, ::after {
-    position: relative
-}
 @tailwind components;
 @tailwind utilities;

@@ -4,9 +4,9 @@
     :aria-expanded="isVisible"
     @click="toggle"
     @keyup.down="open"
+    class="h-[100px] w-[200px] border"
     ref="button"
   >
-    <div v-if="isVisible" class="fixed inset-0 bg-red-500" @click.stop="close"></div>
     <slot></slot>
   </button>
 </template>
