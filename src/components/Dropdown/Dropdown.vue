@@ -10,34 +10,31 @@ import { DropdownKey } from './symbols'
 import { v4 as uuidv4 } from 'uuid'
 import { useEscKey } from '@/use/useEscKey'
 import { useElementBounding } from '@vueuse/core'
-import autoAnimate from '@formkit/auto-animate'
 
-const zip = (a: any[], b: any[]) => a.map((k, i) => [k, b[i]])
+interface Rect {
+  top: number
+  right: number
+  bottom: number
+  left: number
+}
+
+// const zip = (a: any[], b: any[]) => a.map((k, i) => [k, b[i]])
+// const yFlip = computed(() => pos.value.reverse())
+// const xFlip = computed(() => pos.value.map((row) => row.reverse()))
+// const xyFlip = computed(() => pos.value.reverse().map((row) => row.reverse()))
 
 function getViewportRect() {
-  const viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
-  const viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
-  const scrollTop =
-    window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
-  const scrollLeft =
-    window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0
-  const viewportTop = scrollTop
-  const viewportLeft = scrollLeft
-  const viewportBottom = scrollTop + viewportHeight
-  const viewportRight = scrollLeft + viewportWidth
-
   return {
-    top: viewportTop,
-    left: viewportLeft,
-    bottom: viewportBottom,
-    right: viewportRight,
-    width: viewportWidth,
-    height: viewportHeight
+    top: 0,
+    left: 0,
+    bottom: window.innerHeight,
+    right: window.innerWidth,
+    width: window.innerWidth,
+    height: window.innerHeight
   }
 }
 
-function isCollidingFixed(boundary, targetRect) {
-  console.log(boundary, targetRect)
+function isCollidingFixed(boundary: Rect, targetRect: Rect) {
   return {
     top: targetRect.top < boundary.top,
     right: targetRect.right > boundary.right,
@@ -69,28 +66,24 @@ async function close() {
   isVisible.value = false
 }
 
-const buttonRect = reactive(useElementBounding(button))
-const boxRect = reactive(useElementBounding(content))
+const tRect = reactive(useElementBounding(button))
+const dRect = reactive(useElementBounding(content))
 
-const x = computed(() => [-boxRect.width, buttonRect.width - boxRect.width, 0, buttonRect.width])
+const x = computed(() => [-dRect.width, tRect.width - dRect.width, 0, tRect.width])
+const y = computed(() => [-dRect.height, tRect.height - dRect.height, 0, tRect.height])
 
-const y = computed(() => [
-  -boxRect.height,
-  buttonRect.height - boxRect.height,
-  0,
-  buttonRect.height
-])
-
-const collisionDetectionRect = computed(() => ({
-  top: buttonRect.top - boxRect.height,
-  right: buttonRect.left + buttonRect.width + boxRect.width,
-  bottom: buttonRect.top + buttonRect.height + boxRect.height,
-  left: buttonRect.left - boxRect.width,
-  width:
-    buttonRect.left + buttonRect.width + boxRect.width + Math.abs(buttonRect.left - boxRect.width),
-  height:
-    buttonRect.top + buttonRect.height + boxRect.height + Math.abs(buttonRect.top - boxRect.height)
-}))
+/*
+    0   1
+  ┌───┬───┬
+0 │ X │ X │ => top left / top right
+  ├───┼───┼
+1 │ X │ x │ => left top / right top
+  ├───┼───┼
+2 │ X │ X │ => left bottom / right bottom
+  ├───┼───┼
+3 │ X │ X │ => bottom left / bottom right
+  └───┴───┴
+*/
 
 const pos = computed(() => [
   [
@@ -111,20 +104,37 @@ const pos = computed(() => [
   ]
 ])
 
-const possibleCollisions = ['top', 'right', 'bottom', 'left']
+/*
+    0   1   2
+  ┌───┬───┬───┐
+0 │ X │ X │ X │
+  ├───┼───┼───┤
+1 │ X │   │ X │
+  ├───┼───┼───┤
+2 │ X │ X │ X │
+  └───┴───┴───┘
+*/
 
-const yFlip = computed(() => pos.value.reverse())
-const xFlip = computed(() => pos.value.map((row) => row.reverse()))
-const xyFlip = computed(() => pos.value.reverse().map((row) => row.reverse()))
+const collisionDetectionRect = computed(() => ({
+  top: tRect.top - dRect.height,
+  right: tRect.left + tRect.width + dRect.width,
+  bottom: tRect.top + tRect.height + dRect.height,
+  left: tRect.left - dRect.width,
+  width: tRect.width + dRect.width + dRect.width,
+  height: tRect.height + dRect.height + dRect.height
+}))
 
 const dropdownRect = computed(() => {
-  console.log(isCollidingFixed(getViewportRect(), collisionDetectionRect.value))
+  const collision = isCollidingFixed(getViewportRect(), collisionDetectionRect.value)
+
+  const col = collision.left ? 1 : collision.right ? 0 : 1
+  const row = collision.top ? 3 : collision.bottom ? 0 : 3
 
   return {
-    '--vuedin-dropdown-reset-x': buttonRect.left + 'px', // xFlip.value[3][1][0],
-    '--vuedin-dropdown-reset-y': buttonRect.top + 'px', // xFlip.value[3][1][1]
-    '--vuedin-translate-x': pos.value[3][1][0] + 'px',
-    '--vuedin-translate-y': pos.value[3][1][1] + 'px'
+    '--vuedin-dropdown-reset-x': tRect.left + 'px',
+    '--vuedin-dropdown-reset-y': tRect.top + 'px',
+    '--vuedin-translate-x': pos.value[row][col][0] + 'px',
+    '--vuedin-translate-y': pos.value[row][col][1] + 'px'
   }
 })
 
@@ -136,7 +146,8 @@ provide(DropdownKey, {
   toggle,
   open,
   close,
-  dropdownRect
+  dropdownRect,
+  collisionDetectionRect
 })
 
 useEscKey(close)

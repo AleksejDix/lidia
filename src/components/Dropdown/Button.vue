@@ -4,7 +4,7 @@
     :aria-expanded="isVisible"
     @click="toggle"
     @keyup.down="open"
-    class="h-[100px] w-[200px] border"
+    class="border"
     ref="button"
   >
     <slot></slot>

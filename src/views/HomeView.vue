@@ -13,69 +13,24 @@ import { Flex, FlexItem } from '@/layout/Flex'
 
 <template>
   <div>
-    <div class="bg-green-900 fixed inset-0">
-      <div class="fixed left-0 top-0">
-        <Dropdown>
-          <DropdownButton> clicke me </DropdownButton>
-          <DropdownContent>
-            <div class="p-4">
-              <input type="text" />
-            </div>
-          </DropdownContent>
-        </Dropdown>
-      </div>
+    <div class="flex justify-between">
+      <Dropdown>
+        <DropdownButton class="hover:bg-black"> dropdown </DropdownButton>
+        <DropdownContent>
+          <div class="p-4">
+            <input type="text" />
+          </div>
+        </DropdownContent>
+      </Dropdown>
 
-      <div class="fixed left-1/2 -translate-x-1/2">
-        <Dropdown>
-          <DropdownButton> clicke me </DropdownButton>
-          <DropdownContent>
-            <div class="p-4">
-              <input type="text" />
-            </div>
-          </DropdownContent>
-        </Dropdown>
-      </div>
-
-      <div class="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-        <Dropdown>
-          <DropdownButton> clicke me </DropdownButton>
-          <DropdownContent>
-            <div class="p-4">
-              <input type="text" />
-            </div>
-          </DropdownContent>
-        </Dropdown>
-      </div>
-      <div class="fixed right-0 top-0">
-        <Dropdown>
-          <DropdownButton> clicke me </DropdownButton>
-          <DropdownContent>
-            <div class="p-4">
-              <input type="text" />
-            </div>
-          </DropdownContent>
-        </Dropdown>
-      </div>
-      <div class="fixed right-0 bottom-0">
-        <Dropdown>
-          <DropdownButton> clicke me </DropdownButton>
-          <DropdownContent>
-            <div class="p-4">
-              <input type="text" />
-            </div>
-          </DropdownContent>
-        </Dropdown>
-      </div>
-      <div class="fixed left-0 bottom-0">
-        <Dropdown>
-          <DropdownButton> clicke me </DropdownButton>
-          <DropdownContent>
-            <div class="p-4">
-              <input type="text" />
-            </div>
-          </DropdownContent>
-        </Dropdown>
-      </div>
+      <Dropdown>
+        <DropdownButton class="hover:bg-black"> dropdown </DropdownButton>
+        <DropdownContent>
+          <div class="p-4">
+            <input type="text" />
+          </div>
+        </DropdownContent>
+      </Dropdown>
     </div>
 
     <main class="space-y-4">
@@ -143,6 +98,28 @@ import { Flex, FlexItem } from '@/layout/Flex'
       />
 
       <Badge>1231</Badge>
+
+      <div class="h-screen w-[3000px]"></div>
+
+      <div class="flex justify-between">
+        <Dropdown>
+          <DropdownButton class="hover:bg-black"> dropdown </DropdownButton>
+          <DropdownContent>
+            <div class="p-4">
+              <input type="text" />
+            </div>
+          </DropdownContent>
+        </Dropdown>
+
+        <Dropdown>
+          <DropdownButton class="hover:bg-black"> dropdown </DropdownButton>
+          <DropdownContent>
+            <div class="p-4">
+              <input type="text" />
+            </div>
+          </DropdownContent>
+        </Dropdown>
+      </div>
     </main>
   </div>
 </template>
