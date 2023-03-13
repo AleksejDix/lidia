@@ -13,11 +13,12 @@ import { Flex, FlexItem } from '@/layout/Flex'
 
 <template>
   <div>
-    <div class="flex justify-between">
+    <div class="flex justify-between w-[2000px]">
       <Dropdown>
         <DropdownButton class="hover:bg-black"> dropdown </DropdownButton>
         <DropdownContent>
           <div class="p-4">
+            This is dropdown 1
             <input type="text" />
           </div>
         </DropdownContent>
@@ -27,6 +28,7 @@ import { Flex, FlexItem } from '@/layout/Flex'
         <DropdownButton class="hover:bg-black"> dropdown </DropdownButton>
         <DropdownContent>
           <div class="p-4">
+            This is dropdown 2
             <input type="text" />
           </div>
         </DropdownContent>

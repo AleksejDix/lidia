@@ -5,52 +5,75 @@
 </template>
 
 <script lang="ts" setup>
-import { provide, ref, computed, reactive } from 'vue'
+import { provide, ref, computed, reactive, watchEffect } from 'vue'
 import { DropdownKey } from './symbols'
 import { v4 as uuidv4 } from 'uuid'
 import { useEscKey } from '@/use/useEscKey'
-import { useElementBounding } from '@vueuse/core'
+import { useWindowSize, useElementSize, onClickOutside, useElementBounding } from '@vueuse/core'
 
-interface Rect {
-  top: number
-  right: number
-  bottom: number
-  left: number
+const button = ref()
+
+const content = ref()
+
+const contentRef = (el: HTMLElement) => {
+  content.value = el
 }
+
+const buttonRect = reactive(useElementBounding(button))
+
+function limitNumberInRange(num: number, min: number, max: number): number {
+  if (num < min) {
+    return min
+  } else if (num > max) {
+    return max
+  } else {
+    return num
+  }
+}
+
+const calculations = reactive({
+  button: computed(() => {
+    return {
+      left: Math.round(buttonRect.left),
+      top: Math.round(buttonRect.top),
+      width: buttonRect.width,
+      height: buttonRect.height
+    }
+  }),
+  content: useElementSize(content),
+  boundary: useWindowSize(),
+  placement: computed(() => ({})),
+  axis: {
+    x: computed(() => [
+      -calculations.content.width,
+      calculations.button.width - calculations.content.width,
+      0,
+      calculations.button.width
+    ]),
+    y: computed(() => [
+      -calculations.content.height,
+      calculations.button.height - calculations.content.height,
+      0,
+      calculations.button.height
+    ])
+  },
+  collision: computed(() => {
+    return {
+      top: 0, //calculations.content.top < 0,
+      right: 0, // calculations.content.left + > calculations.viewport.right,
+      bottom: 0, //  calculations.content.left > calculations.viewport.bottom,
+      left: 0 //  calculations.content.left < 0
+    }
+  })
+})
 
 // const zip = (a: any[], b: any[]) => a.map((k, i) => [k, b[i]])
 // const yFlip = computed(() => pos.value.reverse())
 // const xFlip = computed(() => pos.value.map((row) => row.reverse()))
 // const xyFlip = computed(() => pos.value.reverse().map((row) => row.reverse()))
 
-function getViewportRect() {
-  return {
-    top: 0,
-    left: 0,
-    bottom: window.innerHeight,
-    right: window.innerWidth,
-    width: window.innerWidth,
-    height: window.innerHeight
-  }
-}
-
-function isCollidingFixed(boundary: Rect, targetRect: Rect) {
-  return {
-    top: targetRect.top < boundary.top,
-    right: targetRect.right > boundary.right,
-    bottom: targetRect.bottom > boundary.bottom,
-    left: targetRect.left < boundary.left
-  }
-}
-
 const id = uuidv4()
 const dropdown = ref()
-const button = ref()
-const content = ref()
-
-const contentRef = (el: HTMLElement) => {
-  content.value = el
-}
 
 const isVisible = ref(false)
 
@@ -66,11 +89,7 @@ async function close() {
   isVisible.value = false
 }
 
-const tRect = reactive(useElementBounding(button))
-const dRect = reactive(useElementBounding(content))
-
-const x = computed(() => [-dRect.width, tRect.width - dRect.width, 0, tRect.width])
-const y = computed(() => [-dRect.height, tRect.height - dRect.height, 0, tRect.height])
+onClickOutside(content, () => close())
 
 /*
     0   1
@@ -87,54 +106,52 @@ const y = computed(() => [-dRect.height, tRect.height - dRect.height, 0, tRect.h
 
 const pos = computed(() => [
   [
-    [x.value[1], y.value[0]],
-    [x.value[2], y.value[0]]
+    [calculations.axis.x[1], calculations.axis[0]],
+    [calculations.axis.x[2], calculations.axis[0]]
   ],
   [
-    [x.value[0], y.value[1]],
-    [x.value[3], y.value[1]]
+    [calculations.axis.x[0], calculations.axis.y[1]],
+    [calculations.axis.x[3], calculations.axis.y[1]]
   ],
   [
-    [x.value[0], y.value[2]],
-    [x.value[3], y.value[2]]
+    [calculations.axis.x[0], calculations.axis.y[2]],
+    [calculations.axis.x[3], calculations.axis.y[2]]
   ],
   [
-    [x.value[1], y.value[3]],
-    [x.value[2], y.value[3]]
+    [calculations.axis.x[1], calculations.axis.y[3]],
+    [calculations.axis.x[2], calculations.axis.y[3]]
   ]
 ])
 
-/*
-    0   1   2
-  ┌───┬───┬───┐
-0 │ X │ X │ X │
-  ├───┼───┼───┤
-1 │ X │   │ X │
-  ├───┼───┼───┤
-2 │ X │ X │ X │
-  └───┴───┴───┘
-*/
-
-const collisionDetectionRect = computed(() => ({
-  top: tRect.top - dRect.height,
-  right: tRect.left + tRect.width + dRect.width,
-  bottom: tRect.top + tRect.height + dRect.height,
-  left: tRect.left - dRect.width,
-  width: tRect.width + dRect.width + dRect.width,
-  height: tRect.height + dRect.height + dRect.height
-}))
-
 const dropdownRect = computed(() => {
-  const collision = isCollidingFixed(getViewportRect(), collisionDetectionRect.value)
+  const col = 1 // collision.left ? 1 : collision.right ? 0 : 1
+  const row = 3 // collision.top ? 3 : collision.bottom ? 0 : 3
 
-  const col = collision.left ? 1 : collision.right ? 0 : 1
-  const row = collision.top ? 3 : collision.bottom ? 0 : 3
+  console.log(
+    limitNumberInRange(
+      calculations.button.left,
+      calculations.button.left + calculations.axis.x[1],
+      calculations.boundary.width - calculations.button.left
+    )
+  )
 
   return {
-    '--vuedin-dropdown-reset-x': tRect.left + 'px',
-    '--vuedin-dropdown-reset-y': tRect.top + 'px',
-    '--vuedin-translate-x': pos.value[row][col][0] + 'px',
-    '--vuedin-translate-y': pos.value[row][col][1] + 'px'
+    '--vuedin-dropdown-reset-x':
+      limitNumberInRange(
+        calculations.button.left + 10,
+        calculations.button.left,
+        calculations.boundary.width - calculations.content.width
+      ) + 'px',
+    '--vuedin-dropdown-reset-y':
+      limitNumberInRange(
+        calculations.button.top + calculations.button.height,
+        calculations.button.top,
+        calculations.boundary.height - calculations.content.height
+      ) + 'px'
+    // '--vuedin-translate-x': pos.value[row][col][0] + 'px',
+    // '--vuedin-translate-y': pos.value[row][col][1] + 'px'
+    // '--vuedin-offset-x': calculations.correction.right + 'px',
+    // '--vuedin-offset-y': calculations.correction.bottom + 'px'
   }
 })
 
@@ -147,7 +164,7 @@ provide(DropdownKey, {
   open,
   close,
   dropdownRect,
-  collisionDetectionRect
+  calculations
 })
 
 useEscKey(close)
