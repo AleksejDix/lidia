@@ -12,25 +12,19 @@ import { Flex, FlexItem } from '@/layout/Flex'
 </script>
 
 <template>
-  <div>
-    <div class="flex justify-between w-[2000px]">
+  <div class="w-[3000px]">
+    <div class="flex justify-between p-4">
       <Dropdown>
-        <DropdownButton class="hover:bg-black"> dropdown </DropdownButton>
+        <DropdownButton> Menu </DropdownButton>
         <DropdownContent>
-          <div class="p-4">
-            This is dropdown 1
-            <input type="text" />
-          </div>
+          <div class="p-4">This is dropdown 1</div>
         </DropdownContent>
       </Dropdown>
 
       <Dropdown>
-        <DropdownButton class="hover:bg-black"> dropdown </DropdownButton>
+        <DropdownButton> Menu </DropdownButton>
         <DropdownContent>
-          <div class="p-4">
-            This is dropdown 2
-            <input type="text" />
-          </div>
+          <div class="p-4">This is dropdown 2</div>
         </DropdownContent>
       </Dropdown>
     </div>
@@ -72,9 +66,7 @@ import { Flex, FlexItem } from '@/layout/Flex'
           <Dropdown>
             <DropdownButton> clicke me </DropdownButton>
             <DropdownContent>
-              <div class="p-4">
-                <input type="text" />
-              </div>
+              <div class="p-4"></div>
             </DropdownContent>
           </Dropdown>
         </FlexItem>
@@ -88,7 +80,7 @@ import { Flex, FlexItem } from '@/layout/Flex'
           { name: 'Harry Potter' }
         ]"
       />
-      <Badge>1231</Badge>
+      <Badge>Frontend</Badge>
 
       <AvatarGroup
         :users="[
@@ -99,26 +91,92 @@ import { Flex, FlexItem } from '@/layout/Flex'
         ]"
       />
 
-      <Badge>1231</Badge>
+      <Badge>Backend</Badge>
 
-      <div class="h-screen w-[3000px]"></div>
+      <div class="h-screen w-full"></div>
+
+      <div class="flex justify-between w-[2000px]">
+        <Dropdown>
+          <DropdownButton class="bg-red-500"> dropdown </DropdownButton>
+          <DropdownContent> asdasd </DropdownContent>
+        </Dropdown>
+
+        <Dropdown>
+          <DropdownButton> dropdown </DropdownButton>
+          <DropdownContent>
+            <Accordion>
+              <AccordionPanel tag="section">
+                <AccordionButton>
+                  This is awesome
+                  <Badge>123123</Badge>
+                </AccordionButton>
+                <AccordionContent>
+                  <div>Sophia Williams</div>
+                  <div>sophia.williams@company.com</div>
+                  <div>(501) 555-9128</div>
+                </AccordionContent>
+              </AccordionPanel>
+
+              <AccordionPanel tag="section">
+                <AccordionButton>This is awesome</AccordionButton>
+                <AccordionContent>
+                  <div>Sophia Williams</div>
+                  <div>sophia.williams@company.com</div>
+                  <div>(501) 555-9128</div>
+                </AccordionContent>
+              </AccordionPanel>
+            </Accordion>
+          </DropdownContent>
+        </Dropdown>
+      </div>
+
+      <div class="h-screen w-full"></div>
 
       <div class="flex justify-between">
         <Dropdown>
-          <DropdownButton class="hover:bg-black"> dropdown </DropdownButton>
+          <DropdownButton> dropdown </DropdownButton>
           <DropdownContent>
-            <div class="p-4">
-              <input type="text" />
-            </div>
+            <Accordion>
+              <AccordionPanel tag="section">
+                <AccordionButton>
+                  This is awesome
+                  <Badge>123123</Badge>
+                </AccordionButton>
+                <AccordionContent>
+                  <div>Sophia Williams</div>
+                  <div>sophia.williams@company.com</div>
+                  <div>(501) 555-9128</div>
+                </AccordionContent>
+              </AccordionPanel>
+
+              <AccordionPanel tag="section">
+                <AccordionButton>This is awesome</AccordionButton>
+                <AccordionContent>
+                  <div>Sophia Williams</div>
+                  <div>sophia.williams@company.com</div>
+                  <div>(501) 555-9128</div>
+                </AccordionContent>
+              </AccordionPanel>
+            </Accordion>
           </DropdownContent>
         </Dropdown>
 
         <Dropdown>
-          <DropdownButton class="hover:bg-black"> dropdown </DropdownButton>
+          <DropdownButton> dropdown </DropdownButton>
           <DropdownContent>
-            <div class="p-4">
-              <input type="text" />
-            </div>
+            <Dropdown>
+              <DropdownButton> Menu </DropdownButton>
+              <DropdownContent>
+                <div class="p-4">This is dropdown 1</div>
+              </DropdownContent>
+            </Dropdown>
+
+            <Dropdown>
+              <DropdownButton> Menu </DropdownButton>
+              <DropdownContent>
+                <div class="p-4">This is dropdown 2</div>
+              </DropdownContent>
+            </Dropdown>
           </DropdownContent>
         </Dropdown>
       </div>

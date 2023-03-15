@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-black text-white rounded-full h-10 w-10 overflow-hidden border-2 border-white text-xs flex items-center justify-center"
+    class="bg-black text-white rounded-full h-6 w-6 overflow-hidden text-[6px] flex items-center justify-center"
   >
     <abbr :title="name" class="no-underline font-medium">{{ abbr }}</abbr>
   </div>

@@ -1,5 +1,8 @@
 <template>
-  <span class="bg-gray-200 text-black px-1 inline-block text-sm rounded-md"><slot></slot></span>
+  <span
+    class="font-[400] border border-yellow-800 text-gray-300 px-2 leading-normal tracking-wider inline-block text-xs rounded-md"
+    ><slot></slot
+  ></span>
 </template>
 
 <script setup lang="ts"></script>
