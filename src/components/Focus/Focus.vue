@@ -61,16 +61,16 @@ function onEnd() {
   prevFocused = null
 }
 
-function offsetOf(element) {
-  var rect = element.getBoundingClientRect()
-  var clientLeft = document.documentElement.clientLeft || document.body.clientLeft
-  var clientTop = document.documentElement.clientTop || document.body.clientTop
-  var scrollLeft =
+function offsetOf(element: HTMLElement) {
+  const rect = element.getBoundingClientRect()
+  const clientLeft = document.documentElement.clientLeft || document.body.clientLeft
+  const clientTop = document.documentElement.clientTop || document.body.clientTop
+  const scrollLeft =
     window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft
-  var scrollTop =
+  const scrollTop =
     window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-  var left = rect.left + scrollLeft - clientLeft
-  var top = rect.top + scrollTop - clientTop
+  const left = rect.left + scrollLeft - clientLeft
+  const top = rect.top + scrollTop - clientTop
   return {
     top: top || 0,
     left: left || 0

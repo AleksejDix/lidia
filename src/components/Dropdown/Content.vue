@@ -1,8 +1,12 @@
 <template>
   <portal to="dropdown" v-if="isVisible">
     <!-- <div v-if="isVisible" class="absolute inset-0" @click="close()"></div> -->
-    <div :ref="contentRef" class="shadow bg-white fixed top-0 left-0 d3" :style="dropdownRect">
-      <pre class="font-xs">{{ calculations }}</pre>
+    <div
+      :ref="contentRef"
+      class="shadow bg-white fixed top-0 left-0 d3 w-[300px] overflow-auto"
+      :style="dropdownRect"
+    >
+      <pre>{{ calculations.placement }}</pre>
       <FocusTrap>
         <div class="flex items-center justify-center">
           <slot></slot>
@@ -31,6 +35,7 @@ const { isVisible, contentRef, dropdownRect, close, calculations } = dropdown
   --offset: v-bind(calculations.right);
   /* prettier-ignore  */
   transform: 
-    translate3d(var(--vuedin-dropdown-reset-x), var(--vuedin-dropdown-reset-y), 0);
+    translate3d(var(--vuedin-dropdown-reset-x), var(--vuedin-dropdown-reset-y), 0)
+    translate3d(var(--vuedin-translate-x), var(--vuedin-translate-y), 0);
 }
 </style>
