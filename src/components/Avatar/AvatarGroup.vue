@@ -3,13 +3,13 @@
     <li v-for="(user, index) in limited" :key="user.name" class="-ml-3">
       <Avatar :name="user.name" />
     </li>
-    <li v-if="users.length > max" class="-ml-3">
+    <!-- <li v-if="users.length > max" class="-ml-3">
       <div
         class="bg-black text-white rounded-full h-10 w-10 overflow-hidden border-2 border-white text-xs flex items-center justify-center"
       >
         <abbr :title="names" class="no-underline font-medium">+{{ max }}</abbr>
       </div>
-    </li>
+    </li> -->
   </ul>
 </template>
 

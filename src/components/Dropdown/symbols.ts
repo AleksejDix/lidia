@@ -1,4 +1,4 @@
-import type { Component, InjectionKey, Ref } from 'vue'
+import type { Component, ComputedRef, InjectionKey, Ref } from 'vue'
 
 export interface DropdownType {
   isVisible: Ref<boolean>
@@ -7,7 +7,8 @@ export interface DropdownType {
   open: () => void
   close: () => void
   button: Ref<HTMLElement | Component | null>
-  contentRef: (el: HTMLElement) => void
+  contentRef: (el: any) => void
+  dropdownRect: ComputedRef<{}>
 }
 
 export const DropdownKey: InjectionKey<DropdownType> = Symbol('Dropdown')

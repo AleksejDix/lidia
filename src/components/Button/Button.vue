@@ -1,3 +1,3 @@
 <template>
-  <button class="bg-black text-white"><slot></slot></button>
+  <button class="bg-black text-white text-xs"><slot></slot></button>
 </template>
