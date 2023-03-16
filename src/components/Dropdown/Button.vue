@@ -3,8 +3,9 @@
     ref="button"
     :id="`dropdown-button-${id}`"
     :aria-expanded="isVisible"
+    aria-haspopup="true"
     @click="toggle"
-    @keyup.down="open"
+    @keydown.down.prevent="open"
     class="border border-gray-700 bg-gray-800 rounded shadow px-3 font-medium text-xs leading-normal"
   >
     <slot></slot>

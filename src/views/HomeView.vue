@@ -8,16 +8,35 @@ import {
 import { Badge } from '@/components/Badge'
 import { Avatar, AvatarGroup } from '@/components/Avatar'
 import { Dropdown, DropdownButton, DropdownContent } from '@/components/Dropdown'
+import {
+  Menu,
+  MenuItem,
+  MenuSeparator,
+  MenuLink,
+  MenuButton,
+  MenuRouterLink
+} from '@/components/Menu'
 import { Flex, FlexItem } from '@/layout/Flex'
+
+function log(event: Event) {
+  console.log(event)
+}
 </script>
 
 <template>
   <div>
     <div class="flex justify-between p-4">
       <Dropdown>
-        <DropdownButton> Menu </DropdownButton>
+        <DropdownButton>dropdown</DropdownButton>
         <DropdownContent>
-          <div class="p-4">This is dropdown 1</div>
+          <Menu>
+            <MenuHeader>Test notification</MenuHeader>
+            <MenuLink href="https://google.ch" target="_blank">let me google for it</MenuLink>
+            <MenuRouterLink to="/">home</MenuRouterLink>
+            <MenuRouterLink to="#anchor">home</MenuRouterLink>
+            <MenuSeparator></MenuSeparator>
+            <MenuButton @click="log">logout</MenuButton>
+          </Menu>
         </DropdownContent>
       </Dropdown>
 
