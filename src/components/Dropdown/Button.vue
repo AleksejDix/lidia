@@ -1,11 +1,11 @@
 <template>
   <button
+    ref="button"
     :id="`dropdown-button-${id}`"
     :aria-expanded="isVisible"
     @click="toggle"
     @keyup.down="open"
     class="border border-gray-700 bg-gray-800 rounded shadow px-3 font-medium text-xs leading-normal"
-    ref="button"
   >
     <slot></slot>
   </button>

@@ -4,16 +4,16 @@
     <div
       v-if="isVisible"
       :ref="contentRef"
-      class="fixed top-0 left-0 d3 overflow-auto transition"
+      class="fixed top-0 left-0 d3 overflow-auto"
       :style="dropdownRect"
     >
-      <div class="shadow bg-gray-800 border border-gray-700 rounded-lg p-1">
+      <Surface>
         <FocusTrap>
           <div class="flex items-center justify-center">
             <slot></slot>
           </div>
         </FocusTrap>
-      </div>
+      </Surface>
     </div>
   </Teleport>
 </template>
@@ -22,6 +22,7 @@
 import { inject } from 'vue'
 import { DropdownKey } from './symbols'
 import { FocusTrap } from '@/components/FocusTrap'
+import { Surface } from '@/components/Surface'
 
 const dropdown = inject(DropdownKey)
 
