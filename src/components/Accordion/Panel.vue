@@ -6,9 +6,8 @@
 
 <script lang="ts" setup>
 import type { PropType, VNodeTypes } from 'vue'
-import { provide, inject, toRef, ref, onMounted } from 'vue'
+import { provide, inject, toRef } from 'vue'
 import { v4 as uuidv4 } from 'uuid'
-import autoAnimate from '@formkit/auto-animate'
 import { AccordionKey, PanelKey } from './symbols'
 
 const props = defineProps({
@@ -43,11 +42,5 @@ provide(PanelKey, {
   isVisible: toRef(panels, id),
   id,
   toggle
-})
-
-const animate = ref()
-
-onMounted(() => {
-  autoAnimate(animate.value)
 })
 </script>

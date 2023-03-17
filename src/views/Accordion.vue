@@ -26,6 +26,31 @@ function log(event: Event) {
 
 <template>
   <div>
+    <Accordion>
+      <AccordionPanel tag="section">
+        <AccordionButton>
+          This is awesome
+          <Badge>123123</Badge>
+        </AccordionButton>
+        <AccordionContent>
+          <div>Sophia Williams</div>
+          <div>sophia.williams@company.com</div>
+          <div>(501) 555-9128</div>
+        </AccordionContent>
+      </AccordionPanel>
+
+      <AccordionPanel tag="section">
+        <AccordionButton>This is awesome</AccordionButton>
+        <AccordionContent>
+          <div>Sophia Williams</div>
+          <div>sophia.williams@company.com</div>
+          <div>(501) 555-9128</div>
+        </AccordionContent>
+      </AccordionPanel>
+    </Accordion>
+  </div>
+
+  <div>
     <div class="flex justify-between p-4">
       <Dropdown>
         <DropdownButton>dropdown</DropdownButton>

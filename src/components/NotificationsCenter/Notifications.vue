@@ -6,6 +6,6 @@
 </template>
 
 <script lang="ts" setup>
-import { useNotificationsStore } from '@/components/Notification'
+import { useNotificationsStore } from './index'
 const { list, hasSome, create, destroy } = useNotificationsStore()
 </script>
