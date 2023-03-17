@@ -1,10 +1,10 @@
 <template>
   <div
+    class="border-l border-b border-r px-4 py-2"
     v-show="isActive"
     role="tabpanel"
     :id="pair?.[1]"
     :aria-labelledby="pair?.[0]"
-    class="border"
   >
     <slot></slot>
   </div>

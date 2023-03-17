@@ -4,15 +4,18 @@
     :ref="focus.create"
     @keydown.left.prevent="focus.prev"
     @keydown.right.prevent="focus.next"
+    @keydown.home.prevent="focus.first"
+    @keydown.end.prevent="focus.last"
+    @keydown.fn+left.prevent="focus.first"
+    @keydown.fn+right.prevent="focus.last"
     :id="pair?.[0]"
     :aria-controls="pair?.[1]"
     :aria-selected="isActive"
-    :class="{ 'border border-yellow-400': isActive }"
+    :class="{ 'bg-white text-black': isActive }"
     role="tab"
-    class="Tab"
+    class="Tab px-4 py-2 relative top-[1px] focus:bg-yellow-400 focus:text-black focus:outline-none"
     @click="tabs.select(id)"
   >
-    {{ isActive }}
     <slot></slot>
   </button>
 </template>
