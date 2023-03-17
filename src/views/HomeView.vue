@@ -14,7 +14,8 @@ import {
   MenuSeparator,
   MenuLink,
   MenuButton,
-  MenuRouterLink
+  MenuRouterLink,
+  MenuHeader
 } from '@/components/Menu'
 import { Flex, FlexItem } from '@/layout/Flex'
 
@@ -30,7 +31,6 @@ function log(event: Event) {
         <DropdownButton>dropdown</DropdownButton>
         <DropdownContent>
           <Menu>
-            <MenuHeader>Test notification</MenuHeader>
             <MenuLink href="https://google.ch" target="_blank">let me google for it</MenuLink>
             <MenuRouterLink to="/">home</MenuRouterLink>
             <MenuRouterLink to="#anchor">home</MenuRouterLink>

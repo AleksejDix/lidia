@@ -1,11 +1,11 @@
 <template>
   <a
+    :ref="focus.create"
     :href="href"
-    ref="menuItem"
     role="menuitem"
-    class="py-2 px-4 block w-full text-left"
-    @keydown.down.prevent="focusNext"
-    @keydown.up.prevent="focusPrevious"
+    class="py-2 px-4 block w-full text-left focus:bg-pink-900 focus:outline-none"
+    @keydown.up.prevent="focus.prev"
+    @keydown.down.prevent="focus.next"
     @keydown.right.prevent
     @keydown.left.prevent
     @keydown.space.prevent="$emit('click')"
@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, inject, ref, onMounted, onUnmounted } from 'vue'
+import { useFocusCycleItem } from '../FocusCycle'
 
 defineProps({
   href: {
@@ -24,23 +24,5 @@ defineProps({
   }
 })
 
-const menuItem = ref<HTMLElement | null>(null)
-
-const menuFocus = inject('menuFocus')
-
-const focusNext = () => {
-  menuFocus.focusNext(menuItem.value)
-}
-
-const focusPrevious = () => {
-  menuFocus.focusPrevious(menuItem.value)
-}
-
-onMounted(() => {
-  menuFocus.registerMenuItem(menuItem.value)
-})
-
-onUnmounted(() => {
-  menuFocus.unregisterMenuItem(menuItem.value)
-})
+const focus = useFocusCycleItem()
 </script>

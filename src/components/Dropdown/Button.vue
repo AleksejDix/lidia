@@ -6,7 +6,7 @@
     aria-haspopup="true"
     @click="toggle"
     @keydown.down.prevent="open"
-    class="border border-gray-700 bg-gray-800 rounded shadow px-3 font-medium text-xs leading-normal"
+    class="border border-gray-700 bg-gray-800 rounded shadow px-3 font-medium text-xs leading-normal focus:bg-pink-900"
   >
     <slot></slot>
   </button>

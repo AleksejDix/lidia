@@ -4,7 +4,7 @@
     <div
       v-if="isVisible"
       :ref="contentRef"
-      class="fixed top-0 left-0 d3 overflow-auto"
+      class="fixed top-0 left-0 d3 overflow-hidden"
       :style="dropdownRect"
     >
       <Surface>

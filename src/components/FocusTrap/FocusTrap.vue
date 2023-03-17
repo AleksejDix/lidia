@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { onBeforeMount, onMounted, ref } from 'vue'
+import { nextTick, onBeforeMount, onMounted, ref } from 'vue'
 import { SELECTOR_FOCUSABLE } from './constans'
 
 const focustrap = ref()
@@ -50,6 +50,7 @@ onBeforeMount(() => {
 
 onMounted(() => {
   const [first] = Array.from(focustrap.value.querySelectorAll(SELECTOR_FOCUSABLE))
+  console.log(first)
   if (first) {
     ;(first as HTMLElement).focus()
   }
