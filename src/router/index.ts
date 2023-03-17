@@ -13,6 +13,11 @@ const router = createRouter({
       path: '/accordion',
       name: 'accordion',
       component: () => import('@/views/Accordion.vue')
+    },
+    {
+      path: '/tabs',
+      name: 'tabs',
+      component: () => import('@/views/Tabs.vue')
     }
   ]
 })

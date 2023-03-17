@@ -1,5 +1,5 @@
 <template>
-  <component :is="tag" class="bg-white shadow" ref="animate">
+  <component :is="tag">
     <slot></slot>
   </component>
 </template>

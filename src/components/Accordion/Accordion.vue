@@ -1,7 +1,5 @@
 <template>
-  <div class="overflow-hidden">
-    <slot></slot>
-  </div>
+  <slot></slot>
 </template>
 
 <script setup lang="ts">

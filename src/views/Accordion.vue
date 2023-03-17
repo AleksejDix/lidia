@@ -25,13 +25,10 @@ function log(event: Event) {
 </script>
 
 <template>
-  <div>
+  <div class="container max-w-md">
     <Accordion>
-      <AccordionPanel tag="section">
-        <AccordionButton>
-          This is awesome
-          <Badge>123123</Badge>
-        </AccordionButton>
+      <AccordionPanel>
+        <AccordionButton>AccordionButton 1</AccordionButton>
         <AccordionContent>
           <div>Sophia Williams</div>
           <div>sophia.williams@company.com</div>
@@ -39,8 +36,8 @@ function log(event: Event) {
         </AccordionContent>
       </AccordionPanel>
 
-      <AccordionPanel tag="section">
-        <AccordionButton>This is awesome</AccordionButton>
+      <AccordionPanel>
+        <AccordionButton>AccordionButton 2</AccordionButton>
         <AccordionContent>
           <div>Sophia Williams</div>
           <div>sophia.williams@company.com</div>
