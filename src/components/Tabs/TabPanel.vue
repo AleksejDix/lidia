@@ -1,5 +1,11 @@
 <template>
-  <div v-if="isActive" role="tabpanel" :id="pair?.[1]" :aria-labelledby="pair?.[0]" class="border">
+  <div
+    v-show="isActive"
+    role="tabpanel"
+    :id="pair?.[1]"
+    :aria-labelledby="pair?.[0]"
+    class="border"
+  >
     <slot></slot>
   </div>
 </template>

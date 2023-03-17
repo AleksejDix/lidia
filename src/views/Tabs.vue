@@ -1,8 +1,8 @@
 <template>
   <Tabs>
     <TabList>
-      <Tab open>Tab 1</Tab>
-      <Tab>Tab 2</Tab>
+      <Tab>Tab 1</Tab>
+      <Tab open>Tab 2</Tab>
     </TabList>
     <TabPanel>
       Content for Tab 1

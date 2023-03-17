@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { inject, computed } from 'vue'
+import { inject, computed, watch, watchEffect } from 'vue'
 import { v4 as uuidv4 } from 'uuid'
 import { TabsKey } from './symbols'
 import { useFocusCycleItem } from '@/components/FocusCycle'
@@ -41,6 +41,12 @@ if (!tabs) {
 }
 
 tabs.createTab(id)
+
+watchEffect(() => {
+  if (props.open) {
+    tabs.select(id)
+  }
+})
 
 const pair = computed(() => tabs.getPairByTabId(id))
 
