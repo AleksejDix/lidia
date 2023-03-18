@@ -13,6 +13,7 @@
     @keydown.right.prevent
     @keydown.left.prevent
     @keydown.space.prevent="navigate()"
+    @keydown="focus.focusByFirstLetter"
   >
     <slot />
   </a>

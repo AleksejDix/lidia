@@ -55,7 +55,7 @@ function log(event: Event) {
           <Menu>
             <MenuLink href="https://google.ch" target="_blank">let me google for it</MenuLink>
             <MenuRouterLink to="/">home</MenuRouterLink>
-            <MenuRouterLink to="#anchor">home</MenuRouterLink>
+            <MenuRouterLink to="#anchor">hame</MenuRouterLink>
             <MenuSeparator></MenuSeparator>
             <MenuButton @click="log">logout</MenuButton>
           </Menu>

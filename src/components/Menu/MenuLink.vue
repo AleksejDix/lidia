@@ -11,6 +11,7 @@
     @keydown.right.prevent
     @keydown.left.prevent
     @keydown.space.prevent="$emit('click')"
+    @keydown="focus.focusByFirstLetter"
   >
     <slot></slot>
   </a>

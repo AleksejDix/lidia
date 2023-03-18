@@ -10,6 +10,7 @@
     @keydown.left.prevent
     @keydown.space.prevent="$emit('click')"
     @keydown.enter.prevent="$emit('click')"
+    @keydown="focus.focusByFirstLetter"
   >
     <slot></slot>
   </button>

@@ -10,19 +10,20 @@
     @keydown.end.prevent="focus.last"
     @keydown.fn+left.prevent="focus.first"
     @keydown.fn+right.prevent="focus.last"
+    @keydown="focus.focusByFirstLetter"
     class="AccordionButton px-2 py-1 w-full text-left focus:bg-green-800 focus:outline-none flex items-center gap-2"
     @click="toggle"
   >
+    <span>
+      <slot></slot>
+    </span>
+
     <slot name="iconOpen" v-if="isVisible">
       <div class="rounded flex items-center justify-center w-4 h-4 border">+</div>
     </slot>
     <slot name="iconClosed" v-if="!isVisible">
       <div class="rounded flex items-center justify-center w-4 h-4 border">-</div>
     </slot>
-
-    <span>
-      <slot></slot>
-    </span>
   </button>
 </template>
 
