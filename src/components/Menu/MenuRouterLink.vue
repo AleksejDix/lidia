@@ -12,7 +12,7 @@
     @keydown.down.prevent="focus.next"
     @keydown.right.prevent
     @keydown.left.prevent
-    @keydown.space.prevent="$emit('click')"
+    @keydown.space.prevent="navigate()"
   >
     <slot />
   </a>

@@ -1,6 +1,7 @@
 <template>
   <button
     role="menuitem"
+    type="button"
     :ref="focus.create"
     class="py-2 px-4 block w-full text-left focus:bg-pink-900 focus:outline-none"
     @keydown.up.prevent="focus.prev"

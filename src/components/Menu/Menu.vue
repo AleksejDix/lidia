@@ -1,5 +1,5 @@
 <template>
-  <div role="menu">
+  <div role="menu" aria-orientation="vertical">
     <slot></slot>
   </div>
 </template>

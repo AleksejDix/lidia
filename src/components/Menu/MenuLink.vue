@@ -1,5 +1,7 @@
+<!-- MenuLink.vue -->
 <template>
   <a
+    v-bind="$attrs"
     :ref="focus.create"
     :href="href"
     role="menuitem"
