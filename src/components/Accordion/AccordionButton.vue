@@ -6,6 +6,10 @@
     :ref="focus.create"
     @keydown.up.prevent="focus.prev"
     @keydown.down.prevent="focus.next"
+    @keydown.home.prevent="focus.first"
+    @keydown.end.prevent="focus.last"
+    @keydown.fn+left.prevent="focus.first"
+    @keydown.fn+right.prevent="focus.last"
     class="AccordionButton px-2 py-1 w-full text-left focus:bg-green-800 focus:outline-none flex items-center gap-2"
     @click="toggle"
   >

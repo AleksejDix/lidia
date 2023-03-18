@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import { inject, computed, watch, watchEffect } from 'vue'
+import { inject, computed, watch, watchEffect, onUpdated } from 'vue'
 import { v4 as uuidv4 } from 'uuid'
 import { TabsKey } from './symbols'
 import { useFocusCycleItem } from '@/components/FocusCycle'
@@ -45,13 +45,20 @@ if (!tabs) {
 
 tabs.createTab(id)
 
-watchEffect(() => {
-  if (props.open) {
-    tabs.select(id)
-  }
-})
-
 const pair = computed(() => tabs.getPairByTabId(id))
 
 const isActive = computed(() => id === tabs.activePair.value?.[0])
+
+onUpdated(() => {
+  console.log(isActive.value)
+})
+
+watchEffect(
+  () => {
+    if (props.open) {
+      tabs.select(id)
+    }
+  },
+  { flush: 'post' }
+)
 </script>
