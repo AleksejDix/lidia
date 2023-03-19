@@ -18,7 +18,8 @@
     "pinia": "^2.0.32",
     "uuid": "^9.0.0",
     "vue": "^3.2.47",
-    "vue-router": "^4.1.6"
+    "vue-router": "^4.1.6",
+    "vue-router-mock": "^0.2.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.31.1",

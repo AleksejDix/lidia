@@ -1,3 +1,4 @@
+<!-- Tabs.vue -->
 <template>
   <slot></slot>
 </template>

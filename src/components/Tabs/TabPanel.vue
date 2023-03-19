@@ -1,3 +1,4 @@
+<!-- TabPanel.vue -->
 <template>
   <div
     class="border-l border-b border-r px-4 py-2"

@@ -12,12 +12,30 @@ const router = createRouter({
     {
       path: '/accordion',
       name: 'accordion',
-      component: () => import('@/views/Accordion.vue')
+      component: () => import('@/views/Accordion.vue'),
+      children: [
+        {
+          path: 'nested',
+          name: 'nested',
+          component: () => import('@/views/Tabs.vue')
+        }
+      ]
     },
     {
-      path: '/tabs',
-      name: 'tabs',
-      component: () => import('@/views/Tabs.vue')
+      path: '/blog',
+      component: () => import('@/views/Blog.vue'),
+      children: [
+        {
+          path: '',
+          name: 'blog',
+          component: () => import('@/views/Tabs.vue')
+        },
+        {
+          path: ':article+',
+          name: 'article',
+          component: () => import('@/views/Article.vue')
+        }
+      ]
     }
   ]
 })
