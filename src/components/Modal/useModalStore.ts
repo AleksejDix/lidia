@@ -1,12 +1,12 @@
 // useModalStore.ts
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { useStack } from '@/use/useStack'
 
 const createStore = () => {
-  const modals = ref<string[]>([])
+  const { push, pop, remove, top, isEmpty, size, stack, includes } = useStack()
 
   const is = (key: string) => {
-    const isOpened = modals.value.includes(key)
+    const isOpened = includes(key)
     return {
       visible: isOpened,
       hidden: !isOpened
@@ -14,21 +14,20 @@ const createStore = () => {
   }
 
   const create = (key: string) => {
-    console.log(key)
-    modals.value.push(key)
+    push(key)
   }
 
   const destroy = (key: string) => {
-    modals.value = modals.value.filter((modalKey) => modalKey !== key)
-
-    console.log(key, modals.value)
+    top.value === key ? pop() : remove(key)
   }
 
   return {
-    modals,
+    size,
     is,
     create,
-    destroy
+    destroy,
+    isEmpty,
+    stack
   }
 }
 

@@ -50,7 +50,7 @@ onBeforeMount(() => {
 
 onMounted(() => {
   const [first] = Array.from(focustrap.value.querySelectorAll(SELECTOR_FOCUSABLE))
-  console.log(first)
+
   if (first) {
     ;(first as HTMLElement).focus()
   }

@@ -3,12 +3,12 @@
 </template>
 
 <script lang="ts" setup>
-import { provide, ref, computed, reactive } from 'vue'
+import { provide, ref, computed, reactive, onMounted, onUnmounted, watchEffect } from 'vue'
 import { DropdownKey } from './symbols'
 import { v4 as uuidv4 } from 'uuid'
-import { useEscKey } from '@/use/useEscKey'
 import { useViewport } from '../Viewport'
 import { useElementSize, useElementBounding } from '@vueuse/core'
+import { useEscapeStore } from '@/use/useEscapeStore'
 
 const button = ref()
 
@@ -165,5 +165,11 @@ provide(DropdownKey, {
   dropdownRect
 })
 
-useEscKey(close)
+const escapeStore = useEscapeStore()
+
+watchEffect(() => {
+  if (isVisible.value) {
+    escapeStore.create(() => close())
+  }
+})
 </script>

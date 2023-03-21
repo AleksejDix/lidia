@@ -25,7 +25,7 @@ function log(event: Event) {
 </script>
 
 <template>
-  <div class="container max-w-md">
+  <div class="container">
     <Accordion>
       <AccordionPanel>
         <AccordionButton>AccordionButton 1</AccordionButton>
@@ -48,7 +48,7 @@ function log(event: Event) {
   </div>
 
   <div>
-    <div class="flex justify-between p-4">
+    <div class="flex justify-between p-4 w-[3000px]">
       <Dropdown>
         <DropdownButton>dropdown</DropdownButton>
         <DropdownContent>
@@ -69,6 +69,7 @@ function log(event: Event) {
         </DropdownContent>
       </Dropdown>
     </div>
+    <div class="h-screen"></div>
 
     <main class="space-y-4">
       <Flex>
@@ -78,19 +79,20 @@ function log(event: Event) {
               <Avatar :name="`Aleksej Dix`" />
             </DropdownButton>
             <DropdownContent>
+              <a href=""></a>
+              <input type="text" />
               <Accordion>
                 <AccordionPanel tag="section">
-                  <AccordionButton>
+                  <AccordionButton class="bg-red-500 focus:bg-pink-400">
                     This is awesome
                     <Badge>123123</Badge>
                   </AccordionButton>
-                  <AccordionContent>
+                  <AccordionContent class="border-4 border-red-400">
                     <div>Sophia Williams</div>
                     <div>sophia.williams@company.com</div>
                     <div>(501) 555-9128</div>
                   </AccordionContent>
                 </AccordionPanel>
-
                 <AccordionPanel tag="section">
                   <AccordionButton>This is awesome</AccordionButton>
                   <AccordionContent>

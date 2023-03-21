@@ -49,10 +49,6 @@ const pair = computed(() => tabs.getPairByTabId(id))
 
 const isActive = computed(() => id === tabs.activePair.value?.[0])
 
-onUpdated(() => {
-  console.log(isActive.value)
-})
-
 watchEffect(
   () => {
     if (props.open) {

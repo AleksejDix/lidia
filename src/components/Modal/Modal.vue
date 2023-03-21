@@ -3,26 +3,19 @@
   <Teleport to="body">
     <div
       v-if="isVisible"
-      class="fixed inset-0 bg-yellow-400 bg-opacity-20"
-      :aria-labelledby="`modal-title-${name}`"
-      @click.stop="modalStore.destroy(name)"
-    ></div>
-    <div
-      v-if="isVisible"
       role="dialog"
       aria-modal="true"
       ref="modalRef"
-      class="absolute inset-0 z-10 grid place-items-center"
+      class="absolute inset-0 grid place-items-center"
     >
-      <div class="border rounded max-w-md bg-white max-h-screen mx-auto flex flex-col">
+      <div
+        class="fixed inset-0 cursor-pointer"
+        :aria-labelledby="id"
+        @click.stop="modalStore.destroy(name)"
+      ></div>
+      <div class="relative border rounded max-w-md max-h-screen mx-auto flex flex-col bg-black">
         <FocusTrap>
-          <div class="flex justify-between items-center mb-6">
-            <h2 :id="`modal-title-${name}`"><slot name="title">Modal Title</slot></h2>
-            <button @click="modalStore.destroy(name)">close</button>
-          </div>
-          <div class="overflow-y-auto max-h-[calc(100vh-12rem)]">
-            <slot> </slot>
-          </div>
+          <slot> </slot>
         </FocusTrap>
       </div>
     </div>
@@ -31,10 +24,12 @@
 
 <script lang="ts" setup>
 import { useModalStore } from './useModalStore'
-import { useEscKey } from '@/use/useEscKey'
 import { FocusTrap } from '@/components/FocusTrap'
 import { useBodyScrollLock } from '../ScrollLock'
-import { computed } from 'vue'
+import { computed, onMounted, provide, watchEffect } from 'vue'
+import { v4 as uuidv4 } from 'uuid'
+import { ModalKey } from './symbols'
+import { useEscapeStore } from '@/use/useEscapeStore'
 
 const props = defineProps({
   name: {
@@ -44,10 +39,28 @@ const props = defineProps({
 })
 
 const modalStore = useModalStore()
-
-useEscKey(() => modalStore.destroy(props.name))
+const escapeStore = useEscapeStore()
 
 const isVisible = computed(() => modalStore.is(props.name).visible)
 
+watchEffect(() => {
+  if (isVisible.value) {
+    escapeStore.create(() => modalStore.destroy(props.name))
+  }
+})
+
+onMounted(() => {
+  if (isVisible.value) {
+    escapeStore.create(() => modalStore.destroy(props.name))
+  }
+})
+
+const id = `modal-title-${uuidv4()}`
+
 useBodyScrollLock(isVisible)
+
+provide(ModalKey, {
+  close: () => modalStore.destroy(props.name),
+  id
+})
 </script>

@@ -7,7 +7,15 @@
     </nav>
     <Breadcrumbs />
     <router-view :route="routeWithModal" />
-    <Pagination :items-per-page="10" :total-items="100" />
+    <Pagination :items-per-page="10" :total-items="100">
+      <!-- <PaginationFirstButton>next</PaginationFirstButton>
+      <PaginationPrevButton>zurich</PaginationPrevButton>
+      <template #default="{ page }">
+        <PaginationNumber :page="page"> </PaginationNumber>
+      </template>
+      <PaginationNextButton>next</PaginationNextButton>
+      <PaginationLastButton>next</PaginationLastButton> -->
+    </Pagination>
   </div>
 </template>
 
@@ -15,13 +23,21 @@
 import { RouterView } from 'vue-router'
 import { Breadcrumbs } from './components/Breadcrumbs'
 import { Pagination } from './components/Pagination'
-import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
+import { useEventListener } from '@vueuse/core'
+import { useEscapeStore } from '@/use/useEscapeStore'
 
 const router = useRouter()
 const route = useRoute()
+const escapeStore = useEscapeStore()
+
+useEventListener(document, 'keydown', (e) => {
+  if (e.key === 'Escape') {
+    escapeStore.destroy()
+  }
+})
 
 const routeWithModal = computed(() => {
   if (history.state && history.state.backgroundView) {

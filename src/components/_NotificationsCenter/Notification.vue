@@ -43,5 +43,4 @@
 
 <script lang="ts" setup>
 import { Surface } from '@/components/Surface'
-import { useEscKey } from '@/use/useEscKey'
 </script>
