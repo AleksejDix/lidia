@@ -6,9 +6,13 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home
+      component: Home,
+      children: [
+        { path: '', component: () => import('@/views/UserDetails.vue'), name: 'user', props: true }
+      ]
     },
+    { path: '/about', name: 'about', component: () => import('@/views/About.vue') },
+    { path: '/modal', name: 'modal', component: () => import('@/views/Modal.vue') },
     {
       path: '/accordion',
       name: 'accordion',

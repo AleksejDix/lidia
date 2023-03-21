@@ -1,26 +1,28 @@
+<!-- Modal.vue -->
 <template>
   <Teleport to="body">
     <div
-      v-if="is.opened"
-      class="fixed inset-0"
-      aria-labelledby="my-dialog-title"
-      @click="destroy()"
+      v-if="isVisible"
+      class="fixed inset-0 bg-yellow-400 bg-opacity-20"
+      :aria-labelledby="`modal-title-${name}`"
+      @click.stop="modalStore.destroy(name)"
     ></div>
     <div
-      v-if="is.opened"
+      v-if="isVisible"
       role="dialog"
       aria-modal="true"
       ref="modalRef"
-      id="modal"
-      class="absolute inset-0 z-10 bg-black bg-opacity-60 flex justify-center items-center"
+      class="absolute inset-0 z-10 grid place-items-center"
     >
-      <div id="modal" class="bg-white rounded p-6 max-w-md">
+      <div class="border rounded max-w-md bg-white max-h-screen mx-auto flex flex-col">
         <FocusTrap>
           <div class="flex justify-between items-center mb-6">
-            <h2 class="text-xl font-bold">Modal Title</h2>
-            <button class="text-2xl font-bold" @click="destroy">&times;</button>
+            <h2 :id="`modal-title-${name}`"><slot name="title">Modal Title</slot></h2>
+            <button @click="modalStore.destroy(name)">close</button>
           </div>
-          <slot> </slot>
+          <div class="overflow-y-auto max-h-[calc(100vh-12rem)]">
+            <slot> </slot>
+          </div>
         </FocusTrap>
       </div>
     </div>
@@ -28,47 +30,24 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, provide, computed, watchEffect } from 'vue'
-import type { ComputedRef } from 'vue'
+import { useModalStore } from './useModalStore'
 import { useEscKey } from '@/use/useEscKey'
 import { FocusTrap } from '@/components/FocusTrap'
-import { ModalKey } from './symbols'
+import { useBodyScrollLock } from '../ScrollLock'
+import { computed } from 'vue'
 
 const props = defineProps({
-  modelValue: {
-    type: Boolean,
-    default: false
+  name: {
+    type: String,
+    required: true
   }
 })
 
-const state = ref(true)
-const scrollPosition = window.pageYOffset || document.documentElement.scrollTop
-document.body.style.overflow = 'hidden'
+const modalStore = useModalStore()
 
-watchEffect(() => {
-  state.value = props.modelValue
-})
+useEscKey(() => modalStore.destroy(props.name))
 
-const create = () => {
-  state.value = true
-}
+const isVisible = computed(() => modalStore.is(props.name).visible)
 
-const destroy = () => {
-  state.value = false
-  document.body.style.overflow = 'auto'
-  window.scrollTo(0, scrollPosition)
-}
-
-useEscKey(close)
-
-const is = computed(() => {
-  return {
-    opened: state.value === true,
-    closed: state.value === false
-  }
-})
-
-const modalRef = ref(null)
-
-provide(ModalKey, { create, destroy, is })
+useBodyScrollLock(isVisible)
 </script>

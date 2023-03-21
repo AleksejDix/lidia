@@ -1,21 +1,13 @@
 <template>
   <div class="h-[3000px]">
+    <nav>
+      <router-link to="/">Home</router-link>
+      <span> | </span>
+      <router-link to="/about">About</router-link>
+    </nav>
     <Breadcrumbs />
-    <RouterView />
+    <router-view :route="routeWithModal" />
     <Pagination :items-per-page="10" :total-items="100" />
-    <button id="openModal">Open Modal</button>
-    <input type="checkbox" class="fixed" v-model="isOpen" />
-    <Modal v-model="isOpen">
-      <input type="text" />
-      <input type="checkbox" />
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus ea eius quod dolorem ducimus
-      sunt accusantium voluptate illum laboriosam, similique ex a quidem rerum quis et reiciendis
-      deleniti dicta quas. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem saepe
-      fugiat porro natus quidem, quos eaque, nihil temporibus voluptate officiis est. Impedit odit
-      magni dolorem delectus fugit pariatur tempora quos? Lorem ipsum dolor sit amet consectetur
-      adipisicing elit. Magnam dolore impedit ipsa! Et consectetur aspernatur neque possimus
-      incidunt unde cum dicta asperiores tempora fuga facere, libero excepturi sapiente amet id?
-    </Modal>
   </div>
 </template>
 
@@ -23,10 +15,21 @@
 import { RouterView } from 'vue-router'
 import { Breadcrumbs } from './components/Breadcrumbs'
 import { Pagination } from './components/Pagination'
-import { Modal } from './components/Modal'
 import { ref } from 'vue'
+import { useRoute } from 'vue-router'
+import { computed } from 'vue'
+import { useRouter } from 'vue-router'
 
-const isOpen = ref(false)
+const router = useRouter()
+const route = useRoute()
+
+const routeWithModal = computed(() => {
+  if (history.state && history.state.backgroundView) {
+    return router.resolve(history.state.backgroundView)
+  } else {
+    return route
+  }
+})
 </script>
 
 <style>
