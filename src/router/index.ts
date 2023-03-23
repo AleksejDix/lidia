@@ -6,40 +6,22 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      component: Home,
-      children: [
-        { path: '', component: () => import('@/views/UserDetails.vue'), name: 'user', props: true }
-      ]
+      component: Home
     },
-    { path: '/about', name: 'about', component: () => import('@/views/About.vue') },
-    { path: '/modal', name: 'modal', component: () => import('@/views/Modal.vue') },
+    {
+      path: '/modal',
+      name: 'modal',
+      component: () => import('@/views/Modal.vue')
+    },
     {
       path: '/accordion',
       name: 'accordion',
-      component: () => import('@/views/Accordion.vue'),
-      children: [
-        {
-          path: 'nested',
-          name: 'nested',
-          component: () => import('@/views/Tabs.vue')
-        }
-      ]
+      component: () => import('@/views/Accordion.vue')
     },
     {
-      path: '/blog',
-      component: () => import('@/views/Blog.vue'),
-      children: [
-        {
-          path: '',
-          name: 'blog',
-          component: () => import('@/views/Tabs.vue')
-        },
-        {
-          path: ':article+',
-          name: 'article',
-          component: () => import('@/views/Article.vue')
-        }
-      ]
+      path: '/tabs',
+      name: 'tabs',
+      component: () => import('@/views/Tabs.vue')
     }
   ]
 })

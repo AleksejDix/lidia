@@ -13,7 +13,7 @@
     :aria-selected="isActive"
     :class="{ 'bg-white text-black': isActive }"
     role="tab"
-    class="Tab px-4 py-2 relative top-[1px] focus:bg-yellow-400 focus:text-black focus:outline-none"
+    class="Tab px-4 py-2 relative top-[1px] focus:bg-yellow-400 focus:text-black focus:outline-none cursor-pointer"
     @click="tabs.select(id)"
   >
     <slot></slot>

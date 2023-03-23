@@ -1,3 +1,4 @@
+<!-- MenuButton.vue -->
 <template>
   <button
     role="menuitem"
@@ -8,7 +9,6 @@
     @keydown.down.prevent="focus.next"
     @keydown.right.prevent
     @keydown.left.prevent
-    @keydown.space.prevent="$emit('click')"
     @keydown.enter.prevent="$emit('click')"
     @keydown="focus.focusByFirstLetter"
   >

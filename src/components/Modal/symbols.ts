@@ -1,4 +1,6 @@
-import type { ComputedRef, InjectionKey } from 'vue'
+// symbols.ts
+
+import type { InjectionKey } from 'vue'
 
 export interface ModalType {
   close: () => void

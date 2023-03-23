@@ -69,3 +69,10 @@ npm run test:e2e -- --debug
 ```sh
 npm run lint
 ```
+
+
+### experiment propmt for chatGPT
+
+```
+"Design a set of Vue.js 3 components using TypeScript and the script setup syntax, which follow the same style and accessibility standards as the given modal component example. Ensure the components are reusable, customizable, and can be easily integrated into various applications."
+```

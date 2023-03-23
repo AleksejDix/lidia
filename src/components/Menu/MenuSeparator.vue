@@ -1,6 +1,6 @@
+<!-- MenuSeparator.vue -->
 <template>
-  <div class="h-[1px] bg-black" role="separator"></div>
+  <div class="border-t border-gray-200" role="separator"></div>
 </template>
 
 <script lang="ts" setup></script>
-`

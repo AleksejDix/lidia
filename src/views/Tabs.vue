@@ -8,7 +8,6 @@
       <TabPanel>Content for Tab 2</TabPanel>
       <TabPanel>Content for Tab 1</TabPanel>
     </Tabs>
-    <RouterView />
   </div>
 </template>
 

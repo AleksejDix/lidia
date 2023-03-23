@@ -1,3 +1,4 @@
+<!-- Menu.vue -->
 <template>
   <div role="menu" aria-orientation="vertical">
     <slot></slot>

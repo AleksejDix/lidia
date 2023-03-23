@@ -9,6 +9,7 @@
       </div>
     </Modal>
     <Modal :name="'modal2'">
+      <ModalCloseButton />
       <Tabs>
         <TabList>
           <Tab>Tab 1</Tab>

@@ -1,3 +1,4 @@
+<!-- ModalCloseButton.vue -->
 <template>
   <button @click="modal.close">
     <slot>close</slot>

@@ -30,6 +30,7 @@ import { computed, onMounted, provide, watchEffect } from 'vue'
 import { v4 as uuidv4 } from 'uuid'
 import { ModalKey } from './symbols'
 import { useEscapeStore } from '@/use/useEscapeStore'
+import { useFocusStore } from '@/use/useFocusStore'
 
 const props = defineProps({
   name: {
@@ -40,20 +41,19 @@ const props = defineProps({
 
 const modalStore = useModalStore()
 const escapeStore = useEscapeStore()
+const focusStore = useFocusStore()
 
 const isVisible = computed(() => modalStore.is(props.name).visible)
 
-watchEffect(() => {
-  if (isVisible.value) {
-    escapeStore.create(() => modalStore.destroy(props.name))
-  }
-})
-
-onMounted(() => {
-  if (isVisible.value) {
-    escapeStore.create(() => modalStore.destroy(props.name))
-  }
-})
+watchEffect(
+  () => {
+    if (isVisible.value) {
+      escapeStore.create(() => modalStore.destroy(props.name))
+      focusStore.create(document.activeElement as HTMLElement)
+    }
+  },
+  { flush: 'post' }
+)
 
 const id = `modal-title-${uuidv4()}`
 

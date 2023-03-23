@@ -6,16 +6,14 @@ import {
   AccordionButton
 } from '@/components/Accordion'
 import { Badge } from '@/components/Badge'
-import { Avatar, AvatarGroup } from '@/components/Avatar'
 import { Dropdown, DropdownButton, DropdownContent } from '@/components/Dropdown'
 import {
   Menu,
-  MenuItem,
   MenuSeparator,
   MenuLink,
   MenuButton,
   MenuRouterLink,
-  MenuHeader
+  MenuItemCheckbox
 } from '@/components/Menu'
 import { Flex, FlexItem } from '@/layout/Flex'
 
@@ -48,11 +46,13 @@ function log(event: Event) {
   </div>
 
   <div>
-    <div class="flex justify-between p-4 w-[3000px]">
+    <div class="flex justify-between p-4">
       <Dropdown>
         <DropdownButton>dropdown</DropdownButton>
         <DropdownContent>
           <Menu>
+            <MenuItemCheckbox>red</MenuItemCheckbox>
+            <MenuItemCheckbox>green</MenuItemCheckbox>
             <MenuLink href="https://google.ch" target="_blank">let me google for it</MenuLink>
             <MenuRouterLink to="/">home</MenuRouterLink>
             <MenuRouterLink to="#anchor">hame</MenuRouterLink>
@@ -75,9 +75,7 @@ function log(event: Event) {
       <Flex>
         <FlexItem>
           <Dropdown>
-            <DropdownButton>
-              <Avatar :name="`Aleksej Dix`" />
-            </DropdownButton>
+            <DropdownButton> Open me </DropdownButton>
             <DropdownContent>
               <a href=""></a>
               <input type="text" />
@@ -115,30 +113,9 @@ function log(event: Event) {
         </FlexItem>
       </Flex>
 
-      <AvatarGroup
-        :users="[
-          { name: 'Aleksej Dix' },
-          { name: 'Lidia Dix' },
-          { name: 'Daniel Woo' },
-          { name: 'Harry Potter' }
-        ]"
-      />
-      <Badge>Frontend</Badge>
-
-      <AvatarGroup
-        :users="[
-          { name: 'Aleksej Dix' },
-          { name: 'Lidia Dix' },
-          { name: 'Daniel Woo' },
-          { name: 'Harry Potter' }
-        ]"
-      />
-
-      <Badge>Backend</Badge>
-
       <div class="flex justify-between">
         <Dropdown>
-          <DropdownButton class="bg-red-500"> dropdown </DropdownButton>
+          <DropdownButton> dropdown </DropdownButton>
           <DropdownContent> asdasd </DropdownContent>
         </Dropdown>
 

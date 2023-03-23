@@ -1,4 +1,4 @@
-<!-- Title.vue -->
+<!-- ModalTitle.vue -->
 <template>
   <h2 :id="modal.id">
     <slot>Default Title</slot>
