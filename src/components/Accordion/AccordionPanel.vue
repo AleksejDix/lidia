@@ -1,3 +1,4 @@
+<!-- AccordionPanel.vue -->
 <template>
   <component :is="tag">
     <slot></slot>

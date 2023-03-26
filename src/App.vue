@@ -1,5 +1,6 @@
 <template>
-  <div class="h-[3000px]">
+  <div class="container">
+    <div></div>
     <nav>
       <router-link to="/">Home</router-link>
       <span> | </span>
@@ -8,13 +9,20 @@
     <Breadcrumbs />
     <router-view :route="routeWithModal" />
     <Pagination :items-per-page="10" :total-items="100">
-      <!-- <PaginationFirstButton>next</PaginationFirstButton>
-      <PaginationPrevButton>zurich</PaginationPrevButton>
-      <template #default="{ page }">
-        <PaginationNumber :page="page"> </PaginationNumber>
-      </template>
-      <PaginationNextButton>next</PaginationNextButton>
-      <PaginationLastButton>next</PaginationLastButton> -->
+      <PaginationPrev>prev</PaginationPrev>
+      <PaginationPageList></PaginationPageList>
+      <PaginationNext>next</PaginationNext>
+    </Pagination>
+
+    <Pagination :items-per-page="10" :total-items="100">
+      <PaginationPrev>prev</PaginationPrev>
+      <PaginationNext>next</PaginationNext>
+    </Pagination>
+
+    <Pagination :items-per-page="10" :total-items="100">
+      <PaginationFirst>first</PaginationFirst>
+      <PaginationGoToPage />
+      <PaginationLast>last</PaginationLast>
     </Pagination>
   </div>
 </template>
@@ -22,7 +30,16 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
 import { Breadcrumbs } from './components/Breadcrumbs'
-import { Pagination } from './components/Pagination'
+import {
+  Pagination,
+  PaginationPrev,
+  PaginationNext,
+  PaginationPageList,
+  PaginationPage,
+  PaginationLast,
+  PaginationFirst,
+  PaginationGoToPage
+} from './components/Pagination'
 import { useRoute } from 'vue-router'
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'

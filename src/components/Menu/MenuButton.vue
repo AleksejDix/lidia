@@ -9,7 +9,7 @@
     @keydown.down.prevent="focus.next"
     @keydown.right.prevent
     @keydown.left.prevent
-    @keydown.enter.prevent="$emit('click')"
+    @keydown.enter.prevent="emit('click')"
     @keydown="focus.focusByFirstLetter"
   >
     <slot></slot>
@@ -18,5 +18,8 @@
 
 <script setup lang="ts">
 import { useFocusCycleItem } from '../FocusCycle'
+
+const emit = defineEmits(['click'])
+
 const focus = useFocusCycleItem()
 </script>

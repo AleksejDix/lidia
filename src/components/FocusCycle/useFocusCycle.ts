@@ -1,13 +1,13 @@
 import { ref, provide, inject, nextTick } from 'vue'
 import type { InjectionKey, Ref } from 'vue'
-
+import * as RuntimeCore from '@vue/runtime-core'
 interface MenuKey {
   list: Ref<HTMLElement[]>
   next: (event: KeyboardEvent) => void
   prev: (event: KeyboardEvent) => void
   first: () => void
   last: () => void
-  create: (menuItem: HTMLElement) => void
+  create: () => RuntimeCore.VNodeRef
   destroy: (menuItem: HTMLElement) => void
   focusByFirstLetter: (event: KeyboardEvent) => void
 }

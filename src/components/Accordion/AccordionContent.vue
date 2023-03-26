@@ -1,10 +1,11 @@
+<!-- AccordionContent.vue -->
 <template>
   <div
     :id="`accordion-content-${id}`"
     :aria-labelledby="`accordion-button-${id}`"
     class="AccordionContent"
     v-if="isVisible"
-    :aria-hidden="isVisible"
+    :aria-hidden="!isVisible"
   >
     <slot></slot>
   </div>

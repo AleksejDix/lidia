@@ -1,3 +1,4 @@
+<!-- Accordion.vue -->
 <template>
   <slot></slot>
 </template>
