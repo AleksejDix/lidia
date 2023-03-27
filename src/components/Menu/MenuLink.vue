@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import { useFocusCycleItem } from '../FocusCycle'
+import { useFocusCycleItem } from '@/components/Focus'
 
 defineProps({
   href: {

@@ -24,9 +24,9 @@
 
 <script lang="ts" setup>
 import { useModalStore } from './useModalStore'
-import { FocusTrap } from '@/components/FocusTrap'
+import { FocusTrap } from '@/components/Focus'
 import { useBodyScrollLock } from '../ScrollLock'
-import { computed, onMounted, provide, watchEffect } from 'vue'
+import { computed, provide, watchEffect } from 'vue'
 import { v4 as uuidv4 } from 'uuid'
 import { ModalKey } from './symbols'
 import { useEscapeStore } from '@/use/useEscapeStore'

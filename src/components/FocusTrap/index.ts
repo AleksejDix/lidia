@@ -1,1 +1,0 @@
-export { default as FocusTrap } from '@/components/FocusTrap/FocusTrap.vue'

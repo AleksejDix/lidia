@@ -24,7 +24,7 @@
 import { inject, computed, watch, watchEffect, onUpdated } from 'vue'
 import { v4 as uuidv4 } from 'uuid'
 import { TabsKey } from './symbols'
-import { useFocusCycleItem } from '@/components/FocusCycle'
+import { useFocusCycleItem } from '@/components/Focus'
 
 const props = defineProps({
   open: {

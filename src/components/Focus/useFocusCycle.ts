@@ -1,6 +1,6 @@
 import { ref, provide, inject, nextTick } from 'vue'
 import type { InjectionKey, Ref } from 'vue'
-import * as RuntimeCore from '@vue/runtime-core'
+import type * as RuntimeCore from '@vue/runtime-core'
 interface MenuKey {
   list: Ref<HTMLElement[]>
   next: (event: KeyboardEvent) => void

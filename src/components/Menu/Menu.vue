@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useFocusCycle } from '@/components/FocusCycle'
+import { useFocusCycle } from '@/components/Focus'
 
 useFocusCycle()
 </script>

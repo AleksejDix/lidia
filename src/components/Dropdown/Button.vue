@@ -22,5 +22,5 @@ if (!dropdown) {
   throw new Error(`Could not resolve ${dropdown}`)
 }
 
-const { isVisible, id, open, toggle, button, close } = dropdown
+const { isVisible, id, open, toggle, button } = dropdown
 </script>

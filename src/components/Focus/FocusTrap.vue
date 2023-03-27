@@ -5,8 +5,11 @@
 </template>
 
 <script setup lang="ts">
-import { nextTick, onBeforeMount, onMounted, ref } from 'vue'
+import { onBeforeMount, onMounted, ref } from 'vue'
 import { SELECTOR_FOCUSABLE } from './constans'
+import { useFocusReturn } from './useFocusReturn'
+
+useFocusReturn()
 
 const focustrap = ref()
 let animationId: number

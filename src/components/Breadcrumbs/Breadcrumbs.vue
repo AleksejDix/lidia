@@ -22,7 +22,7 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { Breadcrumb } from '.'
-import { useFocusCycle } from '@/components/FocusCycle'
+import { useFocusCycle } from '@/components/Focus'
 
 useFocusCycle()
 

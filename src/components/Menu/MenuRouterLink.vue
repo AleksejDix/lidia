@@ -21,7 +21,7 @@
 
 <script setup lang="ts">
 import { RouterLink, useLink } from 'vue-router'
-import { useFocusCycleItem } from '../FocusCycle'
+import { useFocusCycleItem } from '@/components/Focus'
 
 const props = defineProps({
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment

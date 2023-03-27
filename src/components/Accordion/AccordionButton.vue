@@ -29,7 +29,7 @@
 <script setup lang="ts">
 import { inject } from 'vue'
 import { PanelKey } from './symbols'
-import { useFocusCycleItem } from '@/components/FocusCycle'
+import { useFocusCycleItem } from '@/components/Focus'
 const focus = useFocusCycleItem()
 
 const panel = inject(PanelKey)

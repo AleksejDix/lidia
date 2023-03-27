@@ -6,7 +6,7 @@
 <script setup lang="ts">
 import { reactive, provide } from 'vue'
 import { AccordionKey } from './symbols'
-import { useFocusCycle } from '@/components/FocusCycle'
+import { useFocusCycle } from '@/components/Focus'
 useFocusCycle()
 
 const props = defineProps({
