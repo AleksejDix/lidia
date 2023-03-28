@@ -8,7 +8,7 @@
     </nav>
     <Breadcrumbs />
     <router-view :route="routeWithModal" />
-    <Pagination :items-per-page="10" :total-items="100">
+    <Pagination :items-per-page="10" :total-items="200">
       <PaginationPrev>prev</PaginationPrev>
       <PaginationPageList></PaginationPageList>
       <PaginationNext>next</PaginationNext>

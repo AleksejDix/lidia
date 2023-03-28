@@ -7,7 +7,8 @@
       type="number"
       min="1"
       :max="totalPages"
-      v-model.number="inputPage"
+      :value="currentPage"
+      @change="goToPage"
       class="border border-gray-300 px-3 py-2 rounded"
       required
     />
@@ -16,19 +17,18 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import { usePaginationContext } from './usePaginationContext'
 
 const { currentPage, totalPages } = usePaginationContext()
-const inputPage = ref(currentPage.value)
 const router = useRouter()
+const route = useRoute()
 
-function goToPage() {
-  if (inputPage.value >= 1 && inputPage.value <= totalPages.value) {
+function goToPage(event: Event) {
+  if (currentPage.value >= 1 && currentPage.value <= totalPages.value) {
     router.push({
-      ...router.currentRoute.value,
-      query: { ...router.currentRoute.value.query, page: inputPage.value }
+      ...route,
+      query: { ...route.query, page: (event.target as HTMLInputElement).value }
     })
   }
 }
