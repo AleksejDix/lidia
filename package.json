@@ -1,5 +1,5 @@
 {
-  "name": "@lida",
+  "name": "@lidia",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -14,7 +14,7 @@
     "format": "prettier --write src/"
   },
   "workspaces": [
-    "./src/components/Accordion'"
+    "src/components/*'"
   ],
   "dependencies": {
     "@vueuse/core": "^9.13.0",
