@@ -1,6 +1,6 @@
 <!-- Menu.vue -->
 <template>
-  <div role="menu" aria-orientation="vertical">
+  <div role="menu" aria-orientation="vertical" class="border rounded p-1">
     <slot></slot>
   </div>
 </template>
