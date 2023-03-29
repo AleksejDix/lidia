@@ -22,6 +22,21 @@ const router = createRouter({
       path: '/tabs',
       name: 'tabs',
       component: () => import('@/views/Tabs.vue')
+    },
+    {
+      path: '/menu',
+      name: 'menu',
+      component: () => import('@/views/Menu.vue')
+    },
+    {
+      path: '/pagination',
+      name: 'pagination',
+      component: () => import('@/views/Pagination.vue')
+    },
+    {
+      path: '/dropdown',
+      name: 'dropdown',
+      component: () => import('@/views/Dropdown.vue')
     }
   ]
 })

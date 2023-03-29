@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts" setup>
-import { provide, ref, computed, reactive, onMounted, onUnmounted, watchEffect } from 'vue'
+import { provide, ref, computed, reactive, watchEffect } from 'vue'
 import { DropdownKey } from './symbols'
 import { v4 as uuidv4 } from 'uuid'
 import { useViewport } from '../Viewport'

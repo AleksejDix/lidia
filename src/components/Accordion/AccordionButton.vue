@@ -1,6 +1,6 @@
 <!-- AccordionButton.vue -->
 <template>
-  <button
+  <Button
     :id="`accordion-button-${id}`"
     :aria-controls="`accordion-content-${id}`"
     :aria-expanded="isVisible"
@@ -10,26 +10,25 @@
     @keydown.home.prevent="focus.first"
     @keydown.end.prevent="focus.last"
     @keydown="focus.focusByFirstLetter"
-    class="AccordionButton px-2 py-1 w-full text-left focus:bg-green-800 focus:outline-none flex items-center gap-2"
+    class="w-full flex items-center gap-2"
     @click="toggle"
   >
-    <span>
+    <span class="grow pointer-events-none">
       <slot></slot>
     </span>
 
-    <slot name="iconOpen" v-if="isVisible">
-      <div class="rounded flex items-center justify-center w-4 h-4 border">+</div>
+    <slot name="icon">
+      <AccordionIcon />
     </slot>
-    <slot name="iconClosed" v-if="!isVisible">
-      <div class="rounded flex items-center justify-center w-4 h-4 border">-</div>
-    </slot>
-  </button>
+  </Button>
 </template>
 
 <script setup lang="ts">
 import { inject } from 'vue'
 import { PanelKey } from './symbols'
 import { useFocusCycleItem } from '@/components/Focus'
+import { Button } from '@/components/Button'
+import { AccordionIcon } from '@/components/Accordion'
 const focus = useFocusCycleItem()
 
 const panel = inject(PanelKey)

@@ -1,38 +1,35 @@
 <template>
-  <div class="fixed bottom-0">
-    <ModalButton :name="'modal1'"> Open modal 1 </ModalButton>
-    <Modal :name="'modal1'">
+  <h1>Modals</h1>
+  <section>
+    <header>
+      <h2>Simple modal</h2>
+    </header>
+    <ModalButton name="simple">Open Simple Modal</ModalButton>
+    <Modal name="simple">
       <ModalCloseButton />
-      <div>
-        This is the content of modal 1
-        <ModalButton :name="'modal2'"> Open modal 2 </ModalButton>
-      </div>
+      <div>Content of the simple modal</div>
     </Modal>
-    <Modal :name="'modal2'">
-      <ModalCloseButton />
-      <Tabs>
-        <TabList>
-          <Tab>Tab 1</Tab>
-          <Tab open>Tab 2</Tab>
-        </TabList>
-        <TabPanel>Content for Tab 1</TabPanel>
-        <TabPanel>
-          <Dropdown>
-            <DropdownButton>dropdown</DropdownButton>
-            <DropdownContent>
-              <Menu>
-                <MenuLink href="https://google.ch" target="_blank">let me google for it</MenuLink>
-                <MenuRouterLink to="/">home</MenuRouterLink>
-                <MenuRouterLink to="#anchor">hame</MenuRouterLink>
-                <MenuSeparator></MenuSeparator>
-                <MenuButton>logout</MenuButton>
-              </Menu>
-            </DropdownContent>
-          </Dropdown>
-        </TabPanel>
-      </Tabs>
-    </Modal>
-  </div>
+  </section>
+
+  <section>
+    <header>
+      <h2>Nested modal</h2>
+    </header>
+    <div>
+      <ModalButton name="level1">Level 2</ModalButton>
+      <Modal name="level1">
+        <ModalCloseButton />
+        <div>
+          Level 1
+          <ModalButton name="level2">Open Level 2</ModalButton>
+        </div>
+      </Modal>
+      <Modal name="level2">
+        <ModalCloseButton />
+        <p>Level 2</p>
+      </Modal>
+    </div>
+  </section>
 </template>
 
 <script setup lang="ts">
@@ -40,4 +37,5 @@ import { Modal, ModalButton, ModalCloseButton } from '@/components/Modal'
 import { Tabs, TabList, Tab, TabPanel } from '@/components/Tabs'
 import { Dropdown, DropdownButton, DropdownContent } from '@/components/Dropdown'
 import { Menu, MenuLink, MenuRouterLink, MenuSeparator, MenuButton } from '@/components/Menu'
+import { Tooltip } from '@/components/Tooltip'
 </script>

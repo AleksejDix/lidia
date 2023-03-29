@@ -9,11 +9,13 @@
       class="absolute inset-0 grid place-items-center"
     >
       <div
-        class="fixed inset-0 cursor-pointer"
+        class="fixed inset-0 cursor-pointer bg-black bg-opacity-50"
         :aria-labelledby="id"
         @click.stop="modalStore.destroy(name)"
       ></div>
-      <div class="relative border rounded max-w-md max-h-screen mx-auto flex flex-col bg-black">
+      <div
+        class="relative bg-gray-100 border border-white p-4 shadow-xl rounded max-w-md max-h-screen mx-auto flex flex-col"
+      >
         <FocusTrap>
           <slot> </slot>
         </FocusTrap>

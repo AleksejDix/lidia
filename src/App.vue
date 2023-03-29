@@ -1,50 +1,46 @@
 <template>
-  <div class="container">
-    <div></div>
-    <nav>
-      <router-link to="/">Home</router-link>
-      <span> | </span>
-      <router-link to="/about">About</router-link>
-    </nav>
-    <Breadcrumbs />
-    <router-view :route="routeWithModal" />
-    <Pagination :items-per-page="10" :total-items="200">
-      <PaginationPrev>prev</PaginationPrev>
-      <PaginationPageList></PaginationPageList>
-      <PaginationNext>next</PaginationNext>
-    </Pagination>
+  <SkipLink target="main-content">Skip to main content</SkipLink>
+  <SkipLink target="navigation">Skip to navigation</SkipLink>
+  <SkipLink target="footer">Skip to footer</SkipLink>
 
-    <Pagination :items-per-page="10" :total-items="100">
-      <PaginationPrev>prev</PaginationPrev>
-      <PaginationNext>next</PaginationNext>
-    </Pagination>
+  <Fly>
+    <Landmark tag="header" id="header">
+      <h1>Your Dashboard Title</h1>
+    </Landmark>
 
-    <Pagination :items-per-page="10" :total-items="100">
-      <PaginationFirst>first</PaginationFirst>
-      <PaginationGoToPage />
-      <PaginationLast>last</PaginationLast>
-    </Pagination>
-  </div>
+    <Landmark tag="main" id="main-content">
+      <Breadcrumbs />
+    </Landmark>
+
+    <div class="dashboard">
+      <Landmark tag="aside" id="navigation">
+        <nav>
+          <router-link class="clickable" to="/">Home</router-link>
+          <span> | </span>
+          <Tooltip :content="'Page about you'" :position="'bottom-center'">
+            <router-link class="clickable" to="/about"> About </router-link>
+          </Tooltip>
+        </nav>
+      </Landmark>
+
+      <Landmark tag="main" id="main-content" class="max-w-2xl mx-auto">
+        <router-view />
+      </Landmark>
+    </div>
+  </Fly>
 </template>
 
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
 import { Breadcrumbs } from './components/Breadcrumbs'
-import {
-  Pagination,
-  PaginationPrev,
-  PaginationNext,
-  PaginationPageList,
-  PaginationPage,
-  PaginationLast,
-  PaginationFirst,
-  PaginationGoToPage
-} from './components/Pagination'
+import { Tooltip } from '@/components/Tooltip'
 import { useRoute } from 'vue-router'
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useEventListener } from '@vueuse/core'
 import { useEscapeStore } from '@/use/useEscapeStore'
+import { Landmark } from '@/components/Layout'
+import { SkipLink, Fly } from '@/components/Focus'
 
 const router = useRouter()
 const route = useRoute()
@@ -68,5 +64,9 @@ const routeWithModal = computed(() => {
 <style>
 :root {
   --accent-color: hotpink;
+}
+
+*:focus {
+  outline: none;
 }
 </style>

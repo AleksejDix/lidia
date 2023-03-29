@@ -19,6 +19,7 @@
 <script lang="ts" setup>
 import { useRouter, useRoute } from 'vue-router'
 import { usePaginationContext } from './usePaginationContext'
+import { Button } from '@/components/Button'
 
 const { currentPage, totalPages } = usePaginationContext()
 const router = useRouter()

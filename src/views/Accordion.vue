@@ -1,30 +1,59 @@
-<script setup lang="ts">
-import {
-  Accordion,
-  AccordionPanel,
-  AccordionContent,
-  AccordionButton
-} from '@/components/Accordion'
-import { Badge } from '@/components/Badge'
-import { Dropdown, DropdownButton, DropdownContent } from '@/components/Dropdown'
-import {
-  Menu,
-  MenuSeparator,
-  MenuLink,
-  MenuButton,
-  MenuRouterLink,
-  MenuItemCheckbox
-} from '@/components/Menu'
-import { Flex, FlexItem } from '@/layout/Flex'
-
-function log(event: Event) {
-  console.log(event)
-}
-</script>
-
 <template>
-  <div class="container">
+  <h1>Accordion</h1>
+
+  <!-- <section>
+    <header>
+      <h1>Disclosure</h1>
+    </header>
+
+    <AccordionPanel>
+      <AccordionButton>Dislosure</AccordionButton>
+      <AccordionContent>Dislosure Content</AccordionContent>
+    </AccordionPanel>
+  </section> -->
+
+  <section>
+    <header>
+      <h1>Accordion Single</h1>
+    </header>
+
     <Accordion>
+      <AccordionPanel>
+        <AccordionButton class="bg-red-400">AccordionButton 1</AccordionButton>
+        <AccordionContent>
+          <div>Sophia Williams</div>
+          <div>sophia.williams@company.com</div>
+          <div>(501) 555-9128</div>
+        </AccordionContent>
+      </AccordionPanel>
+
+      <AccordionPanel>
+        <AccordionButton class="bg-green-400">AccordionButton 2</AccordionButton>
+        <AccordionContent>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam quasi quibusdam impedit
+            error ducimus? Fuga ad dolorum voluptates sint harum quam. Consequatur molestiae ab,
+            molestias velit facere distinctio esse? Ab!
+          </p>
+        </AccordionContent>
+      </AccordionPanel>
+      <AccordionPanel>
+        <AccordionButton>AccordionButton 2</AccordionButton>
+        <AccordionContent>
+          <div>Sophia Williams</div>
+          <div>sophia.williams@company.com</div>
+          <div>(501) 555-9128</div>
+        </AccordionContent>
+      </AccordionPanel>
+    </Accordion>
+  </section>
+
+  <section>
+    <header>
+      <h1>Accordion Multiple</h1>
+    </header>
+
+    <Accordion multiple>
       <AccordionPanel>
         <AccordionButton>AccordionButton 1</AccordionButton>
         <AccordionContent>
@@ -37,116 +66,34 @@ function log(event: Event) {
       <AccordionPanel>
         <AccordionButton>AccordionButton 2</AccordionButton>
         <AccordionContent>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam quasi quibusdam impedit
+            error ducimus? Fuga ad dolorum voluptates sint harum quam. Consequatur molestiae ab,
+            molestias velit facere distinctio esse? Ab!
+          </p>
+        </AccordionContent>
+      </AccordionPanel>
+      <AccordionPanel>
+        <AccordionButton>AccordionButton 2</AccordionButton>
+        <AccordionContent>
           <div>Sophia Williams</div>
           <div>sophia.williams@company.com</div>
           <div>(501) 555-9128</div>
         </AccordionContent>
       </AccordionPanel>
     </Accordion>
-  </div>
-
-  <div>
-    <div class="flex justify-between p-4">
-      <Dropdown>
-        <DropdownButton>dropdown</DropdownButton>
-        <DropdownContent>
-          <Menu>
-            <MenuItemCheckbox>red</MenuItemCheckbox>
-            <MenuItemCheckbox>green</MenuItemCheckbox>
-            <MenuLink href="https://google.ch" target="_blank">let me google for it</MenuLink>
-            <MenuRouterLink to="/">home</MenuRouterLink>
-            <MenuRouterLink to="#anchor">hame</MenuRouterLink>
-            <MenuSeparator></MenuSeparator>
-            <MenuButton @click="log">logout</MenuButton>
-          </Menu>
-        </DropdownContent>
-      </Dropdown>
-
-      <Dropdown>
-        <DropdownButton> Menu </DropdownButton>
-        <DropdownContent>
-          <div class="p-4">This is dropdown 2</div>
-        </DropdownContent>
-      </Dropdown>
-    </div>
-    <div class="h-screen"></div>
-
-    <main class="space-y-4">
-      <Flex>
-        <FlexItem>
-          <Dropdown>
-            <DropdownButton> Open me </DropdownButton>
-            <DropdownContent>
-              <a href=""></a>
-              <input type="text" />
-              <Accordion>
-                <AccordionPanel tag="section">
-                  <AccordionButton class="bg-red-500 focus:bg-pink-400">
-                    This is awesome
-                    <Badge>123123</Badge>
-                  </AccordionButton>
-                  <AccordionContent class="border-4 border-red-400">
-                    <div>Sophia Williams</div>
-                    <div>sophia.williams@company.com</div>
-                    <div>(501) 555-9128</div>
-                  </AccordionContent>
-                </AccordionPanel>
-                <AccordionPanel tag="section">
-                  <AccordionButton>This is awesome</AccordionButton>
-                  <AccordionContent>
-                    <div>Sophia Williams</div>
-                    <div>sophia.williams@company.com</div>
-                    <div>(501) 555-9128</div>
-                  </AccordionContent>
-                </AccordionPanel>
-              </Accordion>
-            </DropdownContent>
-          </Dropdown>
-        </FlexItem>
-        <FlexItem>
-          <Dropdown>
-            <DropdownButton> clicke me </DropdownButton>
-            <DropdownContent>
-              <div class="p-4"></div>
-            </DropdownContent>
-          </Dropdown>
-        </FlexItem>
-      </Flex>
-
-      <div class="flex justify-between">
-        <Dropdown>
-          <DropdownButton> dropdown </DropdownButton>
-          <DropdownContent> asdasd </DropdownContent>
-        </Dropdown>
-
-        <Dropdown>
-          <DropdownButton> dropdown </DropdownButton>
-          <DropdownContent>
-            <Accordion>
-              <AccordionPanel tag="section">
-                <AccordionButton>
-                  This is awesome
-                  <Badge>123123</Badge>
-                </AccordionButton>
-                <AccordionContent>
-                  <div>Sophia Williams</div>
-                  <div>sophia.williams@company.com</div>
-                  <div>(501) 555-9128</div>
-                </AccordionContent>
-              </AccordionPanel>
-
-              <AccordionPanel tag="section">
-                <AccordionButton>This is awesome</AccordionButton>
-                <AccordionContent>
-                  <div>Sophia Williams</div>
-                  <div>sophia.williams@company.com</div>
-                  <div>(501) 555-9128</div>
-                </AccordionContent>
-              </AccordionPanel>
-            </Accordion>
-          </DropdownContent>
-        </Dropdown>
-      </div>
-    </main>
-  </div>
+  </section>
 </template>
+
+<script setup lang="ts">
+import {
+  Accordion,
+  AccordionPanel,
+  AccordionContent,
+  AccordionButton
+} from '@/components/Accordion'
+
+function log(event: Event) {
+  console.log(event)
+}
+</script>

@@ -1,5 +1,5 @@
 <template>
-  <button
+  <Button
     type="button"
     :ref="focus.create"
     @keydown.left.prevent="focus.prev"
@@ -11,20 +11,21 @@
     :id="pair?.[0]"
     :aria-controls="pair?.[1]"
     :aria-selected="isActive"
-    :class="{ 'bg-white text-black': isActive }"
+    :class="{ 'bg-yellow-300': isActive }"
     role="tab"
-    class="Tab px-4 py-2 relative top-[1px] focus:bg-yellow-400 focus:text-black focus:outline-none cursor-pointer"
+    class="px-4 py-2 relative cursor-pointer rounded inline-block"
     @click="tabs.select(id)"
   >
     <slot></slot>
-  </button>
+  </Button>
 </template>
 
 <script setup lang="ts">
-import { inject, computed, watch, watchEffect, onUpdated } from 'vue'
+import { inject, computed, watchEffect } from 'vue'
 import { v4 as uuidv4 } from 'uuid'
 import { TabsKey } from './symbols'
 import { useFocusCycleItem } from '@/components/Focus'
+import { Button } from '@/components/Button'
 
 const props = defineProps({
   open: {

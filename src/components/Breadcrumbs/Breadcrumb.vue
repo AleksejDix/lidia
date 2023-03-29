@@ -5,6 +5,7 @@
     :href="href"
     @click="navigate"
     :class="isActive ? activeClass : undefined"
+    class="clickable"
     :ref="focus.create"
     @keydown.up.prevent
     @keydown.down.prevent

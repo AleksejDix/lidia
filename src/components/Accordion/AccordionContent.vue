@@ -3,7 +3,7 @@
   <div
     :id="`accordion-content-${id}`"
     :aria-labelledby="`accordion-button-${id}`"
-    class="AccordionContent"
+    class="px-4 py-2"
     v-if="isVisible"
     :aria-hidden="!isVisible"
   >

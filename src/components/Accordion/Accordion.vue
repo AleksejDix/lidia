@@ -10,7 +10,7 @@ import { useFocusCycle } from '@/components/Focus'
 useFocusCycle()
 
 const props = defineProps({
-  single: {
+  multiple: {
     type: Boolean,
     default: false,
     required: false
@@ -20,7 +20,7 @@ const props = defineProps({
 const panels = reactive<Record<string, boolean>>({})
 
 function update(id: string, state: boolean) {
-  if (props.single) {
+  if (!props.multiple) {
     Object.keys(panels).forEach((key) => {
       panels[key] = false
     })

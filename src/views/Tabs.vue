@@ -1,14 +1,23 @@
 <template>
-  <div class="container">
-    <Tabs>
-      <TabList>
-        <Tab>Tab 1</Tab>
-        <Tab>Tab 2</Tab>
-      </TabList>
-      <TabPanel>Content for Tab 2</TabPanel>
-      <TabPanel>Content for Tab 1</TabPanel>
-    </Tabs>
-  </div>
+  <h1>Tabs</h1>
+
+  <Tabs>
+    <TabList>
+      <Tab>Tab 1</Tab>
+      <Tab>Tab 2</Tab>
+    </TabList>
+    <TabPanel>Content for Tab 2</TabPanel>
+    <TabPanel>Content for Tab 1</TabPanel>
+  </Tabs>
+
+  <Tabs>
+    <TabList>
+      <Tab>Tab 1</Tab>
+      <Tab open>Tab 2</Tab>
+    </TabList>
+    <TabPanel>Content for Tab 2</TabPanel>
+    <TabPanel>Content for Tab 1</TabPanel>
+  </Tabs>
 </template>
 
 <script setup lang="ts">

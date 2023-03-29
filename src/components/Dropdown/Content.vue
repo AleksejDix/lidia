@@ -1,19 +1,16 @@
 <template>
-  <div v-if="isVisible" class="fixed inset-0" @click="close()"></div>
   <Teleport to="body">
+    <div v-if="isVisible" class="fixed inset-0" @click="close()"></div>
     <div
       v-if="isVisible"
       :ref="contentRef"
-      class="fixed top-0 left-0 d3 overflow-hidden"
+      class="relative top-0 left-0 d3 overflow-hidden shadow-md p-2 bg-white rounded"
       :style="dropdownRect"
+      v-bind="$attrs"
     >
-      <Surface>
-        <FocusTrap>
-          <div class="flex items-center justify-center">
-            <slot></slot>
-          </div>
-        </FocusTrap>
-      </Surface>
+      <FocusTrap>
+        <slot></slot>
+      </FocusTrap>
     </div>
   </Teleport>
 </template>
@@ -22,7 +19,6 @@
 import { inject } from 'vue'
 import { DropdownKey } from './symbols'
 import { FocusTrap } from '@/components/Focus'
-import { Surface } from '@/components/Surface'
 
 const dropdown = inject(DropdownKey)
 
