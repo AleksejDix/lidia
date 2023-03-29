@@ -4,16 +4,13 @@
   <SkipLink target="footer">Skip to footer</SkipLink>
 
   <Fly>
-    <Landmark tag="header" id="header">
+    <Landmark tag="header" id="header" class="border-b">
       <h1>Your Dashboard Title</h1>
     </Landmark>
 
-    <Landmark tag="main" id="main-content">
-      <Breadcrumbs />
-    </Landmark>
-
     <div class="dashboard">
-      <Landmark tag="aside" id="navigation">
+      <Landmark tag="aside" id="navigation" class="border-r">
+        <Navigation></Navigation>
         <nav>
           <router-link class="clickable" to="/">Home</router-link>
           <span> | </span>
@@ -24,6 +21,7 @@
       </Landmark>
 
       <Landmark tag="main" id="main-content" class="max-w-2xl mx-auto">
+        <Breadcrumbs />
         <router-view />
       </Landmark>
     </div>
@@ -41,6 +39,7 @@ import { useEventListener } from '@vueuse/core'
 import { useEscapeStore } from '@/use/useEscapeStore'
 import { Landmark } from '@/components/Layout'
 import { SkipLink, Fly } from '@/components/Focus'
+import { Navigation } from '@/components/Navigation'
 
 const router = useRouter()
 const route = useRoute()

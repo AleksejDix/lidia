@@ -37,6 +37,11 @@ const router = createRouter({
       path: '/dropdown',
       name: 'dropdown',
       component: () => import('@/views/Dropdown.vue')
+    },
+    {
+      path: '/alert',
+      name: 'alert',
+      component: () => import('@/views/Alert.vue')
     }
   ]
 })
