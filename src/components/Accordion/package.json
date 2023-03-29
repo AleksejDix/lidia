@@ -1,7 +1,7 @@
 {
-  "name": "@lida",
-  "version": "0.0.0",
-  "private": true,
+  "name": "@lida/accordion",
+  "version": "0.0.1",
+  "private": false,
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check build-only",
@@ -13,9 +13,6 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write src/"
   },
-  "workspaces": [
-    "./src/components/Accordion'"
-  ],
   "dependencies": {
     "@vueuse/core": "^9.13.0",
     "pinia": "^2.0.32",

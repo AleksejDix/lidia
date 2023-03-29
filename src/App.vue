@@ -14,9 +14,6 @@
         <nav>
           <router-link class="clickable" to="/">Home</router-link>
           <span> | </span>
-          <Tooltip :content="'Page about you'" :position="'bottom-center'">
-            <router-link class="clickable" to="/about"> About </router-link>
-          </Tooltip>
         </nav>
       </Landmark>
 
