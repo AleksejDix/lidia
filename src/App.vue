@@ -8,7 +8,7 @@
       <h1>Your Dashboard Title</h1>
     </Landmark>
 
-    <div class="dashboard">
+    <div class="dashboard flex">
       <Landmark tag="aside" id="navigation" class="border-r">
         <Navigation></Navigation>
         <nav>
@@ -17,7 +17,7 @@
         </nav>
       </Landmark>
 
-      <Landmark tag="main" id="main-content" class="max-w-2xl mx-auto">
+      <Landmark tag="main" id="main-content" class="max-w-2xl mx-auto grow">
         <Breadcrumbs />
         <router-view />
       </Landmark>
@@ -60,9 +60,5 @@ const routeWithModal = computed(() => {
 <style>
 :root {
   --accent-color: hotpink;
-}
-
-*:focus {
-  outline: none;
 }
 </style>

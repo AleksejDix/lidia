@@ -8,3 +8,24 @@ body {
   overflow: auto;
   height: 100%;
 }
+
+.Button {
+  transition: all 0.2s ease 0s;
+  @apply inline-flex px-3 py-2 rounded-md active:shadow-none font-[450] bg-yellow-400 shadow border border-white;
+}
+
+.Button:active {
+  box-shadow: none;
+  color: rgba(24, 39, 57, 0.74);
+}
+
+.Button:hover:not(:active) {
+  color: rgb(58, 66, 74);
+}
+
+.Button:focus:not(:active) {
+  box-shadow: rgb(255, 255, 255) 0px 0px 0px 1px, rgb(0, 0, 0) 0px 0px 0px 3px;
+  outline: none;
+  position: relative;
+  z-index: 1;
+}

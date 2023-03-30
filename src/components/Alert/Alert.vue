@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="modalValue"
-    class="alert-wrapper flex items-center justify-between p-4 rounded shadow space-x-4"
+    class="flex items-start justify-between p-4 space-x-4 border"
     :class="alertClass"
     :role="role"
     :aria-live="ariaLive"
@@ -48,14 +48,14 @@ const emit = defineEmits(['update:modelValue'])
 const alertClass = computed(() => {
   switch (props.type) {
     case 'error':
-      return 'bg-red-500 text-white'
+      return ' text-red-600'
     case 'warning':
-      return 'bg-yellow-500 text-white'
+      return 'text-yellow-600'
     case 'success':
-      return 'bg-green-500 text-white'
+      return ' text-green-600'
     case 'info':
     default:
-      return 'bg-blue-500 text-white'
+      return ' text-blue-600 '
   }
 })
 

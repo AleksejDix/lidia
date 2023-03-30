@@ -5,7 +5,7 @@
     :to="{ ...$route, query: { ...$route.query, page: 1 } }"
     aria-label="First Page"
     rel="first"
-    class="pl-2 pr-4 py-2 bg-yellow-400 text-yellow-900 rounded min-h-[40px] flex items-center border border-white shadow"
+    class="pl-3 pr-5 py-2 bg-yellow-400 text-yellow-900 rounded min-h-[40px] flex items-center border border-white shadow"
   >
     <slot name="icon">
       <svg

@@ -1,5 +1,6 @@
+<!-- Slides.vue -->
 <template>
-  <div>
+  <div class="aspect-video">
     <slot></slot>
   </div>
 </template>

@@ -69,7 +69,7 @@ onUnmounted(() => {
   pointer-events: none;
   transition: transform 0.1s, width 0.1s, height 0.1s, border-radius 0.1s;
   z-index: 1000;
-  mix-blend-mode: soft-light;
+  mix-blend-mode: multiply;
   transition-timing-function: ease-out;
 }
 
