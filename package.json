@@ -11,10 +11,15 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "build:focus": "npm run build --workspace=@lidia/focus",
+    "build:accordion": "npm run build --workspace=@lidia/accordion",
+    "build:disclosure": "npm run build --workspace=@lidia/disclosure",
+    "build:button": "npm run build --workspace=@lidia/button",
+    "build:tabs": "npm run build --workspace=@lidia/tabs"
   },
   "workspaces": [
-    "src/components/*'"
+    "src/components/*"
   ],
   "dependencies": {
     "@vueuse/core": "^9.13.0",
@@ -22,7 +27,12 @@
     "uuid": "^9.0.0",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6",
-    "vue-router-mock": "^0.2.0"
+    "vue-router-mock": "^0.2.0",
+    "@lidia/focus": "^0.1.0",
+    "@lidia/accordion": "^0.1.0",
+    "@lidia/disclosure": "^0.1.0",
+    "@lidia/button": "^0.1.0",
+    "@lidia/tabs": "^0.1.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.31.1",

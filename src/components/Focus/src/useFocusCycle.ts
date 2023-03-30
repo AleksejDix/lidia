@@ -1,18 +1,17 @@
 import { ref, provide, inject, nextTick, type Component } from 'vue'
 import type { InjectionKey, Ref } from 'vue'
-import type * as RuntimeCore from '@vue/runtime-core'
-interface MenuKey {
+interface MenuContext {
   list: Ref<HTMLElement[]>
   next: (event: KeyboardEvent) => void
   prev: (event: KeyboardEvent) => void
   first: () => void
   last: () => void
-  create: () => RuntimeCore.VNodeRef
+  create: (el: any) => void
   destroy: (menuItem: HTMLElement) => void
   focusByFirstLetter: (event: KeyboardEvent) => void
 }
 
-export const key: InjectionKey<MenuKey> = Symbol()
+export const key: InjectionKey<MenuContext> = Symbol('useFocusCycle')
 
 export function useFocusCycle() {
   const list = ref<HTMLElement[]>([])
@@ -104,4 +103,8 @@ export function useFocusCycleItem() {
   }
 
   return sharedState
+}
+
+export function tryFocusCycleItem() {
+  return inject(key, null)
 }

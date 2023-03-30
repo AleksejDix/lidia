@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useFocusCycleItem } from '@/components/Focus'
+import { useFocusCycleItem } from '@lidia/focus'
 
 const focus = useFocusCycleItem()
 

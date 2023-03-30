@@ -1,13 +1,12 @@
 <!-- ModalButton.vue -->
 <template>
-  <Button ref="buttonRef" @click="modalStore.create(name)" aria-label="Open Modal">
+  <button ref="buttonRef" @click="modalStore.create(name)" aria-label="Open Modal">
     <slot></slot>
-  </Button>
+  </button>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { Button } from '@/components/Button'
 import { useModalStore } from './useModalStore.js'
 
 defineProps({

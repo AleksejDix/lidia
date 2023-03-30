@@ -1,0 +1,40 @@
+{
+  "name": "@lidia/disclosure",
+  "description": "A disclosure component build for Lidia component library",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "dist/disclosure.umd.cjs",
+  "module": "dist/disclosure.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/disclosure.js",
+      "require": "./dist/disclosure.umd.cjs"
+    },
+    "./dist/style.css": {
+      "import": "./dist/style.css",
+      "require": "./dist/style.css"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && vue-tsc",
+    "serve": "vite preview"
+  },
+  "peerDependencies": {
+    "vue": "^3.0.0",
+    "uuid": "^9.0.0"
+  },
+  "dependencies": {
+    "@lidia/focus": "^0.1.0",
+    "@lidia/accordion": "^0.1.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.0.0",
+    "@vue/compiler-sfc": "^3.0.0",
+    "typescript": "^4.8.4",
+    "vite": "^4.1.4",
+    "vue-tsc": "^1.2.0"
+  },
+  "license": "MIT"
+}

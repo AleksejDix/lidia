@@ -63,7 +63,6 @@ onUnmounted(() => {
 }
 
 .hover-effect {
-  @apply bg-gray-200;
   pointer-events: none;
   position: absolute;
   pointer-events: none;

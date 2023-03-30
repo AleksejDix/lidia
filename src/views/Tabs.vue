@@ -12,8 +12,8 @@
 
   <Tabs>
     <TabList>
-      <Tab>Tab 1</Tab>
-      <Tab open>Tab 2</Tab>
+      <Tab open>Tab 1</Tab>
+      <Tab>Tab 2</Tab>
     </TabList>
     <TabPanel>Content for Tab 2</TabPanel>
     <TabPanel>Content for Tab 1</TabPanel>
@@ -21,5 +21,5 @@
 </template>
 
 <script setup lang="ts">
-import { Tabs, TabList, Tab, TabPanel } from '@/components/Tabs'
+import { Tabs, TabList, Tab, TabPanel } from '@lidia/tabs'
 </script>

@@ -8,9 +8,9 @@
     <slot></slot>
 
     <div>
-      <Button>
+      <button>
         <div>close</div>
-      </Button>
+      </button>
     </div>
   </div>
 </template>

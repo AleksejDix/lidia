@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import { useFocusCycleItem } from '@/components/Focus'
+import { useFocusCycleItem } from '@lidia/focus'
 
 const emit = defineEmits(['click'])
 

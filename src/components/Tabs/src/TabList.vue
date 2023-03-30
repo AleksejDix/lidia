@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { useFocusCycle } from '@/components/Focus'
+import { useFocusCycle } from '@lidia/focus'
 
 useFocusCycle()
 </script>

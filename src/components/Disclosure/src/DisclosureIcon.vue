@@ -2,7 +2,7 @@
   <div class="relative w-[24px] h-[24px] overflow-hidden">
     <Transition name="slide-up">
       <svg
-        v-if="isVisible"
+        v-if="isOpen"
         xmlns="http://www.w3.org/2000/svg"
         width="24"
         height="24"
@@ -28,7 +28,7 @@
 <script lang="ts" setup>
 import { useDisclosureContext } from './useDisclosureContext'
 
-const { isVisible } = useDisclosureContext()
+const { isOpen } = useDisclosureContext()
 </script>
 
 <style>

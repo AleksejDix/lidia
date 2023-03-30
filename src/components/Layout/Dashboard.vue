@@ -1,3 +1,3 @@
-<script></script>
+<script lang="ts" disclosure></script>
 
 <style></style>

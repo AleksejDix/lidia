@@ -26,7 +26,7 @@
 
 <script lang="ts" setup>
 import { useModalStore } from './useModalStore'
-import { FocusTrap } from '@/components/Focus'
+import { FocusTrap } from '@lidia/focus'
 import { useBodyScrollLock } from '../ScrollLock'
 import { computed, provide, watchEffect } from 'vue'
 import { v4 as uuidv4 } from 'uuid'

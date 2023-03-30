@@ -1,10 +1,9 @@
 <template>
-  <Button @click="pause"> <slot>pause</slot> </Button>
-  <Button @click="resume"> <slot>resume</slot> </Button>
+  <button @click="pause"><slot>pause</slot></button>
+  <button @click="resume"><slot>resume</slot></button>
 </template>
 
 <script lang="ts" setup>
-import { Button } from '@/components/Button'
 import { useCarouselContext } from './useCarouselContext'
 
 const { pause, resume } = useCarouselContext()

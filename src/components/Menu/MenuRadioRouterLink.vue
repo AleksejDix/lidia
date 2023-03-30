@@ -47,7 +47,7 @@
 <script lang="ts" setup>
 import { computed, inject } from 'vue'
 import { useRoute } from 'vue-router'
-import { useFocusCycleItem } from '@/components/Focus'
+import { useFocusCycleItem } from '@lidia/focus'
 
 const focus = useFocusCycleItem()
 

@@ -26,7 +26,7 @@ const next = () => {
   select((activeIndex.value + 1) % count.value)
 }
 
-let autoRotateInterval: number | undefined = undefined
+let autoRotateInterval: ReturnType<typeof setInterval> | undefined = undefined
 
 const pause = () => {
   clearInterval(autoRotateInterval)

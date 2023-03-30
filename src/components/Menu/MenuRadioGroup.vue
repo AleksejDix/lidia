@@ -30,7 +30,7 @@ const emit = defineEmits(['update:modelValue'])
 const route = useRoute()
 
 watch(
-  () => route.query[name.value],
+  () => route.query[name.value as keyof typeof route.query],
   (newModel) => {
     emit('update:modelValue', newModel)
   }

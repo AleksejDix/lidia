@@ -1,10 +1,13 @@
+// useDisclosureContext.ts
+
 import type { InjectionKey, Ref } from 'vue'
 import { provide, inject } from 'vue'
 
 export interface DisclosureContext {
-  isVisible: Ref<boolean>
+  isOpen: Ref<boolean>
   id: string
   toggle: () => void
+  isAccordion: Ref<boolean>
 }
 
 export const key: InjectionKey<DisclosureContext> = Symbol('Dislosure')

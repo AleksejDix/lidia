@@ -2,12 +2,10 @@
   <SkipLink target="main-content">Skip to main content</SkipLink>
   <SkipLink target="navigation">Skip to navigation</SkipLink>
   <SkipLink target="footer">Skip to footer</SkipLink>
-
   <Fly>
     <Landmark tag="header" id="header" class="border-b">
       <h1>Your Dashboard Title</h1>
     </Landmark>
-
     <div class="dashboard flex">
       <Landmark tag="aside" id="navigation" class="border-r">
         <Navigation></Navigation>
@@ -28,14 +26,13 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
 import { Breadcrumbs } from './components/Breadcrumbs'
-import { Tooltip } from '@/components/Tooltip'
 import { useRoute } from 'vue-router'
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useEventListener } from '@vueuse/core'
 import { useEscapeStore } from '@/use/useEscapeStore'
 import { Landmark } from '@/components/Layout'
-import { SkipLink, Fly } from '@/components/Focus'
+import { SkipLink } from '@lidia/focus'
 import { Navigation } from '@/components/Navigation'
 
 const router = useRouter()
@@ -62,3 +59,6 @@ const routeWithModal = computed(() => {
   --accent-color: hotpink;
 }
 </style>
+
+<style src="@lidia/disclosure/dist/style.css"></style>
+<style src="@lidia/focus/dist/style.css"></style>

@@ -1,11 +1,11 @@
-<!-- AccordionContent.vue -->
+<!-- DisclosurePanel.vue -->
 <template>
   <div
     :id="`accordion-content-${id}`"
     :aria-labelledby="`accordion-button-${id}`"
     class="px-4 py-2"
-    v-if="isVisible"
-    :aria-hidden="!isVisible"
+    v-if="isOpen"
+    :aria-hidden="!isOpen"
   >
     <slot></slot>
   </div>
@@ -14,5 +14,5 @@
 <script lang="ts" setup>
 import { useDisclosureContext } from './useDisclosureContext'
 
-const { isVisible, id } = useDisclosureContext()
+const { isOpen, id } = useDisclosureContext()
 </script>

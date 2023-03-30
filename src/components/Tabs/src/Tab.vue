@@ -24,8 +24,8 @@
 import { inject, computed, watchEffect } from 'vue'
 import { v4 as uuidv4 } from 'uuid'
 import { TabsKey } from './symbols'
-import { useFocusCycleItem } from '@/components/Focus'
-import { Button } from '@/components/Button'
+import { useFocusCycleItem } from '@lidia/focus'
+import { Button } from '@lidia/button'
 
 const props = defineProps({
   open: {
