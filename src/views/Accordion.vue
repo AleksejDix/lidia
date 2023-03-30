@@ -1,3 +1,29 @@
+<<<<<<< Updated upstream =======
+<script setup lang="ts">
+import {
+  Accordion,
+  AccordionPanel,
+  AccordionContent,
+  AccordionButton
+} from '@/components/Accordion'
+import { Badge } from '@/components/Badge'
+import { Dropdown, DropdownButton, DropdownContent } from '@/components/Dropdown'
+import {
+  Menu,
+  MenuSeparator,
+  MenuLink,
+  MenuButton,
+  MenuRouterLink,
+  MenuCheckbox
+} from '@/components/Menu'
+import { Flex, FlexItem } from '@/layout/Flex'
+
+function log(event: Event) {
+  console.log(event)
+}
+</script>
+
+>>>>>>> Stashed changes
 <template>
   <h1>Accordion</h1>
 

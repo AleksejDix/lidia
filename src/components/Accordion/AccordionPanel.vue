@@ -7,9 +7,9 @@
 
 <script lang="ts" setup>
 import type { PropType, VNodeTypes } from 'vue'
-import { provide, inject, toRef } from 'vue'
+import { inject, toRef } from 'vue'
 import { v4 as uuidv4 } from 'uuid'
-import { AccordionKey, PanelKey } from './symbols'
+import { provideDisclosureContext } from './useDisclosureContext'
 
 const props = defineProps({
   open: {
@@ -39,7 +39,7 @@ function toggle() {
 
 create(id, props.open)
 
-provide(PanelKey, {
+provideDisclosureContext({
   isVisible: toRef(panels, id),
   id,
   toggle

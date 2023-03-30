@@ -4,9 +4,9 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, provide } from 'vue'
-import { AccordionKey } from './symbols'
+import { reactive } from 'vue'
 import { useFocusCycle } from '@/components/Focus'
+import { provideAccordionContext } from './useAccordionContext'
 useFocusCycle()
 
 const props = defineProps({
@@ -33,7 +33,7 @@ function create(id: string, state: boolean) {
   panels[id] = state
 }
 
-provide(AccordionKey, {
+provideAccordionContext({
   panels,
   create,
   update

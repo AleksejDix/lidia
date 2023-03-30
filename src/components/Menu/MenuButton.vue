@@ -3,8 +3,8 @@
   <button
     role="menuitem"
     type="button"
-    :ref="focus.create"
     class="py-2 px-4 block w-full text-left focus:bg-pink-900 focus:outline-none"
+    :ref="focus.create"
     @keydown.up.prevent="focus.prev"
     @keydown.down.prevent="focus.next"
     @keydown.right.prevent

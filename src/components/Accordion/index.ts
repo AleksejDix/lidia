@@ -1,3 +1,4 @@
+// index.ts
 export { default as AccordionButton } from './AccordionButton.vue'
 export { default as AccordionPanel } from './AccordionPanel.vue'
 export { default as AccordionContent } from './AccordionContent.vue'

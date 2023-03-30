@@ -1,5 +1,5 @@
 <template>
-  <div class="shadow-md bg-gray-50 rounded-lg">
+  <div role="group">
     <slot></slot>
   </div>
 </template>

@@ -4,7 +4,7 @@
     <div
       v-if="isVisible"
       :ref="contentRef"
-      class="relative top-0 left-0 d3 overflow-hidden shadow-md p-2 bg-white rounded"
+      class="absolute top-0 left-0 d3 overflow-hidden border border-gray-200 shadow-md bg-white rounded"
       :style="dropdownRect"
       v-bind="$attrs"
     >

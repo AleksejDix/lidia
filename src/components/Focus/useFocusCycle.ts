@@ -1,4 +1,4 @@
-import { ref, provide, inject, nextTick } from 'vue'
+import { ref, provide, inject, nextTick, type Component } from 'vue'
 import type { InjectionKey, Ref } from 'vue'
 import type * as RuntimeCore from '@vue/runtime-core'
 interface MenuKey {
@@ -39,8 +39,9 @@ export function useFocusCycle() {
 
   const last = () => focusItem(list.value.length - 1)
 
-  const create = (menuItem: HTMLElement) => {
-    list.value.push(menuItem)
+  const create = (menuItem: HTMLElement | Component) => {
+    const realEl = menuItem && '$el' in menuItem ? menuItem.$el : menuItem
+    list.value.push(realEl)
   }
 
   const destroy = (menuItem: HTMLElement) => {

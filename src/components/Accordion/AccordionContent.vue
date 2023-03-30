@@ -12,13 +12,7 @@
 </template>
 
 <script lang="ts" setup>
-import { inject } from 'vue'
-import { PanelKey } from './symbols'
-const panel = inject(PanelKey)
+import { useDisclosureContext } from './useDisclosureContext'
 
-if (!panel) {
-  throw new Error(`Could not resolve ${panel}`)
-}
-
-const { isVisible, id } = panel
+const { isVisible, id } = useDisclosureContext()
 </script>

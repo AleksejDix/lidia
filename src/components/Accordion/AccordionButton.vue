@@ -24,18 +24,11 @@
 </template>
 
 <script setup lang="ts">
-import { inject } from 'vue'
-import { PanelKey } from './symbols'
 import { useFocusCycleItem } from '@/components/Focus'
 import { Button } from '@/components/Button'
 import { AccordionIcon } from '@/components/Accordion'
+import { useDisclosureContext } from './useDisclosureContext'
 const focus = useFocusCycleItem()
 
-const panel = inject(PanelKey)
-
-if (!panel) {
-  throw new Error(`Could not resolve ${panel}`)
-}
-
-const { toggle, isVisible, id } = panel
+const { isVisible, toggle, id } = useDisclosureContext()
 </script>

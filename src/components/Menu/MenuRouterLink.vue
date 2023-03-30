@@ -1,19 +1,19 @@
 <!-- MenuRouterLink.vue -->
 <template>
   <a
-    v-bind="$attrs"
     :href="href"
     @click="navigate"
     :class="isActive ? activeClass : undefined"
     :ref="focus.create"
     role="menuitem"
-    class="py-2 px-4 block w-full text-left focus:bg-pink-900 focus:outline-none"
+    class="py-2 px-4 block w-full text-left focus:bg-purple-100 focus:outline-none"
     @keydown.up.prevent="focus.prev"
     @keydown.down.prevent="focus.next"
     @keydown.right.prevent
     @keydown.left.prevent
     @keydown.space.prevent="navigate()"
     @keydown="focus.focusByFirstLetter"
+    v-bind="$attrs"
   >
     <slot />
   </a>

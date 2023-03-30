@@ -2,6 +2,7 @@
   <button
     type="button"
     role="menuitemradio"
+    class="w-full text-left px-4 py-1 text-white"
     :aria-checked="props.modelValue"
     :ref="focus.create"
     @keydown.up.prevent="focus.prev"
@@ -29,21 +30,3 @@ const props = defineProps({
 
 const emit = defineEmits(['update:modelValue'])
 </script>
-
-<style scoped>
-[role='menuitemradio']::before {
-  display: inline-block;
-  content: '';
-  width: 1em;
-  height: 1em;
-  padding: 0.1em;
-  border: 2px solid #333;
-  border-radius: 50%;
-  box-sizing: border-box;
-  background-clip: content-box;
-  margin-inline-end: 2px;
-}
-[role='menuitemradio'][aria-checked='true']::before {
-  background-color: purple;
-}
-</style>
