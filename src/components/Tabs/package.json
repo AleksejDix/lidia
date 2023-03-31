@@ -1,5 +1,5 @@
 {
-  "name": "@lidia/tabs",
+  "name": "@aleksejdix/tabs",
   "description": "A tabs component build for Lidia component library",
   "version": "0.1.0",
   "type": "module",
@@ -26,8 +26,8 @@
     "uuid": "^9.0.0"
   },
   "dependencies": {
-    "@lidia/focus": "^0.1.0",
-    "@lidia/button": "^0.1.0"
+    "@aleksejdix/focus": "^0.1.0",
+    "@aleksejdix/button": "^0.1.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.0.0",

@@ -5,7 +5,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useFocusCycle } from '@lidia/focus'
+import { useFocusCycle } from '@aleksejdix/focus'
 import { provideAccordionContext } from './useAccordionContext'
 
 useFocusCycle()

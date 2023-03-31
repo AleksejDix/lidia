@@ -2,6 +2,37 @@
 # yarn lockfile v1
 
 
+"@aleksejdix/accordion@^0.1.0", "@aleksejdix/accordion@file:/Users/aleksej/Projects/vuedin/src/components/Accordion":
+  "resolved" "file:src/components/Accordion"
+  "version" "0.1.0"
+  dependencies:
+    "@aleksejdix/focus" "^0.1.0"
+
+"@aleksejdix/button@^0.1.0", "@aleksejdix/button@file:/Users/aleksej/Projects/vuedin/src/components/Button":
+  "resolved" "file:src/components/Button"
+  "version" "0.1.0"
+  dependencies:
+    "@aleksejdix/accordion" "^0.1.0"
+    "@aleksejdix/focus" "^0.1.0"
+
+"@aleksejdix/disclosure@file:/Users/aleksej/Projects/vuedin/src/components/Disclosure":
+  "resolved" "file:src/components/Disclosure"
+  "version" "0.1.0"
+  dependencies:
+    "@aleksejdix/accordion" "^0.1.0"
+    "@aleksejdix/focus" "^0.1.0"
+
+"@aleksejdix/focus@^0.1.0", "@aleksejdix/focus@file:/Users/aleksej/Projects/vuedin/src/components/Focus":
+  "resolved" "file:src/components/Focus"
+  "version" "0.1.0"
+
+"@aleksejdix/tabs@file:/Users/aleksej/Projects/vuedin/src/components/Tabs":
+  "resolved" "file:src/components/Tabs"
+  "version" "0.1.0"
+  dependencies:
+    "@aleksejdix/button" "^0.1.0"
+    "@aleksejdix/focus" "^0.1.0"
+
 "@babel/code-frame@^7.10.4":
   "integrity" "sha512-TDCmlK5eOvH+eH7cdAFlNXeVJqWIQ7gW9tY1GJIpUtFb6CmjVyq2VM3u71bOyR8CRihcCgMUYoDNyLXao3+70Q=="
   "resolved" "https://registry.npmjs.org/@babel/code-frame/-/code-frame-7.18.6.tgz"
@@ -97,37 +128,6 @@
     "@types/node" "*"
     "@types/yargs" "^15.0.0"
     "chalk" "^4.0.0"
-
-"@lidia/accordion@^0.1.0", "@lidia/accordion@file:/Users/aleksej/Projects/vuedin/src/components/Accordion":
-  "resolved" "file:src/components/Accordion"
-  "version" "0.1.0"
-  dependencies:
-    "@lidia/focus" "^0.1.0"
-
-"@lidia/button@^0.1.0", "@lidia/button@file:/Users/aleksej/Projects/vuedin/src/components/Button":
-  "resolved" "file:src/components/Button"
-  "version" "0.1.0"
-  dependencies:
-    "@lidia/accordion" "^0.1.0"
-    "@lidia/focus" "^0.1.0"
-
-"@lidia/disclosure@file:/Users/aleksej/Projects/vuedin/src/components/Disclosure":
-  "resolved" "file:src/components/Disclosure"
-  "version" "0.1.0"
-  dependencies:
-    "@lidia/accordion" "^0.1.0"
-    "@lidia/focus" "^0.1.0"
-
-"@lidia/focus@^0.1.0", "@lidia/focus@file:/Users/aleksej/Projects/vuedin/src/components/Focus":
-  "resolved" "file:src/components/Focus"
-  "version" "0.1.0"
-
-"@lidia/tabs@file:/Users/aleksej/Projects/vuedin/src/components/Tabs":
-  "resolved" "file:src/components/Tabs"
-  "version" "0.1.0"
-  dependencies:
-    "@lidia/button" "^0.1.0"
-    "@lidia/focus" "^0.1.0"
 
 "@nodelib/fs.scandir@2.1.5":
   "integrity" "sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g=="

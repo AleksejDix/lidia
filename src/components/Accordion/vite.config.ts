@@ -6,7 +6,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: 'index.ts',
-      name: '@lidia/accordion',
+      name: '@aleksejdix/accordion',
       fileName: 'accordion'
     },
     rollupOptions: {

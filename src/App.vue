@@ -32,7 +32,7 @@ import { useRouter } from 'vue-router'
 import { useEventListener } from '@vueuse/core'
 import { useEscapeStore } from '@/use/useEscapeStore'
 import { Landmark } from '@/components/Layout'
-import { SkipLink } from '@lidia/focus'
+import { SkipLink } from '@aleksejdix/focus'
 import { Navigation } from '@/components/Navigation'
 
 const router = useRouter()
@@ -60,5 +60,5 @@ const routeWithModal = computed(() => {
 }
 </style>
 
-<style src="@lidia/disclosure/dist/style.css"></style>
-<style src="@lidia/focus/dist/style.css"></style>
+<style src="@aleksejdix/disclosure/dist/style.css"></style>
+<style src="@aleksejdix/focus/dist/style.css"></style>

@@ -21,5 +21,5 @@
 </template>
 
 <script setup lang="ts">
-import { Tabs, TabList, Tab, TabPanel } from '@lidia/tabs'
+import { Tabs, TabList, Tab, TabPanel } from '@aleksejdix/tabs'
 </script>

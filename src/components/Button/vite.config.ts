@@ -6,7 +6,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: 'index.ts',
-      name: '@lidia/button',
+      name: '@aleksejdix/button',
       fileName: 'button'
     },
     rollupOptions: {

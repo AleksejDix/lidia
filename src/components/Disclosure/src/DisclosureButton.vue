@@ -24,8 +24,8 @@
 </template>
 
 <script setup lang="ts">
-import { Button } from '@lidia/button'
-import { tryFocusCycleItem } from '@lidia/Focus'
+import { Button } from '@aleksejdix/button'
+import { tryFocusCycleItem } from '@aleksejdix/Focus'
 import { useDisclosureContext } from './useDisclosureContext'
 import DisclosureIcon from './DisclosureIcon.vue'
 const { isOpen, toggle, id, isAccordion } = useDisclosureContext()

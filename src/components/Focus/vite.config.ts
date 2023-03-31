@@ -6,7 +6,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: 'index.ts',
-      name: '@lidia/focus',
+      name: '@aleksejdix/focus',
       fileName: 'focus'
     },
     rollupOptions: {

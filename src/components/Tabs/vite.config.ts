@@ -6,7 +6,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: 'index.ts',
-      name: '@lidia/tabs',
+      name: '@aleksejdix/tabs',
       fileName: 'tabs'
     },
     rollupOptions: {

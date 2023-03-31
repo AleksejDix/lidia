@@ -28,7 +28,7 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { useFocusCycleItem } from '@lidia/focus'
+import { useFocusCycleItem } from '@aleksejdix/focus'
 import { v4 as uuidv4 } from 'uuid'
 
 const props = defineProps({

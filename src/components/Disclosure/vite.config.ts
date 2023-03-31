@@ -6,7 +6,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: 'index.ts',
-      name: '@lidia/disclosure',
+      name: '@aleksejdix/disclosure',
       fileName: 'disclosure'
     },
     rollupOptions: {

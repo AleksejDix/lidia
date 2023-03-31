@@ -86,6 +86,6 @@
 </template>
 
 <script setup lang="ts">
-import { Accordion } from '@lidia/accordion'
-import { Disclosure, DisclosurePanel, DisclosureButton } from '@lidia/disclosure'
+import { Accordion } from '@aleksejdix/accordion'
+import { Disclosure, DisclosurePanel, DisclosureButton } from '@aleksejdix/disclosure'
 </script>
