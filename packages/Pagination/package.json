@@ -1,19 +1,16 @@
 {
-  "name": "@aleksejdix/focus",
-  "description": "A focus component build for Lidia component library",
+  "name": "@aleksejdix/pagination",
+  "description": "A pagination component build for Lidia component library",
+  "author": "aleksejdix",
   "version": "0.1.0",
   "type": "module",
-  "main": "dist/focus.umd.cjs",
-  "module": "dist/focus.js",
+  "main": "dist/pagination.umd.cjs",
+  "module": "dist/pagination.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/focus.js",
-      "require": "./dist/focus.umd.cjs"
-    },
-    "./dist/style.css": {
-      "import": "./dist/style.css",
-      "require": "./dist/style.css"
+      "import": "./dist/pagination.js",
+      "require": "./dist/pagination.umd.cjs"
     }
   },
   "scripts": {
@@ -22,10 +19,11 @@
     "serve": "vite preview"
   },
   "peerDependencies": {
-    "vue": "^3.0.0"
+    "vue": "^3.0.0",
+    "vue-router": "^4.0.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^1.0.0",
+    "@vitejs/plugin-vue": "^4.0.0",
     "@vue/compiler-sfc": "^3.0.0",
     "typescript": "^4.8.4",
     "vite": "^4.1.4",
@@ -33,5 +31,6 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "license": "apache-2.0"
 }

@@ -1,15 +1,15 @@
 {
-  "name": "@aleksejdix/button",
-  "description": "A button component build for Lidia component library",
+  "name": "@aleksejdix/focus",
+  "description": "A focus component build for Lidia component library",
   "version": "0.1.0",
   "type": "module",
-  "main": "dist/button.umd.cjs",
-  "module": "dist/button.js",
+  "main": "dist/focus.umd.cjs",
+  "module": "dist/focus.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/button.js",
-      "require": "./dist/button.umd.cjs"
+      "import": "./dist/focus.js",
+      "require": "./dist/focus.umd.cjs"
     },
     "./dist/style.css": {
       "import": "./dist/style.css",
@@ -22,15 +22,10 @@
     "serve": "vite preview"
   },
   "peerDependencies": {
-    "vue": "^3.0.0",
-    "uuid": "^9.0.0"
-  },
-  "dependencies": {
-    "@aleksejdix/focus": "^0.1.0",
-    "@aleksejdix/accordion": "^0.1.0"
+    "vue": "^3.0.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^1.0.0",
+    "@vitejs/plugin-vue": "^4.0.0",
     "@vue/compiler-sfc": "^3.0.0",
     "typescript": "^4.8.4",
     "vite": "^4.1.4",
@@ -38,5 +33,6 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "license": "apache-2.0"
 }

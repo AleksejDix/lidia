@@ -16,10 +16,11 @@
     "build:accordion": "npm run build --workspace=@aleksejdix/accordion",
     "build:disclosure": "npm run build --workspace=@aleksejdix/disclosure",
     "build:button": "npm run build --workspace=@aleksejdix/button",
+    "build:pagination": "npm run build --workspace=@aleksejdix/pagination",
     "build:tabs": "npm run build --workspace=@aleksejdix/tabs"
   },
   "workspaces": [
-    "src/components/*"
+    "packages/*"
   ],
   "dependencies": {
     "@vueuse/core": "^9.13.0",
@@ -32,7 +33,8 @@
     "@aleksejdix/accordion": "^0.1.0",
     "@aleksejdix/disclosure": "^0.1.0",
     "@aleksejdix/button": "^0.1.0",
-    "@aleksejdix/tabs": "^0.1.0"
+    "@aleksejdix/tabs": "^0.1.0",
+    "@aleksejdix/pagination": "^0.1.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.31.1",

@@ -1,15 +1,15 @@
 {
-  "name": "@aleksejdix/tabs",
-  "description": "A tabs component build for Lidia component library",
+  "name": "@aleksejdix/disclosure",
+  "description": "A disclosure component build for Lidia component library",
   "version": "0.1.0",
   "type": "module",
-  "main": "dist/tabs.umd.cjs",
-  "module": "dist/tabs.js",
+  "main": "dist/disclosure.umd.cjs",
+  "module": "dist/disclosure.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/tabs.js",
-      "require": "./dist/tabs.umd.cjs"
+      "import": "./dist/disclosure.js",
+      "require": "./dist/disclosure.umd.cjs"
     },
     "./dist/style.css": {
       "import": "./dist/style.css",
@@ -27,13 +27,17 @@
   },
   "dependencies": {
     "@aleksejdix/focus": "^0.1.0",
-    "@aleksejdix/button": "^0.1.0"
+    "@aleksejdix/accordion": "^0.1.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^1.0.0",
+    "@vitejs/plugin-vue": "^4.0.0",
     "@vue/compiler-sfc": "^3.0.0",
     "typescript": "^4.8.4",
     "vite": "^4.1.4",
     "vue-tsc": "^1.2.0"
-  }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "apache-2.0"
 }

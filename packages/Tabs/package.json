@@ -1,15 +1,15 @@
 {
-  "name": "@aleksejdix/accordion",
-  "description": "A accordion component build for Lidia component library",
+  "name": "@aleksejdix/tabs",
+  "description": "A tabs component build for Lidia component library",
   "version": "0.1.0",
   "type": "module",
-  "main": "dist/accordion.umd.cjs",
-  "module": "dist/accordion.js",
+  "main": "dist/tabs.umd.cjs",
+  "module": "dist/tabs.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/accordion.js",
-      "require": "./dist/accordion.umd.cjs"
+      "import": "./dist/tabs.js",
+      "require": "./dist/tabs.umd.cjs"
     },
     "./dist/style.css": {
       "import": "./dist/style.css",
@@ -26,10 +26,11 @@
     "uuid": "^9.0.0"
   },
   "dependencies": {
-    "@aleksejdix/focus": "^0.1.0"
+    "@aleksejdix/focus": "^0.1.0",
+    "@aleksejdix/button": "^0.1.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^1.0.0",
+    "@vitejs/plugin-vue": "^4.0.0",
     "@vue/compiler-sfc": "^3.0.0",
     "typescript": "^4.8.4",
     "vite": "^4.1.4",
@@ -37,5 +38,6 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "license": "apache-2.0"
 }

@@ -8,14 +8,14 @@
           currentPage
         }"
       >
-        <PaginationPage :pageNumber="pageNumber"></PaginationPage>
+        <Page :pageNumber="pageNumber"></Page>
       </slot>
     </li>
   </ul>
 </template>
 
 <script lang="ts" setup>
-import { PaginationPage } from '.'
+import Page from './Page.vue'
 import { usePaginationContext } from './usePaginationContext'
 const { currentPage, visiblePageNumbers } = usePaginationContext()
 </script>
