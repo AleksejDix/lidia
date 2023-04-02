@@ -1,21 +1,25 @@
 <template>
-  <nav class="flex items-center text-sm font-medium text-gray-500 space-x-2">
-    <Breadcrumb :to="{ path: '/' }" class="hover:text-gray-700 transition-colors duration-200">
-      Home
-    </Breadcrumb>
-
-    <template v-for="crumb in breadcrumbs" :key="crumb.link">
-      <span class="mx-2" aria-hidden="true">/</span>
-
-      <Breadcrumb
-        :to="{ path: crumb.link }"
-        class="hover:text-gray-700 transition-colors duration-200"
-        :aria-current="crumb.current ? 'page' : null"
-      >
-        {{ crumb.label }}
+  <div>
+    <nav
+      class="flex items-center text-[12px] font-medium space-x-2 h-[30px] leading-none relative right-[1px] top-[1px]"
+    >
+      <Breadcrumb :to="{ path: '/' }" class="hover:text-gray-200 transition-colors duration-200">
+        Home
       </Breadcrumb>
-    </template>
-  </nav>
+
+      <template v-for="crumb in breadcrumbs" :key="crumb.link">
+        <span class="mx-2" aria-hidden="true">/</span>
+
+        <Breadcrumb
+          :to="{ path: crumb.link }"
+          class="hover:text-gray-200 transition-colors duration-200"
+          :aria-current="crumb.current ? 'page' : null"
+        >
+          {{ crumb.label }}
+        </Breadcrumb>
+      </template>
+    </nav>
+  </div>
 </template>
 
 <script setup lang="ts">

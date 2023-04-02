@@ -14,7 +14,7 @@
         @click.stop="modalStore.destroy(name)"
       ></div>
       <div
-        class="relative bg-gray-100 border border-white p-4 shadow-xl rounded max-w-md max-h-screen mx-auto flex flex-col"
+        class="relative min-w-[250px] bg-blue-600 border border-white p-4 shadow-xl max-w-md max-h-screen mx-auto flex flex-col"
       >
         <FocusTrap>
           <slot> </slot>

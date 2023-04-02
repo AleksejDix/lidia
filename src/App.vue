@@ -1,13 +1,14 @@
 <template>
-  <SkipLink target="main-content">Skip to main content</SkipLink>
-  <SkipLink target="navigation">Skip to navigation</SkipLink>
-  <SkipLink target="footer">Skip to footer</SkipLink>
-  <Fly>
-    <Landmark tag="header" id="header" class="border-b">
+  <div class="flex flex-col h-full">
+    <SkipLink target="main-content">Skip to main content</SkipLink>
+    <SkipLink target="navigation">Skip to navigation</SkipLink>
+    <SkipLink target="footer">Skip to footer</SkipLink>
+    <!-- 
+    <Landmark tag="header" id="header" class="border-b-2 sticky top-0 min-h-[56px] p-4">
       <h1>Your Dashboard Title</h1>
-    </Landmark>
-    <div class="dashboard flex">
-      <Landmark tag="aside" id="navigation" class="border-r">
+    </Landmark> -->
+    <div class="flex h-full grow mx-auto max-w-[1050px] w-full">
+      <Landmark tag="aside" id="navigation" class="w-[200px] p-[25px]">
         <Navigation></Navigation>
         <nav>
           <router-link class="clickable" to="/">Home</router-link>
@@ -15,12 +16,13 @@
         </nav>
       </Landmark>
 
-      <Landmark tag="main" id="main-content" class="max-w-2xl mx-auto grow">
+      <Landmark tag="main" id="main-content" class="mx-auto grow border-white px-[100px] py-[40px]">
+        <h1>Breadcrumbs</h1>
         <Breadcrumbs />
         <router-view />
       </Landmark>
     </div>
-  </Fly>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -56,7 +58,60 @@ const routeWithModal = computed(() => {
 
 <style>
 :root {
+  @apply bg-blue-600;
+  --blue-600: #2563eb;
+  --white-opacity-20: rgba(255, 255, 255, 0.2);
+  --white-opacity-10: rgba(255, 255, 255, 0.1);
   --accent-color: hotpink;
+  color: white;
+  background-color: var(--blue-600);
+  background-repeat: repeat;
+
+  background-position: top center;
+}
+
+html,
+body,
+#app {
+  @apply h-full w-full inset-0 fixed;
+}
+
+html {
+  background: linear-gradient(
+      to bottom,
+      transparent 0px,
+      var(--white-opacity-10) 0px,
+      var(--white-opacity-10) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to right,
+      transparent 0px,
+      var(--white-opacity-10) 0px,
+      var(--white-opacity-10) 1px,
+      transparent 1px
+    );
+  background-size: 10px 10px;
+  background-position: top center;
+}
+
+body {
+  background: linear-gradient(
+      to bottom,
+      transparent 0px,
+      var(--white-opacity-20) 0px,
+      var(--white-opacity-20) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to right,
+      transparent 0px,
+      var(--white-opacity-20) 0px,
+      var(--white-opacity-20) 1px,
+      transparent 1px
+    );
+  background-size: 50px 50px;
+  background-position: top center;
 }
 </style>
 

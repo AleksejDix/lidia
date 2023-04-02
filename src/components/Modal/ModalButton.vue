@@ -1,22 +1,43 @@
 <!-- ModalButton.vue -->
 <template>
-  <button ref="buttonRef" @click="modalStore.create(name)" aria-label="Open Modal">
+  <component :is="component" @click="modalStore.create(name)" aria-label="Open Modal">
+    <template #before>
+      <slot name="before"></slot>
+    </template>
     <slot></slot>
-  </button>
+    <template #after>
+      <slot name="after"></slot>
+    </template>
+  </component>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { computed } from 'vue'
 import { useModalStore } from './useModalStore.js'
+import { Button, ButtonIcon } from '@aleksejdix/button/src'
 
-defineProps({
+const props = defineProps({
   name: {
     type: String,
     required: true
+  },
+  is: {
+    type: String,
+    required: false,
+    default: 'Button'
   }
 })
 
-const buttonRef = ref()
+const component = computed(() => {
+  switch (props.is) {
+    case 'Button':
+      return Button
+    case 'ButtonIcon':
+      return ButtonIcon
+    default:
+      throw new Error('You can only pass Button or IconButton to the is prop')
+  }
+})
 
 const modalStore = useModalStore()
 </script>

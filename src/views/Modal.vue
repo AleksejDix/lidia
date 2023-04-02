@@ -1,10 +1,33 @@
 <template>
   <h1>Modals</h1>
+  <!-- <div class="stripe relative bg-black bg-opacity-70 h-[20px] w-full"></div> -->
+  <h1>Modals</h1>
+
+  <h1>Modals</h1>
+
+  <h1>Modals</h1>
+
   <section>
     <header>
       <h2>Simple modal</h2>
     </header>
-    <ModalButton name="simple">Open Simple Modal</ModalButton>
+    <ButtonGroup>
+      <Button>Kaufen</Button>
+      <ModalButton :is="'ButtonIcon'" name="simple" label="more options">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          class="fill-current pointer-events-none w-6 h-6"
+          style="transform: ; msfilter: "
+        >
+          <path
+            d="M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 12c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+          ></path>
+        </svg>
+      </ModalButton>
+    </ButtonGroup>
     <Modal name="simple">
       <ModalCloseButton />
       <div>Content of the simple modal</div>
@@ -34,8 +57,35 @@
 
 <script setup lang="ts">
 import { Modal, ModalButton, ModalCloseButton } from '@/components/Modal'
-import { Tabs, TabList, Tab, TabPanel } from '@/components/Tabs'
-import { Dropdown, DropdownButton, DropdownContent } from '@/components/Dropdown'
-import { Menu, MenuLink, MenuRouterLink, MenuSeparator, MenuButton } from '@/components/Menu'
-import { Tooltip } from '@/components/Tooltip'
+import { Button, ButtonGroup } from '@aleksejdix/button/src'
 </script>
+
+<style src="@aleksejdix/button/dist/style.css"></style>
+<style>
+h1 {
+  color: white;
+  line-height: 50px;
+  font-size: 42px;
+  font-weight: 700;
+  position: relative;
+  right: 3px;
+  padding-top: 20px;
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  color: white;
+  font-size: 28px;
+  line-height: 40px;
+  font-weight: 700;
+  position: relative;
+  right: 1px;
+  padding-top: 10px;
+
+  letter-spacing: -0.03em;
+}
+
+html {
+  line-height: 25px;
+}
+</style>
