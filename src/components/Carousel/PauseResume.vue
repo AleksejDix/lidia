@@ -1,6 +1,11 @@
+<!-- PauseResume.vue -->
 <template>
-  <button @click="pause"><slot>pause</slot></button>
-  <button @click="resume"><slot>resume</slot></button>
+  <button @click="pause" aria-label="Pause carousel" aria-controls="carousel-container">
+    <slot>pause</slot>
+  </button>
+  <button @click="resume" aria-label="Resume carousel" aria-controls="carousel-container">
+    <slot>resume</slot>
+  </button>
 </template>
 
 <script lang="ts" setup>

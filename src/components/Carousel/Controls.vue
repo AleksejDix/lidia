@@ -1,3 +1,4 @@
+<!-- Controls.vue -->
 <template>
-  <div><slot></slot></div>
+  <div role="group"><slot></slot></div>
 </template>

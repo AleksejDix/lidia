@@ -1,5 +1,8 @@
+<!-- Prev.vue -->
 <template>
-  <button @click="prev"><slot> prev </slot></button>
+  <button @click="prev" aria-controls="carousel-container" aria-label="Previous slide">
+    <slot> prev </slot>
+  </button>
 </template>
 
 <script lang="ts" setup>

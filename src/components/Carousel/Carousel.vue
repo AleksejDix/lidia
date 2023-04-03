@@ -1,5 +1,14 @@
+<!-- Carousel.vue -->
 <template>
-  <div @mouseover="pause" @mouseleave="resume" @focusin="pause" @focusout="resume">
+  <div
+    role="region"
+    aria-label="carousel"
+    aria-roledescription="carousel"
+    @mouseover="pause"
+    @mouseleave="resume"
+    @focusin="pause"
+    @focusout="resume"
+  >
     <slot></slot>
   </div>
 </template>

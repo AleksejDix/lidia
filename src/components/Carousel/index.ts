@@ -1,3 +1,4 @@
+// index.ts
 export { default as CarouselNext } from './Next.vue'
 export { default as CarouselPrev } from './Prev.vue'
 export { default as CarouselSlides } from './Slides.vue'

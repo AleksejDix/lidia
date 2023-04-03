@@ -1,5 +1,4 @@
 <!-- SlideNumber.vue -->
-
 <template>
-  <slot></slot>
+  <span><slot></slot></span>
 </template>
