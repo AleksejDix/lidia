@@ -72,5 +72,5 @@ import {
   PaginationFirst,
   PaginationLast,
   PaginationGoToPage
-} from '@aleksejdix/pagination'
+} from '@aleksejdix/pagination/src'
 </script>

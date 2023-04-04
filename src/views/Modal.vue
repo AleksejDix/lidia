@@ -1,11 +1,5 @@
 <template>
   <h1>Modals</h1>
-  <!-- <div class="stripe relative bg-black bg-opacity-70 h-[20px] w-full"></div> -->
-  <h1>Modals</h1>
-
-  <h1>Modals</h1>
-
-  <h1>Modals</h1>
 
   <section>
     <header>
@@ -56,36 +50,8 @@
 </template>
 
 <script setup lang="ts">
-import { Modal, ModalButton, ModalCloseButton } from '@/components/Modal'
+import { Modal, ModalButton, ModalCloseButton } from '@aleksejdix/modal/src'
 import { Button, ButtonGroup } from '@aleksejdix/button/src'
 </script>
 
 <style src="@aleksejdix/button/dist/style.css"></style>
-<style>
-h1 {
-  color: white;
-  line-height: 50px;
-  font-size: 42px;
-  font-weight: 700;
-  position: relative;
-  right: 3px;
-  padding-top: 20px;
-  letter-spacing: -0.03em;
-}
-
-h2 {
-  color: white;
-  font-size: 28px;
-  line-height: 40px;
-  font-weight: 700;
-  position: relative;
-  right: 1px;
-  padding-top: 10px;
-
-  letter-spacing: -0.03em;
-}
-
-html {
-  line-height: 25px;
-}
-</style>

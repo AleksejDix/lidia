@@ -9,10 +9,10 @@
       :max="totalPages"
       :value="currentPage"
       @change="goToPage"
-      class="border border-gray-300 px-3 py-2 rounded"
+      class="border border-gray-300 px-3 py-2"
       required
     />
-    <button type="submit" class="ml-2 px-3 py-2 border border-gray-300 rounded">Go</button>
+    <button type="submit" class="ml-2 px-3 py-2 border border-gray-300">Go</button>
   </form>
 </template>
 

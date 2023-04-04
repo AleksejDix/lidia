@@ -1,5 +1,5 @@
 <template>
-  <Button
+  <button
     type="button"
     :ref="focus.create"
     @keydown.left.prevent="focus.prev"
@@ -11,21 +11,22 @@
     :id="pair?.[0]"
     :aria-controls="pair?.[1]"
     :aria-selected="isActive"
-    :class="{ 'bg-yellow-300': isActive }"
+    :class="{
+      isActive
+    }"
     role="tab"
-    class="px-4 py-2 relative cursor-pointer rounded inline-block"
+    class="text-white h-[50px] px-[20px] min-w-[100px]"
     @click="tabs.select(id)"
   >
     <slot></slot>
-  </Button>
+  </button>
 </template>
 
 <script setup lang="ts">
 import { inject, computed, watchEffect } from 'vue'
 import { v4 as uuidv4 } from 'uuid'
 import { TabsKey } from './symbols'
-import { useFocusCycleItem } from '@aleksejdix/focus'
-import { Button } from '@aleksejdix/button'
+import { useFocusCycleItem } from '@aleksejdix/focus/src'
 
 const props = defineProps({
   open: {
@@ -59,3 +60,19 @@ watchEffect(
   { flush: 'post' }
 )
 </script>
+
+<style>
+[role='tab']:not(.isActive) {
+  background: linear-gradient(to top, transparent 0px, white 0px, white 2px, transparent 2px);
+  background-size: 100% 50px;
+  background-repeat: no-repeat;
+}
+
+[role='tab'].isActive {
+  background: linear-gradient(to bottom, transparent 0px, white 0px, white 2px, transparent 2px),
+    linear-gradient(to right, transparent 0px, white 0px, white 2px, transparent 2px),
+    linear-gradient(to left, transparent 0px, white 0px, white 2px, transparent 2px);
+  background-size: 100% 50px;
+  background-repeat: no-repeat;
+}
+</style>

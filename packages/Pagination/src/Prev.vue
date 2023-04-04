@@ -5,7 +5,7 @@
     :to="{ ...$route, query: { ...$route.query, page: currentPage - 1 } }"
     aria-label="Previous Page"
     rel="prev"
-    class="border border-white shadow pl-2 pr-4 py-2 bg-yellow-400 text-yellow-900 rounded inline-flex items-center min-h-[40px]"
+    class="h-[40px] flex items-center border-2 border-white pl-[10px] pr-[20px]"
   >
     <slot name="icon">
       <svg
@@ -22,7 +22,7 @@
   </router-link>
   <span
     v-else
-    class="border border-white shadow inline-flex items-center min-h-[40px] pl-2 pr-4 py-2 bg-gray-100 text-gray-400 rounded cursor-not-allowed"
+    class="border border-white shadow inline-flex items-center min-h-[40px] pl-2 pr-4 py-2 bg-gray-100 text-gray-400 cursor-not-allowed"
   >
     <slot name="icon">
       <svg

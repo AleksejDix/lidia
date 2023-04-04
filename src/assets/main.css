@@ -29,3 +29,31 @@ body {
   position: relative;
   z-index: 1;
 }
+
+
+h1 {
+  color: white;
+  line-height: 50px;
+  font-size: 42px;
+  font-weight: 700;
+  position: relative;
+  right: 3px;
+  padding-top: 20px;
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  color: white;
+  font-size: 28px;
+  line-height: 40px;
+  font-weight: 700;
+  position: relative;
+  right: 1px;
+  padding-top: 10px;
+
+  letter-spacing: -0.03em;
+}
+
+html {
+  line-height: 25px;
+}

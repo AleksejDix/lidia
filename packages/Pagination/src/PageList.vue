@@ -1,6 +1,6 @@
 <!-- PageList.vue -->
 <template>
-  <ul class="flex gap-1">
+  <ul class="flex -space-x-[2px]">
     <li v-for="pageNumber in visiblePageNumbers" :key="pageNumber">
       <slot
         v-bind="{

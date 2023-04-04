@@ -16,8 +16,11 @@
         </nav>
       </Landmark>
 
-      <Landmark tag="main" id="main-content" class="mx-auto grow border-white px-[100px] py-[40px]">
-        <h1>Breadcrumbs</h1>
+      <Landmark
+        tag="main"
+        id="main-content"
+        class="mx-auto grow border-white px-[100px] py-[40px] max-w-[850px]"
+      >
         <Breadcrumbs />
         <router-view />
       </Landmark>
@@ -32,9 +35,9 @@ import { useRoute } from 'vue-router'
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useEventListener } from '@vueuse/core'
-import { useEscapeStore } from '@/use/useEscapeStore'
+import { useEscapeStore } from '@aleksejdix/focus/src'
 import { Landmark } from '@/components/Layout'
-import { SkipLink } from '@aleksejdix/focus'
+import { SkipLink } from '@aleksejdix/focus/src'
 import { Navigation } from '@/components/Navigation'
 
 const router = useRouter()
@@ -93,6 +96,7 @@ html {
     );
   background-size: 10px 10px;
   background-position: top center;
+  background-attachment: scroll;
 }
 
 body {
@@ -112,8 +116,8 @@ body {
     );
   background-size: 50px 50px;
   background-position: top center;
+  background-attachment: scroll;
 }
 </style>
 
-<style src="@aleksejdix/disclosure/dist/style.css"></style>
 <style src="@aleksejdix/focus/dist/style.css"></style>

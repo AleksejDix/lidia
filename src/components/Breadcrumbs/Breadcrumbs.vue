@@ -26,7 +26,7 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { Breadcrumb } from '.'
-import { useFocusCycle } from '@aleksejdix/focus'
+import { useFocusCycle } from '@aleksejdix/focus/src'
 
 useFocusCycle()
 

@@ -1,7 +1,7 @@
 <!-- TabPanel.vue -->
 <template>
   <div
-    class="px-4 py-2"
+    class="text-white border-x-2 border-b-2 border-white px-[20px] py-[10px] min-h-[100px]"
     role="tabpanel"
     v-if="isActive"
     :id="pair?.[1]"

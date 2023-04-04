@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useFocusCycleItem } from '@aleksejdix/focus'
+import { useFocusCycleItem } from '@aleksejdix/focus/src'
 
 const focus = useFocusCycleItem()
 

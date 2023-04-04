@@ -10,7 +10,7 @@ import type { PropType, VNodeTypes } from 'vue'
 import { ref, onMounted, onUnmounted } from 'vue'
 import { v4 as uuidv4 } from 'uuid'
 import { provideDisclosureContext } from './useDisclosureContext'
-import { tryUseAccordionContext } from '@aleksejdix/accordion'
+import { tryUseAccordionContext } from '@aleksejdix/accordion/src'
 
 const props = defineProps({
   open: {

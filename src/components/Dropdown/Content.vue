@@ -18,7 +18,7 @@
 <script setup lang="ts">
 import { inject } from 'vue'
 import { DropdownKey } from './symbols'
-import { FocusTrap } from '@aleksejdix/focus'
+import { FocusTrap } from '@aleksejdix/focus/src'
 
 const dropdown = inject(DropdownKey)
 

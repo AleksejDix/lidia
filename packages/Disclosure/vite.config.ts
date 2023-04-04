@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [vue()],
   build: {
     lib: {
-      entry: 'index.ts',
+      entry: 'src/index.ts',
       name: '@aleksejdix/disclosure',
       fileName: 'disclosure'
     },

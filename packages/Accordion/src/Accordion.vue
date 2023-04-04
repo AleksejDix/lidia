@@ -1,11 +1,13 @@
 <!-- Accordion.vue -->
 <template>
-  <slot></slot>
+  <div class="Accordion">
+    <slot></slot>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useFocusCycle } from '@aleksejdix/focus'
+import { useFocusCycle } from '@aleksejdix/focus/src'
 import { provideAccordionContext } from './useAccordionContext'
 
 useFocusCycle()
@@ -40,3 +42,9 @@ provideAccordionContext({
   destroy
 })
 </script>
+
+<style>
+.Accordion > * + * {
+  margin-top: 5px;
+}
+</style>

@@ -5,7 +5,7 @@
     :to="{ ...$route, query: { ...$route.query, page: totalPages } }"
     aria-label="Last Page"
     rel="last"
-    class="border border-white shadow pl-4 pr-2 py-2 bg-yellow-400 rounded inline-flex items-center min-h-[40px] font-medium text-yellow-900"
+    class="border border-white shadow pl-4 pr-2 py-2 bg-yellow-400 inline-flex items-center min-h-[40px] font-medium text-yellow-900"
   >
     <slot>Last</slot>
     <slot name="icon">
@@ -24,7 +24,7 @@
   </router-link>
   <span
     v-else
-    class="border border-white shadow inline-flex items-center min-h-[40px] pl-4 pr-2 py-2 bg-gray-100 text-gray-400 rounded cursor-not-allowed"
+    class="border border-white shadow inline-flex items-center min-h-[40px] pl-4 pr-2 py-2 bg-gray-100 text-gray-400 cursor-not-allowed"
   >
     <slot>Last</slot>
     <slot name="icon">

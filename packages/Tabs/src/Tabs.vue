@@ -1,6 +1,8 @@
 <!-- Tabs.vue -->
 <template>
-  <slot></slot>
+  <div class="pt-[10px]">
+    <slot></slot>
+  </div>
 </template>
 
 <script setup lang="ts">

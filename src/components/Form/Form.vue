@@ -13,9 +13,7 @@ const setFormValue = (name: string, value: string) => {
   formValues.value = { ...formValues.value, [name]: value }
 }
 
-const submitForm = () => {
-  console.log('Form submitted:', formValues.value)
-}
+const submitForm = () => {}
 
 provide('form', {
   submitForm,

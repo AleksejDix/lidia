@@ -4,7 +4,7 @@
     <span v-if="slots.before">
       <slot name="before"></slot>
     </span>
-    <span v-if="slots.default">
+    <span v-if="slots.default" class="grow">
       <slot></slot>
     </span>
     <span v-if="slots.after">
@@ -42,12 +42,12 @@ const loadingBool = computed(() => {
 .button {
   /* Reset the button styles */
   display: inline-flex;
-  gap: 4px;
+  gap: 12px;
   align-items: center;
   box-sizing: border-box;
   margin: 0;
-  padding: 0 15px;
-  text-align: center;
+  padding: 0 16px;
+  text-align: left;
   vertical-align: middle;
   background-color: transparent;
   border: 2px solid currentColor;
@@ -64,9 +64,9 @@ const loadingBool = computed(() => {
   -moz-appearance: none;
   appearance: none;
   transition: all 0.3s ease;
-  height: 30px;
+  height: 40px;
   line-height: 1;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .button:hover {

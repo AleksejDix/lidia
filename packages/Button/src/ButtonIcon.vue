@@ -85,8 +85,8 @@ const ariaPressed = computed(() => {
   -moz-appearance: none;
   appearance: none;
   transition: all 0.3s ease;
-  height: 30px;
-  width: 30px;
+  height: 40px;
+  width: 40px;
   /* Use the pressed prop to toggle the background color and border style */
   background-color: var(--button-background, transparent);
   border-style: var(--button-border-style, solid);

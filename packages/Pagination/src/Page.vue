@@ -4,9 +4,9 @@
     :to="{ ...$route, query: { ...$route.query, page: pageNumber } }"
     :aria-label="'Go to Page ' + pageNumber"
     :aria-current="pageNumber === currentPage ? 'page' : undefined"
-    class="px-4 py-2 inline-block min-h-[40px] min-w-[40px]"
+    class="border-2 border-white inline-block h-[40px] min-w-[40px] leading-[36px] text-center text-16"
     :class="{
-      'bg-green-400 text-green-900 rounded border border-white shadow ': pageNumber === currentPage
+      'text-blue-600 bg-white': pageNumber === currentPage
     }"
   >
     {{ pageNumber }}

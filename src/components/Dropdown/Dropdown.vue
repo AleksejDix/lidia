@@ -8,7 +8,7 @@ import { DropdownKey } from './symbols'
 import { v4 as uuidv4 } from 'uuid'
 import { useViewport } from '../Viewport'
 import { useElementSize, useElementBounding } from '@vueuse/core'
-import { useEscapeStore } from '@/use/useEscapeStore'
+import { useEscapeStore } from '@aleksejdix/focus/src'
 
 const button = ref()
 

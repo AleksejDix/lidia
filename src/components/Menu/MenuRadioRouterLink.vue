@@ -47,7 +47,7 @@
 <script lang="ts" setup>
 import { computed, inject } from 'vue'
 import { useRoute } from 'vue-router'
-import { useFocusCycleItem } from '@aleksejdix/focus'
+import { useFocusCycleItem } from '@aleksejdix/focus/src'
 
 const focus = useFocusCycleItem()
 

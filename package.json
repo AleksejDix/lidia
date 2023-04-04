@@ -32,9 +32,13 @@
     "@aleksejdix/focus": "^0.1.0",
     "@aleksejdix/accordion": "^0.1.0",
     "@aleksejdix/disclosure": "^0.1.0",
-    "@aleksejdix/button": "^0.1.0",
+    "@aleksejdix/button": "^0.2.0",
     "@aleksejdix/tabs": "^0.1.0",
-    "@aleksejdix/pagination": "^0.1.0"
+    "@aleksejdix/pagination": "^0.1.0",
+    "@aleksejdix/switch": "^0.1.0",
+    "@aleksejdix/datastructures": "^0.1.0",
+    "@aleksejdix/modal": "^0.1.0",
+    "@aleksejdix/feed": "^0.1.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.31.1",

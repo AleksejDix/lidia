@@ -51,7 +51,6 @@ const resume = () => {
 const updateSlidesCount = () => {
   const slotContent = slots.default?.() ?? []
   const slideInstances = slotContent.filter((vNode) => {
-    console.log(vNode)
     return vNode.type === 'CarouselSlide'
   })
   count.value = slideInstances.length

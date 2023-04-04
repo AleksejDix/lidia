@@ -11,6 +11,10 @@
       "import": "./dist/focus.js",
       "require": "./dist/focus.umd.cjs"
     },
+    "./src": {
+      "import": "./src/index.ts",
+      "require": "./src/index.ts"
+    },
     "./dist/style.css": {
       "import": "./dist/style.css",
       "require": "./dist/style.css"

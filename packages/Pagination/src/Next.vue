@@ -5,7 +5,7 @@
     :to="{ ...$route, query: { ...$route.query, page: currentPage + 1 } }"
     aria-label="Next Page"
     rel="next"
-    class="border border-white shadow pl-4 pr-2 py-2 bg-yellow-400 text-yellow-900 rounded inline-flex items-center min-h-[40px]"
+    class="border border-white shadow pl-4 pr-2 py-2 bg-yellow-400 text-yellow-900 inline-flex items-center min-h-[40px]"
   >
     <slot>Next</slot>
     <slot name="icon">
@@ -22,7 +22,7 @@
   </router-link>
   <span
     v-else
-    class="border border-white shadow inline-flex items-center min-h-[40px] pl-4 pr-2 py-2 bg-gray-100 text-gray-400 rounded cursor-not-allowed"
+    class="border border-white shadow inline-flex items-center min-h-[40px] pl-4 pr-2 py-2 bg-gray-100 text-gray-400 cursor-not-allowed"
   >
     <slot>Next</slot>
     <slot name="icon">
