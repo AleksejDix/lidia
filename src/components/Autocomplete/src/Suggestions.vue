@@ -1,7 +1,10 @@
 <!-- Suggestions.vue -->
 <template>
   <ul v-if="hasSuggestions">
-    <li v-for="suggestion in suggestions" :key="suggestion[key as keyof typeof suggestion]">
+    <li
+      v-for="(suggestion, index) in suggestions"
+      :key="suggestion[uniqueKey as keyof typeof suggestion]"
+    >
       <slot
         name="suggestion"
         v-bind="{
@@ -9,7 +12,11 @@
           select
         }"
       >
-        <Suggestion :suggestion="suggestion" @select="select(suggestion)">
+        <Suggestion
+          :class="{ 'bg-blue-300': index === selectionIndex }"
+          :suggestion="suggestion"
+          @select="select(suggestion)"
+        >
           {{ suggestion.name }}
         </Suggestion>
       </slot>
@@ -21,5 +28,5 @@
 import { useAutocompleteContext } from '../use/useAutocompleteContext'
 import { Suggestion } from '.'
 
-const { suggestions, hasSuggestions, key, select } = useAutocompleteContext()
+const { suggestions, hasSuggestions, uniqueKey, select, selectionIndex } = useAutocompleteContext()
 </script>

@@ -33,9 +33,5 @@ export async function searchSwissCantons(query = '') {
   }
 
   const searchQuery = query.toLowerCase()
-  return swissCantons.filter(
-    (canton) =>
-      canton.name.toLowerCase().includes(searchQuery) ||
-      canton.abbreviation.toLowerCase().includes(searchQuery)
-  )
+  return swissCantons.filter((canton) => canton.name.toLowerCase().startsWith(searchQuery))
 }

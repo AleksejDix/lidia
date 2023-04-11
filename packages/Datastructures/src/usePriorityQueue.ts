@@ -1,12 +1,5 @@
 import { ref, computed, ComputedRef, type Ref } from 'vue'
 
-//   const priorityQueue = ref<PriorityQueueItem<T>[]>([]) as Ref<
-// {
-//     item: T
-//     priority: number
-//   }[]
-// >
-
 type PriorityQueueItem<T> = {
   item: T
   priority: number

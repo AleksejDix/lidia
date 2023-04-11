@@ -1,4 +1,4 @@
-import { ref, provide, inject, nextTick, type Component } from 'vue'
+import { ref, provide, inject, nextTick, type Component, onBeforeUpdate } from 'vue'
 import type { InjectionKey, Ref } from 'vue'
 interface MenuContext {
   list: Ref<HTMLElement[]>
@@ -40,11 +40,23 @@ export function useFocusCycle() {
 
   const create = (menuItem: HTMLElement | Component) => {
     const realEl = menuItem && '$el' in menuItem ? menuItem.$el : menuItem
-    list.value.push(realEl)
+    if (realEl) {
+      if (list.value.includes(realEl)) {
+        return
+      }
+      list.value.push(realEl)
+    } else {
+      list.value = []
+    }
   }
 
-  const destroy = (menuItem: HTMLElement) => {
-    const index = list.value.findIndex((item) => item === menuItem)
+  onBeforeUpdate(() => {
+    list.value = []
+  })
+
+  const destroy = (menuItem: HTMLElement | Component) => {
+    const realEl = menuItem && '$el' in menuItem ? menuItem.$el : menuItem
+    const index = list.value.findIndex((item) => item === realEl)
     if (index > -1) {
       list.value.splice(index, 1)
     }

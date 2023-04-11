@@ -1,12 +1,16 @@
 <!-- Autocomplete.vue -->
 <template>
-  <div class="autocomplete">
-    <slot></slot>
+  <div class="autocomplete text-black">
+    <slot>
+      <Search />
+      <Suggestions></Suggestions>
+    </slot>
   </div>
 </template>
 
 <script lang="ts" setup>
 import type { PropType } from 'vue'
+import { Search, Suggestions } from '.'
 
 import { useAutocomplete } from '../use/useAutocomplete'
 
@@ -18,6 +22,11 @@ const props = defineProps({
   options: {
     type: Function as PropType<(query?: string) => Promise<unknown[]>>,
     required: true
+  },
+  uniqueKey: {
+    type: String,
+    required: true,
+    default: 'id'
   }
 })
 
@@ -29,7 +38,7 @@ function select(suggestion: any) {
 
 useAutocomplete({
   autocomplete: props.options,
-  key: 'abbreviation',
+  uniqueKey: props.uniqueKey,
   select
 })
 </script>

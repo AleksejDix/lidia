@@ -7,8 +7,13 @@ interface AutocompleteContext {
   suggestions: Ref<any[]>
   hasSuggestions: ComputedRef<boolean>
   hasNoSuggestions: ComputedRef<boolean>
-  key: string
+  uniqueKey: string
   select: (suggestion: any) => void
+  selectFirst: () => void
+  selectionIndex: Ref<number>
+  selectPrev: () => void
+  selectNext: () => void
+  ghost: ComputedRef<any>
 }
 
 const key: InjectionKey<AutocompleteContext> = Symbol('AutocompleteContext')

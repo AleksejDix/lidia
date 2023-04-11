@@ -2,31 +2,24 @@
 <template>
   <div>
     <h1>Autocomplete</h1>
-    {{ model }}
-    <Autocomplete :options="searchSwissCantons" v-model="model">
-      <Search />
-      <Suggestions>
-        <template #suggestion="{ suggestion, select }">
-          <Suggestion :suggestion="suggestion" @select="select(suggestion)">{{
-            suggestion.abbreviation
-          }}</Suggestion>
-        </template>
-      </Suggestions>
-      <NoSuggestions>Kanton konnte nicht Gefunden werden</NoSuggestions>
-    </Autocomplete>
+
+    <Dropdown>
+      <DropdownButton>
+        {{ model }}
+      </DropdownButton>
+      <DropdownContent>
+        <Autocomplete :options="searchSwissCantons" :uniqueKey="'abbreviation'" v-model="model">
+        </Autocomplete>
+      </DropdownContent>
+    </Dropdown>
   </div>
 </template>
 
 <script setup lang="ts">
-import {
-  Autocomplete,
-  Suggestions,
-  Suggestion,
-  NoSuggestions,
-  Search
-} from '@/components/Autocomplete/src/'
+import { Autocomplete } from '@/components/Autocomplete/src/'
 import { searchSwissCantons } from '@/components/Autocomplete/data'
 import { ref } from 'vue'
+import { Dropdown, DropdownButton, DropdownContent } from '@/components/Dropdown'
 
 const model = ref({ name: 'Appenzell Ausserrhoden', abbreviation: 'AR' })
 </script>
