@@ -24,11 +24,13 @@
   "peerDependencies": {
     "vue": "^3.0.0",
     "uuid": "^9.0.0",
-    "typescript": "^4.8.4",
     "@aleksejdix/accordion": "^0.1.0",
     "@aleksejdix/button": "^0.2.0"
   },
+  "dependencies": {
+  },
   "devDependencies": {
+    "typescript": "^4.8.4",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vue/compiler-sfc": "^3.0.0",
     "@vue/test-utils": "^2.3.2",

@@ -6,13 +6,8 @@
       <Tab>Tab 1</Tab>
       <Tab>Tab 2</Tab>
     </TabList>
-    <TabPanel>
-      <Checkbox name="name" value="Jack" v-model="name" null-value="fisch"> </Checkbox>
-      <Checkbox name="name" value="Mike" v-model="name"> </Checkbox>
-      <Checkbox name="name" value="Dave" v-model="name"> </Checkbox>
-      <Switch></Switch>
-    </TabPanel>
-    <TabPanel>Content for Tab 1</TabPanel>
+    <TabPanel>Contentn for Tab 1</TabPanel>
+    <TabPanel>Content for Tab 2</TabPanel>
   </Tabs>
 
   <Tabs>

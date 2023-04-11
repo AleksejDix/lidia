@@ -6,11 +6,11 @@ export default defineConfig({
   build: {
     lib: {
       entry: 'src/index.ts',
-      name: '@aleksejdix/disclosure',
-      fileName: 'disclosure'
+      name: '@aleksejdix/tooltip',
+      fileName: 'tooltip'
     },
     rollupOptions: {
-      external: ['vue', 'pinia', '@aleksejdix/focus', '@aleksejdix/accordion'],
+      external: ['vue'],
       output: {
         globals: {
           vue: 'Vue'

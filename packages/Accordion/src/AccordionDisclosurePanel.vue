@@ -5,5 +5,5 @@
 </template>
 
 <script setup lang="ts">
-import { DisclosurePanel } from '@aleksejdix/disclosure/src'
+import { DisclosurePanel } from '@aleksejdix/disclosure'
 </script>

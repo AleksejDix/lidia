@@ -5,5 +5,5 @@
 </template>
 
 <script setup lang="ts">
-import { Disclosure } from '@aleksejdix/disclosure/src'
+import { Disclosure } from '@aleksejdix/disclosure'
 </script>

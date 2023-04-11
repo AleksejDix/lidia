@@ -4,26 +4,26 @@
     <SkipLink target="navigation">Skip to navigation</SkipLink>
     <SkipLink target="footer">Skip to footer</SkipLink>
     <!-- 
-    <Landmark tag="header" id="header" class="border-b-2 sticky top-0 min-h-[56px] p-4">
+    <div tag="header" id="header" class="border-b-2 sticky top-0 min-h-[56px] p-4">
       <h1>Your Dashboard Title</h1>
-    </Landmark> -->
+    </div> -->
     <div class="flex h-full grow mx-auto max-w-[1050px] w-full">
-      <Landmark tag="aside" id="navigation" class="w-[200px] p-[25px]">
+      <div tag="aside" id="navigation" class="w-[200px] p-[25px]">
         <Navigation></Navigation>
         <nav>
           <router-link class="clickable" to="/">Home</router-link>
           <span> | </span>
         </nav>
-      </Landmark>
+      </div>
 
-      <Landmark
+      <div
         tag="main"
         id="main-content"
         class="mx-auto grow border-white px-[100px] py-[40px] max-w-[850px]"
       >
         <Breadcrumbs />
         <router-view />
-      </Landmark>
+      </div>
     </div>
   </div>
 </template>
@@ -36,7 +36,6 @@ import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useEventListener } from '@vueuse/core'
 import { useEscapeStore } from '@aleksejdix/focus/src'
-import { Landmark } from '@/components/Layout'
 import { SkipLink } from '@aleksejdix/focus/src'
 import { Navigation } from '@/components/Navigation'
 
@@ -47,14 +46,6 @@ const escapeStore = useEscapeStore()
 useEventListener(document, 'keydown', (e) => {
   if (e.key === 'Escape') {
     escapeStore.destroy()
-  }
-})
-
-const routeWithModal = computed(() => {
-  if (history.state && history.state.backgroundView) {
-    return router.resolve(history.state.backgroundView)
-  } else {
-    return route
   }
 })
 </script>

@@ -12,8 +12,8 @@
 </template>
 
 <script setup lang="ts">
-import { DisclosureButton } from '@aleksejdix/disclosure/src'
-import { useFocusCycleItem } from '@aleksejdix/focus/src'
+import { DisclosureButton } from '@aleksejdix/disclosure'
+import { useFocusCycleItem } from '@aleksejdix/focus'
 
 const focus = useFocusCycleItem()
 </script>

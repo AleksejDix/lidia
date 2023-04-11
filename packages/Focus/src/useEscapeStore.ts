@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { useStack } from '@aleksejdix/datastructures'
+import { useStack } from '@aleksejdix/datastructures/src'
 
 const createStore = () => {
   const { push, pop, stack, size } = useStack()

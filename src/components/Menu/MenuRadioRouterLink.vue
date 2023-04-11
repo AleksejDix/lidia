@@ -66,8 +66,10 @@ if (!injected) {
   throw new Error('MenuRadioRouterLink must be inside MenuRadioGroup')
 }
 
-const { name } = injected
+const { name } = injected as any
 
 const to = computed(() => ({ ...route, query: { ...route.query, [name.value]: props.value } }))
-const isActive = computed(() => route.query[name.value] === to.value.query[name.value])
+const isActive = computed(
+  () => route.query[name.value] === to.value.query[name.value as keyof typeof to.value.query]
+)
 </script>

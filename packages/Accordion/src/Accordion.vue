@@ -7,7 +7,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useFocusCycle } from '@aleksejdix/focus/src'
+import { useFocusCycle } from '@aleksejdix/focus'
 import { provideAccordionContext } from './useAccordionContext'
 
 useFocusCycle()

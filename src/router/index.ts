@@ -43,11 +43,11 @@ const router = createRouter({
       name: 'alert',
       component: () => import('@/views/Alert.vue')
     },
-    {
-      path: '/carousel',
-      name: 'carousel',
-      component: () => import('@/views/Carousel.vue')
-    },
+    // {
+    //   path: '/carousel',
+    //   name: 'carousel',
+    //   component: () => import('@/views/Carousel.vue')
+    // },
     {
       path: '/feed',
       name: 'feed',

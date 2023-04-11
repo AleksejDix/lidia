@@ -44,6 +44,10 @@
       <Modal name="level2">
         <ModalCloseButton />
         <p>Level 2</p>
+        <Disclosure>
+          <DisclosureButton>Dislosure</DisclosureButton>
+          <DisclosurePanel>Dislosure Content</DisclosurePanel>
+        </Disclosure>
       </Modal>
     </div>
   </section>
@@ -52,6 +56,7 @@
 <script setup lang="ts">
 import { Modal, ModalButton, ModalCloseButton } from '@aleksejdix/modal/src'
 import { Button, ButtonGroup } from '@aleksejdix/button/src'
+import { Disclosure, DisclosurePanel, DisclosureButton } from '@aleksejdix/disclosure/src'
 </script>
 
 <style src="@aleksejdix/button/dist/style.css"></style>
