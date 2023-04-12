@@ -4,7 +4,7 @@
     <div
       v-if="isVisible"
       :ref="contentRef"
-      class="absolute top-0 left-0 d3 overflow-hidden border border-gray-200 shadow-md bg-white rounded"
+      class="absolute top-0 left-0 d3 max-h-[300px] overflow-hidden bg-blue-600 shadow border-2 white"
       :style="dropdownRect"
       v-bind="$attrs"
     >
@@ -16,17 +16,10 @@
 </template>
 
 <script setup lang="ts">
-import { inject } from 'vue'
-import { DropdownKey } from './symbols'
 import { FocusTrap } from '@aleksejdix/focus/src'
+import { useDropdownContext } from './use/useDropdownContext'
 
-const dropdown = inject(DropdownKey)
-
-if (!dropdown) {
-  throw new Error(`Could not resolve ${dropdown}`)
-}
-
-const { isVisible, contentRef, dropdownRect, close } = dropdown
+const { isVisible, contentRef, dropdownRect, close } = useDropdownContext()
 </script>
 
 <style>

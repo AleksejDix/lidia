@@ -49,9 +49,9 @@ const router = createRouter({
     //   component: () => import('@/views/Carousel.vue')
     // },
     {
-      path: '/feed',
-      name: 'feed',
-      component: () => import('@/views/Feed.vue')
+      path: '/selection',
+      name: 'selection',
+      component: () => import('@/views/Selection.vue')
     }
   ]
 })

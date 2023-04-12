@@ -6,7 +6,7 @@
       role="dialog"
       aria-modal="true"
       ref="modalRef"
-      class="absolute inset-0 grid place-items-center"
+      class="absolute inset-0 grid place-items-start md:pt-40 h-screen"
     >
       <div
         class="fixed inset-0 cursor-pointer bg-black bg-opacity-50"
@@ -14,7 +14,7 @@
         @click.stop="modalStore.destroy(name)"
       ></div>
       <div
-        class="relative min-w-[250px] bg-blue-600 border border-white p-4 shadow-xl max-w-md max-h-screen mx-auto flex flex-col"
+        class="relative max-w-[640px] bg-blue-600 shadow-xl w-full max-h-screen mx-auto flex flex-col"
       >
         <FocusTrap>
           <slot> </slot>

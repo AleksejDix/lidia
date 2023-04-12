@@ -4,16 +4,24 @@ import { provide, inject } from 'vue'
 
 interface AutocompleteContext {
   query: Ref<string>
+  modelValue: Ref<any>
   suggestions: Ref<any[]>
+  groups: Ref<any>
   hasSuggestions: ComputedRef<boolean>
   hasNoSuggestions: ComputedRef<boolean>
   uniqueKey: string
   select: (suggestion: any) => void
   selectFirst: () => void
   selectionIndex: Ref<number>
-  selectPrev: () => void
-  selectNext: () => void
+  hPrev: () => void
+  hNext: () => void
   ghost: ComputedRef<any>
+  isHighlighted: (index: number) => boolean
+  highlight: (index: number) => void
+  isLoading: Ref<boolean>
+  displayKey: any
+  sortKeys: any
+  groupKey: any
 }
 
 const key: InjectionKey<AutocompleteContext> = Symbol('AutocompleteContext')

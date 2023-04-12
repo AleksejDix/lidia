@@ -1,25 +1,34 @@
 <!-- Suggestions.vue -->
 <template>
-  <ul v-if="hasSuggestions">
-    <li
-      v-for="(suggestion, index) in suggestions"
-      :key="suggestion[uniqueKey as keyof typeof suggestion]"
-    >
-      <slot
-        name="suggestion"
-        v-bind="{
-          suggestion,
-          select
-        }"
-      >
-        <Suggestion
-          :class="{ 'bg-blue-300': index === selectionIndex }"
-          :suggestion="suggestion"
-          @select="select(suggestion)"
-        >
-          {{ suggestion.name }}
-        </Suggestion>
-      </slot>
+
+  <ul class="overflow-y-scroll max-h-[200px]">
+
+    <li v-for="group in groups" :key="group.letter">
+
+      <li role="group">
+        <h3 v-if="group.name" role="representation" class="uppercase px-4 text-xs sticky top-0 bg-blue-700">{{ group.name }}</h3>
+        <ul>
+          <li
+            role="option"
+            v-for="suggestion in group.children"
+            :key="suggestion[uniqueKey as keyof typeof suggestion]"
+          >          
+            <slot
+              v-bind="{
+                suggestion,
+                isHighlighted: isHighlighted(suggestion.index)
+              }"
+            >
+              <Suggestion
+                :suggestion="suggestion"
+                :isHighlighted="isHighlighted(suggestion.index)"
+                @mouseenter="highlight(suggestion.index)"
+              >
+              </Suggestion>
+            </slot>
+          </li>
+        </ul>
+      </li>
     </li>
   </ul>
 </template>
@@ -28,5 +37,5 @@
 import { useAutocompleteContext } from '../use/useAutocompleteContext'
 import { Suggestion } from '.'
 
-const { suggestions, hasSuggestions, uniqueKey, select, selectionIndex } = useAutocompleteContext()
+const { uniqueKey, isHighlighted, highlight, groups } = useAutocompleteContext()
 </script>

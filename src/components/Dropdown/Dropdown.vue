@@ -5,12 +5,12 @@
 </template>
 
 <script lang="ts" setup>
-import { provide, ref, computed, reactive, watchEffect } from 'vue'
-import { DropdownKey } from './symbols'
+import { ref, computed, reactive, watchEffect } from 'vue'
 import { v4 as uuidv4 } from 'uuid'
 import { useViewport } from '../Viewport'
 import { useElementSize, useElementBounding } from '@vueuse/core'
 import { useEscapeStore } from '@aleksejdix/focus/src'
+import { createDropdownContext } from './use/useDropdownContext'
 
 const button = ref()
 
@@ -156,7 +156,7 @@ const dropdownRect = computed(() => {
   }
 })
 
-provide(DropdownKey, {
+createDropdownContext({
   button,
   contentRef,
   isVisible,

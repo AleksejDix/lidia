@@ -32,7 +32,6 @@
 import { RouterView } from 'vue-router'
 import { Breadcrumbs } from './components/Breadcrumbs'
 import { useRoute } from 'vue-router'
-import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useEventListener } from '@vueuse/core'
 import { useEscapeStore } from '@aleksejdix/focus/src'

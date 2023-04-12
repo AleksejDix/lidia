@@ -1,37 +1,24 @@
-export async function searchSwissCantons(query = '') {
-  const swissCantons = [
-    { name: 'Aargau', abbreviation: 'AG' },
-    { name: 'Appenzell Ausserrhoden', abbreviation: 'AR' },
-    { name: 'Appenzell Innerrhoden', abbreviation: 'AI' },
-    { name: 'Basel-Landschaft', abbreviation: 'BL' },
-    { name: 'Basel-Stadt', abbreviation: 'BS' },
-    { name: 'Bern', abbreviation: 'BE' },
-    { name: 'Fribourg', abbreviation: 'FR' },
-    { name: 'Geneva', abbreviation: 'GE' },
-    { name: 'Glarus', abbreviation: 'GL' },
-    { name: 'Graubünden', abbreviation: 'GR' },
-    { name: 'Jura', abbreviation: 'JU' },
-    { name: 'Lucerne', abbreviation: 'LU' },
-    { name: 'Neuchâtel', abbreviation: 'NE' },
-    { name: 'Nidwalden', abbreviation: 'NW' },
-    { name: 'Obwalden', abbreviation: 'OW' },
-    { name: 'Schaffhausen', abbreviation: 'SH' },
-    { name: 'Schwyz', abbreviation: 'SZ' },
-    { name: 'Solothurn', abbreviation: 'SO' },
-    { name: 'St. Gallen', abbreviation: 'SG' },
-    { name: 'Thurgau', abbreviation: 'TG' },
-    { name: 'Ticino', abbreviation: 'TI' },
-    { name: 'Uri', abbreviation: 'UR' },
-    { name: 'Valais', abbreviation: 'VS' },
-    { name: 'Vaud', abbreviation: 'VD' },
-    { name: 'Zug', abbreviation: 'ZG' },
-    { name: 'Zürich', abbreviation: 'ZH' }
-  ]
+export const swissCantons = [
+  { id: 1, title: 'The Shawshank Redemption', genre: 'Drama' },
+  { id: 2, title: 'The Godfather', genre: 'Crime' },
+  { id: 3, title: 'Pulp Fiction', genre: 'Crime' },
+  { id: 4, title: 'The Dark Knight', genre: 'Action' },
+  { id: 5, title: 'Forrest Gump', genre: 'Drama' },
+  { id: 6, title: 'The Matrix', genre: 'Sci-Fi' },
+  { id: 7, title: 'Inception', genre: 'Sci-Fi' },
+  { id: 8, title: 'The Empire Strikes Back', genre: 'Sci-Fi' },
+  { id: 9, title: 'Fight Club', genre: 'Drama' },
+  { id: 10, title: 'The Lord of the Rings: The Fellowship of the Ring', genre: 'Fantasy' }
+]
 
+export async function searchSwissCantons(query = '', selectedCantons: number[] = []) {
   if (!query) {
     return []
   }
 
   const searchQuery = query.toLowerCase()
-  return swissCantons.filter((canton) => canton.name.toLowerCase().startsWith(searchQuery))
+  return swissCantons.filter(
+    (canton) =>
+      canton.title.toLowerCase().startsWith(searchQuery) && !selectedCantons.includes(canton.id)
+  )
 }

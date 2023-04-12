@@ -14,7 +14,4 @@ import { useFocusCycleItem } from '@aleksejdix/focus/src'
 import { onUpdated } from 'vue'
 
 const focus = useFocusCycleItem()
-onUpdated(() => {
-  console.log('up[date')
-})
 </script>

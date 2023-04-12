@@ -16,8 +16,8 @@ const props = defineProps({
     default: undefined
   },
   value: {
-    type: [Boolean, String],
-    required: true
+    type: [Boolean, String, Object],
+    required: false
   },
   trueValue: {
     type: [Boolean, String],

@@ -1,5 +1,6 @@
+<!-- Ghost.vue -->
 <template>
-  <div class="text-gray-400" v-show="!!ghost">
+  <div class="text-blue-300" v-show="!!ghost">
     <slot
       v-bind="{
         ghost
