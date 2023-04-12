@@ -65,17 +65,17 @@
           <label for="canton" class="block w-full">Select Canton</label>
           <Dropdown>
             <DropdownButton
-              :disabled="swissCantons.length === 0"
+              :disabled="people.length === 0"
               id="canton"
               class="bg-blue-800 text-white min-h-[46px] max-h-[46px] whitespace-nowrap truncate px-3 max-w-[200px] border-white text-left"
-              >{{ autocompleteStatic?.title ?? 'Search...' }}</DropdownButton
+              >{{ peopleSelection?.name ?? 'Search...' }}</DropdownButton
             >
             <DropdownContent>
               <Autocomplete
-                :options="swissCantons"
-                v-model="autocompleteStatic"
-                displayKey="title"
-                :sortKeys="['genre', 'title']"
+                :options="people"
+                v-model="peopleSelection"
+                displayKey="name"
+                :sortKeys="['name']"
               >
               </Autocomplete>
             </DropdownContent>
@@ -83,7 +83,7 @@
         </div>
       </div>
       <div>
-        <pre>{{ autocompleteStatic }}</pre>
+        <pre>{{ peopleSelection }}</pre>
       </div>
     </div>
 
@@ -203,10 +203,10 @@ import {
   Suggestions,
   Suggestion,
   Search
-} from '@/components/Autocomplete/src'
+} from '@aleksejdix/autocomplete/src'
 import { DropdownContent, Dropdown, DropdownButton } from '@/components/Dropdown'
-import { swissCantons, searchSwissCantons } from '@/components/Autocomplete/data'
-import { Modal, ModalButton, ModalCloseButton } from '@aleksejdix/modal/src'
+import { swissCantons, searchSwissCantons, people } from '@aleksejdix/autocomplete/data'
+import { Modal, ModalButton } from '@aleksejdix/modal/src'
 
 const options = ['banana', 'apple', 'cherry']
 
@@ -219,4 +219,6 @@ const multiSelect = ref<any[]>([])
 
 const autocompleteStatic = ref()
 const autocompleteStaticMulti = ref<any[]>([])
+
+const peopleSelection = ref()
 </script>

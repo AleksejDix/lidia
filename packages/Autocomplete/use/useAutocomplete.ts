@@ -1,8 +1,8 @@
 // useAutocomplete.ts
-import { watchEffect, type Ref } from 'vue'
 import { ref, computed, watch } from 'vue'
 import { createAutocompleteContext } from './useAutocompleteContext'
 import { watchDebounced } from '@vueuse/core'
+import { useTrie } from '@aleksejdix/datastructures/src'
 
 interface Autocomplete {
   autocomplete: Function | any[]
@@ -34,17 +34,19 @@ export function useAutocomplete(options: Autocomplete) {
         if (typeof options.autocomplete === 'function') {
           result = options.autocomplete(query.value)
         } else {
-          result = options.autocomplete.filter((option: any) =>
-            option[options.displayKey].toLowerCase().includes(query.value.toLowerCase())
-          )
+          const trie = useTrie({ items: options.autocomplete, searchKey: options.displayKey })
+          result = trie.search(query.value)
+          // result = options.autocomplete.filter((option: any) =>
+          //   option[options.displayKey].toLowerCase().includes(query.value.toLowerCase())
+          // )
         }
 
         suggestions.value = result instanceof Promise ? await result : result
 
         isLoading.value = false
-      }, 200)
+      }, 0)
     },
-    { debounce: 200, maxWait: 5000, immediate: true }
+    { debounce: 0, maxWait: 5000, immediate: true }
   )
 
   watch(query, () => {

@@ -1,7 +1,7 @@
 <!-- Suggestions.vue -->
 <template>
 
-  <ul class="overflow-y-scroll max-h-[200px]">
+  <ul class="overflow-y-auto max-h-[200px]">
 
     <li v-for="group in groups" :key="group.letter">
 
@@ -34,6 +34,7 @@
 </template>
 
 <script lang="ts" setup>
+import { useVirtualList } from '@vueuse/core'
 import { useAutocompleteContext } from '../use/useAutocompleteContext'
 import { Suggestion } from '.'
 

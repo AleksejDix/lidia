@@ -11,8 +11,7 @@
 <script lang="ts" setup>
 import { computed, type PropType } from 'vue'
 import { Search, Suggestions } from '.'
-import { useAutocomplete } from '../use/useAutocomplete'
-import { tryDropdownContext } from '@/components/Dropdown/use/useDropdownContext'
+import { useAutocomplete, useAutocomleteModel } from './../use'
 
 const props = defineProps({
   modelValue: {
@@ -42,36 +41,9 @@ const props = defineProps({
     default: undefined
   }
 })
-
 const emit = defineEmits(['update:modelValue'])
 
-const dropdown = tryDropdownContext()
-
-function select(suggestion: any) {
-  const list = Array.isArray(props.modelValue) ? props.modelValue : [props.modelValue]
-
-  const isInside = list.find(
-    (selection) => selection?.[props.uniqueKey] === suggestion?.[props.uniqueKey]
-  )
-
-  if (Array.isArray(props.modelValue)) {
-    if (isInside) {
-      emit(
-        'update:modelValue',
-        props.modelValue.filter(
-          (selection) => selection[props.uniqueKey] !== suggestion[props.uniqueKey]
-        )
-      )
-      return
-    }
-    // add to the model on selection
-    emit('update:modelValue', [...props.modelValue, suggestion])
-    return
-  }
-
-  emit('update:modelValue', isInside ? undefined : suggestion)
-  dropdown?.close()
-}
+const { select } = useAutocomleteModel(props, emit)
 
 useAutocomplete({
   autocomplete: props.options,

@@ -28,7 +28,10 @@
         </svg>
       </div>
       <div>
-        {{ suggestion[displayKey] }}
+        <template v-for="(part, index) in highlightedText" :key="index">
+          <span v-if="part.type === 'text'">{{ part.text }}</span>
+          <mark v-else-if="part.type === 'highlight'">{{ part.text }}</mark>
+        </template>
       </div>
     </slot>
   </button>
@@ -49,7 +52,7 @@ const props = defineProps({
   }
 })
 
-const { select, modelValue, uniqueKey, hNext, hPrev, displayKey } = useAutocompleteContext()
+const { select, modelValue, uniqueKey, hNext, hPrev, displayKey, query } = useAutocompleteContext()
 
 const el = ref()
 
@@ -72,6 +75,23 @@ const isSelected = computed(() => {
     modelValue.value &&
     modelValue.value[uniqueKey as keyof typeof modelValue.value] === props.suggestion[uniqueKey]
   )
+})
+
+const highlightedText = computed(() => {
+  const queryLowerCase = query.value.toLowerCase()
+  const textLowerCase = props.suggestion[displayKey].toLowerCase()
+  const startIndex = textLowerCase.indexOf(queryLowerCase)
+
+  if (startIndex === -1) {
+    return [{ type: 'text', text: props.suggestion[displayKey] }]
+  }
+
+  const endIndex = startIndex + query.value.length
+  return [
+    { type: 'text', text: props.suggestion[displayKey].substring(0, startIndex) },
+    { type: 'highlight', text: props.suggestion[displayKey].substring(startIndex, endIndex) },
+    { type: 'text', text: props.suggestion[displayKey].substring(endIndex) }
+  ]
 })
 </script>
 

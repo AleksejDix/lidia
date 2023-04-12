@@ -35,6 +35,7 @@
     "@aleksejdix/switch": "^0.1.0",
     "@aleksejdix/tabs": "^0.1.0",
     "@aleksejdix/tooltip": "^0.1.0",
+    "@aleksejdix/autocomplete": "^0.1.0",
     "@vueuse/core": "^9.13.0",
     "pinia": "^2.0.32",
     "uuid": "^9.0.0",
