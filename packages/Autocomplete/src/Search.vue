@@ -4,7 +4,7 @@
     <LoadingIndicator></LoadingIndicator>
     <slot></slot>
     <Ghost class="absolute left-0 h-[50px] leading-[50px] pl-[44px]">
-      <template #default="{ ghost }"> {{ ghost?.[displayKey] }} </template>
+      <template #default="{ ghost }"> {{ ghost?.[searchKey] }} </template>
     </Ghost>
     <input
       type="search"
@@ -22,5 +22,5 @@
 import { useAutocompleteContext } from '../use/useAutocompleteContext'
 import { Ghost, LoadingIndicator } from '.'
 
-const { query, selectFirst, hPrev, hNext, isLoading, displayKey } = useAutocompleteContext()
+const { query, selectFirst, hPrev, hNext, isLoading, searchKey } = useAutocompleteContext()
 </script>

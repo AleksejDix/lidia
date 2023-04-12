@@ -26,7 +26,7 @@ const props = defineProps({
     type: String,
     default: 'id'
   },
-  displayKey: {
+  searchKey: {
     type: String,
     required: true
   },
@@ -50,7 +50,7 @@ useAutocomplete({
   uniqueKey: props.uniqueKey,
   modelValue: computed(() => props.modelValue),
   select,
-  displayKey: props.displayKey,
+  searchKey: props.searchKey,
   sortKeys: props.sortKeys,
   groupKey: props.groupKey
 })

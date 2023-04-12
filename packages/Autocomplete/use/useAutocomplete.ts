@@ -9,7 +9,7 @@ interface Autocomplete {
   uniqueKey: string
   select: (suggestion: any) => void
   modelValue: any
-  displayKey: string
+  searchKey: string
   sortKeys: string[]
   groupKey: string | undefined
 }
@@ -34,10 +34,10 @@ export function useAutocomplete(options: Autocomplete) {
         if (typeof options.autocomplete === 'function') {
           result = options.autocomplete(query.value)
         } else {
-          const trie = useTrie({ items: options.autocomplete, searchKey: options.displayKey })
+          const trie = useTrie({ items: options.autocomplete, searchKey: options.searchKey })
           result = trie.search(query.value)
           // result = options.autocomplete.filter((option: any) =>
-          //   option[options.displayKey].toLowerCase().includes(query.value.toLowerCase())
+          //   option[options.searchKey].toLowerCase().includes(query.value.toLowerCase())
           // )
         }
 
@@ -115,7 +115,7 @@ export function useAutocomplete(options: Autocomplete) {
     let globalIndex = 0
     const groupedCantonsArray = Object.entries(groupedCantons).map(([name, value]) => {
       const children = value
-        .sort((a, b) => a[options.displayKey].localeCompare(b[options.displayKey]))
+        .sort((a, b) => a[options.searchKey].localeCompare(b[options.searchKey]))
         .map((canton) => {
           const indexedCanton = { ...canton, index: globalIndex }
           globalIndex += 1
@@ -152,7 +152,7 @@ export function useAutocomplete(options: Autocomplete) {
     isHighlighted,
     modelValue: options.modelValue,
     isLoading,
-    displayKey: options.displayKey,
+    searchKey: options.searchKey,
     sortKeys: options.sortKeys,
     groupKey: options.groupKey
   })

@@ -52,7 +52,7 @@ const props = defineProps({
   }
 })
 
-const { select, modelValue, uniqueKey, hNext, hPrev, displayKey, query } = useAutocompleteContext()
+const { select, modelValue, uniqueKey, hNext, hPrev, searchKey, query } = useAutocompleteContext()
 
 const el = ref()
 
@@ -79,18 +79,18 @@ const isSelected = computed(() => {
 
 const highlightedText = computed(() => {
   const queryLowerCase = query.value.toLowerCase()
-  const textLowerCase = props.suggestion[displayKey].toLowerCase()
+  const textLowerCase = props.suggestion[searchKey].toLowerCase()
   const startIndex = textLowerCase.indexOf(queryLowerCase)
 
   if (startIndex === -1) {
-    return [{ type: 'text', text: props.suggestion[displayKey] }]
+    return [{ type: 'text', text: props.suggestion[searchKey] }]
   }
 
   const endIndex = startIndex + query.value.length
   return [
-    { type: 'text', text: props.suggestion[displayKey].substring(0, startIndex) },
-    { type: 'highlight', text: props.suggestion[displayKey].substring(startIndex, endIndex) },
-    { type: 'text', text: props.suggestion[displayKey].substring(endIndex) }
+    { type: 'text', text: props.suggestion[searchKey].substring(0, startIndex) },
+    { type: 'highlight', text: props.suggestion[searchKey].substring(startIndex, endIndex) },
+    { type: 'text', text: props.suggestion[searchKey].substring(endIndex) }
   ]
 })
 </script>

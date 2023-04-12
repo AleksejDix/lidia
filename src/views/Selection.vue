@@ -74,7 +74,7 @@
               <Autocomplete
                 :options="people"
                 v-model="peopleSelection"
-                displayKey="name"
+                searchKey="name"
                 :sortKeys="['name']"
               >
               </Autocomplete>
@@ -100,7 +100,7 @@
               >{{ autocompleteStatic?.title ?? 'Search...' }}</DropdownButton
             >
             <DropdownContent>
-              <Autocomplete :options="swissCantons" v-model="autocompleteStatic" displayKey="title">
+              <Autocomplete :options="swissCantons" v-model="autocompleteStatic" searchKey="title">
                 <Suggestions>
                   <template #default="props">
                     <Suggestion v-bind="props">{{ props.suggestion.title }}</Suggestion>
@@ -138,7 +138,7 @@
               <Autocomplete
                 :options="swissCantons"
                 v-model="autocompleteStaticMulti"
-                displayKey="title"
+                searchKey="title"
               >
               </Autocomplete>
             </DropdownContent>
@@ -154,7 +154,7 @@
     <Dropdown>
       <DropdownButton id="canton">{{ autocompleteStatic ?? 'please select' }}</DropdownButton>
       <DropdownContent>
-        <Autocomplete :options="searchSwissCantons" v-model="autocompleteStatic" displayKey="title">
+        <Autocomplete :options="searchSwissCantons" v-model="autocompleteStatic" searchKey="title">
         </Autocomplete>
       </DropdownContent>
     </Dropdown>
@@ -169,7 +169,7 @@
         <Autocomplete
           :options="searchSwissCantons"
           v-model="autocompleteStaticMulti"
-          displayKey="title"
+          searchKey="title"
         >
           <Search></Search>
           <Suggestions></Suggestions>
@@ -184,7 +184,7 @@
       <Autocomplete
         :options="searchSwissCantons"
         v-model="autocompleteStaticMulti"
-        displayKey="title"
+        searchKey="title"
         groupKey="genre"
         :sortKeys="['genre', 'title']"
       >

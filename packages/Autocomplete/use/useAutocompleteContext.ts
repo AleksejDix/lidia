@@ -19,7 +19,7 @@ interface AutocompleteContext {
   isHighlighted: (index: number) => boolean
   highlight: (index: number) => void
   isLoading: Ref<boolean>
-  displayKey: any
+  searchKey: any
   sortKeys: any
   groupKey: any
 }
