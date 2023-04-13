@@ -77,6 +77,13 @@
                 searchKey="name"
                 :sortKeys="['name']"
               >
+                <SearchBox>
+                  <LoadingIndicator></LoadingIndicator>
+                  <SearchInput></SearchInput>
+                  <Ghost></Ghost>
+                </SearchBox>
+                <Suggestions> </Suggestions>
+                <NoSuggestions></NoSuggestions>
               </Autocomplete>
             </DropdownContent>
           </Dropdown>
@@ -101,6 +108,11 @@
             >
             <DropdownContent>
               <Autocomplete :options="swissCantons" v-model="autocompleteStatic" searchKey="title">
+                <SearchBox>
+                  <LoadingIndicator></LoadingIndicator>
+                  <SearchInput></SearchInput>
+                  <Ghost></Ghost>
+                </SearchBox>
                 <Suggestions>
                   <template #default="props">
                     <Suggestion v-bind="props">{{ props.suggestion.title }}</Suggestion>
@@ -140,6 +152,13 @@
                 v-model="autocompleteStaticMulti"
                 searchKey="title"
               >
+                <SearchBox>
+                  <LoadingIndicator></LoadingIndicator>
+                  <SearchInput></SearchInput>
+                  <Ghost></Ghost>
+                </SearchBox>
+                <Suggestions></Suggestions>
+                <NoSuggestions></NoSuggestions>
               </Autocomplete>
             </DropdownContent>
           </Dropdown>
@@ -155,6 +174,13 @@
       <DropdownButton id="canton">{{ autocompleteStatic ?? 'please select' }}</DropdownButton>
       <DropdownContent>
         <Autocomplete :options="searchSwissCantons" v-model="autocompleteStatic" searchKey="title">
+          <SearchBox>
+            <LoadingIndicator></LoadingIndicator>
+            <SearchInput></SearchInput>
+            <Ghost></Ghost>
+          </SearchBox>
+          <Suggestions></Suggestions>
+          <NoSuggestions></NoSuggestions>
         </Autocomplete>
       </DropdownContent>
     </Dropdown>
@@ -171,7 +197,11 @@
           v-model="autocompleteStaticMulti"
           searchKey="title"
         >
-          <Search></Search>
+          <SearchBox>
+            <LoadingIndicator></LoadingIndicator>
+            <SearchInput></SearchInput>
+            <Ghost></Ghost>
+          </SearchBox>
           <Suggestions></Suggestions>
           <NoSuggestions></NoSuggestions>
         </Autocomplete>
@@ -188,6 +218,13 @@
         groupKey="genre"
         :sortKeys="['genre', 'title']"
       >
+        <SearchBox>
+          <LoadingIndicator></LoadingIndicator>
+          <SearchInput></SearchInput>
+          <Ghost></Ghost>
+        </SearchBox>
+        <Suggestions></Suggestions>
+        <NoSuggestions></NoSuggestions>
       </Autocomplete>
     </Modal>
   </div>
@@ -202,7 +239,10 @@ import {
   NoSuggestions,
   Suggestions,
   Suggestion,
-  Search
+  SearchBox,
+  SearchInput,
+  LoadingIndicator,
+  Ghost
 } from '@aleksejdix/autocomplete/src'
 import { DropdownContent, Dropdown, DropdownButton } from '@/components/Dropdown'
 import { swissCantons, searchSwissCantons, people } from '@aleksejdix/autocomplete/data'

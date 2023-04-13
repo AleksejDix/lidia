@@ -1,16 +1,10 @@
 <!-- Autocomplete.vue -->
 <template>
-  <div class="autocomplete text-black h-full">
-    <slot>
-      <Search />
-      <Suggestions></Suggestions>
-    </slot>
-  </div>
+  <slot></slot>
 </template>
 
 <script lang="ts" setup>
 import { computed, type PropType } from 'vue'
-import { Search, Suggestions } from '.'
 import { useAutocomplete, useAutocomleteModel } from './../use'
 
 const props = defineProps({

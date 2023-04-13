@@ -1,18 +1,18 @@
 <!-- Ghost.vue -->
 <template>
-  <div class="text-blue-300" v-show="!!ghost">
+  <div class="text-opacity-50" v-show="!!ghost">
     <slot
       v-bind="{
-        ghost
+        ghost,
+        searchKey
       }"
     >
-      {{ ghost }}
+      {{ ghost?.[searchKey] }}
     </slot>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { useAutocompleteContext } from '../use/useAutocompleteContext'
-
-const { ghost } = useAutocompleteContext()
+const { ghost, searchKey } = useAutocompleteContext()
 </script>
