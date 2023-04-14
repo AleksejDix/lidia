@@ -9,7 +9,7 @@
         tabindex="0"
         class="text-left border-2 border-transparent pr-2"
       >
-        <slot :name="`td-${column.key}`" :item="item">{{ item[column.key] }}</slot>
+        <slot :name="column.key" :item="item">{{ item[column.key] }}</slot>
       </td>
       <td class="text-left border-2 border-transparent px-2">
         <!-- Add this cell -->

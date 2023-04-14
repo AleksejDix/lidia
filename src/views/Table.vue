@@ -15,6 +15,9 @@
       <TableCaption>User Table</TableCaption>
       <TableHeader></TableHeader>
       <TableBody>
+        <template #avatar="{ item }">
+          <img :src="item.avatar" />
+        </template>
         <template #actions="{ item }">
           <ModalButton :name="item._id">edit</ModalButton>
           <Modal :name="item._id">
@@ -69,16 +72,20 @@ users.value = Array.from({ length: 100 }).map((_, i) => createRandomUser())
 const columns = computed(() => {
   return [
     {
-      key: 'sex',
-      label: 'sex'
-    },
-    {
       key: 'firstName',
       label: 'firstName'
     },
     {
       key: 'lastName',
       label: 'lastName'
+    },
+    {
+      key: 'subscriptionTier',
+      label: 'subscriptionTier'
+    },
+    {
+      key: 'avatar',
+      label: 'avatar'
     }
   ]
 })

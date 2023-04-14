@@ -1,10 +1,11 @@
 <template>
-  <label :for="label">
-    <slot>{{ label }}</slot>
+  <label :for="inputId" class="font-bold block">
+    <slot>Label</slot>
   </label>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-const label = ref('label')
+import { useFieldContext } from '../use'
+
+const { inputId } = useFieldContext()
 </script>

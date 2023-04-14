@@ -2,7 +2,10 @@ import type { InjectionKey, Ref } from 'vue'
 import { provide, inject } from 'vue'
 
 export interface FieldContext {
-  data: any
+  name: Ref<string>
+  value: Ref<any>
+  helpId: Ref<string | undefined>
+  inputId: Ref<string | undefined>
 }
 
 export const key: InjectionKey<FieldContext> = Symbol('Field')

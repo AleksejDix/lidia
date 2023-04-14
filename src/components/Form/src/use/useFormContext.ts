@@ -2,7 +2,7 @@ import type { InjectionKey } from 'vue'
 import { provide, inject } from 'vue'
 
 export interface FormContext {
-  data: any
+  fields: Record<string, any>
 }
 
 export const key: InjectionKey<FormContext> = Symbol('Form')

@@ -1,5 +1,7 @@
 <template>
-  <form @submit.prevent="submit">
+  <form class="border p-8 space-y-4" @submit.prevent="submit">
+    <pre>{{ fields }}</pre>
+
     <slot></slot>
     <button type="submit">send</button>
   </form>
@@ -9,15 +11,22 @@
 import { reactive } from 'vue'
 import { provideFormContext } from '../use/useFormContext'
 
+const props = defineProps({
+  modelValue: {
+    type: Object,
+    default: () => ({})
+  }
+})
+
 const emit = defineEmits(['submit'])
 
-const data = reactive({})
+const fields = reactive<Record<string, any>>(props.modelValue)
 
 function submit() {
-  emit('submit', data)
+  emit('submit', fields)
 }
 
 provideFormContext({
-  data
+  fields
 })
 </script>
