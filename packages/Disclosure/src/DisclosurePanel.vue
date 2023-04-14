@@ -13,6 +13,5 @@
 
 <script lang="ts" setup>
 import { useDisclosureContext } from './useDisclosureContext'
-
 const { isOpen, id } = useDisclosureContext()
 </script>

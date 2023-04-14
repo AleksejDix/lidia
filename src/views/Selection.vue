@@ -77,13 +77,7 @@
                 searchKey="name"
                 :sortKeys="['name']"
               >
-                <SearchBox>
-                  <LoadingIndicator></LoadingIndicator>
-                  <SearchInput></SearchInput>
-                  <Ghost></Ghost>
-                </SearchBox>
-                <Suggestions> </Suggestions>
-                <NoSuggestions></NoSuggestions>
+                <Suggestions></Suggestions>
               </Autocomplete>
             </DropdownContent>
           </Dropdown>

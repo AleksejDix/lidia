@@ -52,6 +52,18 @@ const router = createRouter({
       path: '/selection',
       name: 'selection',
       component: () => import('@/views/Selection.vue')
+    },
+    {
+      path: '/table',
+      name: 'table',
+      component: () => import('@/views/Table.vue'),
+      props: (route) => ({
+        search: route.query.search || '',
+        page: parseInt((route.query.page as string) || '1', 10),
+        perPage: parseInt((route.query.perPage as string) || '10', 10),
+        searching: Array.isArray(route.query.searching) ? route.query.searching : [],
+        filtering: Array.isArray(route.query.filtering) ? route.query.filtering : []
+      })
     }
   ]
 })

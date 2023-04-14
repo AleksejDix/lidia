@@ -1,5 +1,6 @@
-import { defineConfig } from 'vite'
+import { defineConfig, type PluginOption } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import { visualizer } from 'rollup-plugin-visualizer'
 
 export default defineConfig({
   plugins: [vue()],
@@ -10,12 +11,18 @@ export default defineConfig({
       fileName: 'disclosure'
     },
     rollupOptions: {
-      external: ['vue', 'pinia', '@aleksejdix/focus', '@aleksejdix/accordion'],
+      external: ['vue', 'pinia', '@aleksejdix/focus', 'uuid', '@aleksejdix/accordion'],
       output: {
         globals: {
           vue: 'Vue'
         }
-      }
+      },
+      plugins: [
+        visualizer({
+          filename: 'report.html',
+          open: true
+        }) as PluginOption
+      ]
     }
   }
 })

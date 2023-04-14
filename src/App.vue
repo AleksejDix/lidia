@@ -1,33 +1,31 @@
 <template>
-  <Fly>
-    <div class="flex flex-col h-full">
-      <SkipLink target="main-content">Skip to main content</SkipLink>
-      <SkipLink target="navigation">Skip to navigation</SkipLink>
-      <SkipLink target="footer">Skip to footer</SkipLink>
-      <!-- 
+  <div class="flex flex-col h-full">
+    <SkipLink target="main-content">Skip to main content</SkipLink>
+    <SkipLink target="navigation">Skip to navigation</SkipLink>
+    <SkipLink target="footer">Skip to footer</SkipLink>
+    <!-- 
         <div tag="header" id="header" class="border-b-2 sticky top-0 min-h-[56px] p-4">
           <h1>Your Dashboard Title</h1>
         </div> -->
-      <div class="flex h-full grow mx-auto max-w-[1050px] w-full">
-        <div tag="aside" id="navigation" class="w-[200px] p-[25px]">
-          <Navigation></Navigation>
-          <nav>
-            <router-link class="clickable" to="/">Home</router-link>
-            <span> | </span>
-          </nav>
-        </div>
+    <div class="flex h-full grow mx-auto max-w-[1050px] w-full">
+      <div tag="aside" id="navigation" class="w-[200px] p-[25px]">
+        <Navigation></Navigation>
+        <nav>
+          <router-link class="clickable" to="/">Home</router-link>
+          <span> | </span>
+        </nav>
+      </div>
 
-        <div
-          tag="main"
-          id="main-content"
-          class="mx-auto grow border-white px-[100px] py-[40px] max-w-[850px]"
-        >
-          <Breadcrumbs />
-          <router-view />
-        </div>
+      <div
+        tag="main"
+        id="main-content"
+        class="mx-auto grow border-white px-[100px] py-[40px] max-w-[850px]"
+      >
+        <Breadcrumbs />
+        <router-view />
       </div>
     </div>
-  </Fly>
+  </div>
 </template>
 
 <script setup lang="ts">

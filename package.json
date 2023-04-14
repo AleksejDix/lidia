@@ -24,6 +24,7 @@
   ],
   "dependencies": {
     "@aleksejdix/accordion": "^0.1.0",
+    "@aleksejdix/autocomplete": "^0.1.0",
     "@aleksejdix/button": "^0.2.0",
     "@aleksejdix/checkbox": "^0.1.0",
     "@aleksejdix/datastructures": "^0.1.0",
@@ -35,7 +36,6 @@
     "@aleksejdix/switch": "^0.1.0",
     "@aleksejdix/tabs": "^0.1.0",
     "@aleksejdix/tooltip": "^0.1.0",
-    "@aleksejdix/autocomplete": "^0.1.0",
     "@vueuse/core": "^9.13.0",
     "pinia": "^2.0.32",
     "uuid": "^9.0.0",
@@ -44,6 +44,7 @@
     "vue-router-mock": "^0.2.0"
   },
   "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
     "@playwright/test": "^1.31.1",
     "@rushstack/eslint-patch": "^1.2.0",
     "@tailwindcss/forms": "^0.5.3",

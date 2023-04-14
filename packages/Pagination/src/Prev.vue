@@ -20,10 +20,7 @@
     </slot>
     <slot>Prev</slot>
   </router-link>
-  <span
-    v-else
-    class="border border-white shadow inline-flex items-center min-h-[40px] pl-2 pr-4 py-2 bg-gray-100 text-gray-400 cursor-not-allowed"
-  >
+  <span v-else class="h-[40px] flex items-center border-2 border-white pl-[10px] pr-[20px]">
     <slot name="icon">
       <svg
         xmlns="http://www.w3.org/2000/svg"

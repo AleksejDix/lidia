@@ -6,7 +6,7 @@
     :aria-current="pageNumber === currentPage ? 'page' : undefined"
     class="border-2 border-white inline-block h-[40px] min-w-[40px] leading-[36px] text-center text-16"
     :class="{
-      'text-blue-600 bg-white': pageNumber === currentPage
+      'text-blue-600 bg-yellow-400': pageNumber === currentPage
     }"
   >
     {{ pageNumber }}

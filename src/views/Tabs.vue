@@ -23,8 +23,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { Tabs, TabList, Tab, TabPanel } from '@aleksejdix/tabs/src'
-import { Switch } from '@aleksejdix/switch/src'
-import { Checkbox } from '@aleksejdix/checkbox/src'
 
 const name = ref()
 </script>
