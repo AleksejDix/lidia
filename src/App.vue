@@ -51,16 +51,16 @@ useEventListener(document, 'keydown', (e) => {
 
 <style>
 :root {
-  @apply bg-blue-600;
-  --blue-600: #2563eb;
-  --white-opacity-20: rgba(255, 255, 255, 0.2);
-  --white-opacity-10: rgba(255, 255, 255, 0.1);
+  @apply bg-gray-800;
+  --blue-600: rgb(31, 41, 55);
+  --white-opacity-20: rgba(255, 255, 255, 0.1);
+  --white-opacity-10: rgba(255, 255, 255, 0.05);
   --accent-color: hotpink;
   color: white;
   background-color: var(--blue-600);
   background-repeat: repeat;
 
-  background-position: top center;
+  background-position: top left;
 }
 
 html,
@@ -85,7 +85,7 @@ html {
       transparent 1px
     );
   background-size: 10px 10px;
-  background-position: top center;
+  background-position: top left;
   background-attachment: scroll;
 }
 
@@ -105,7 +105,7 @@ body {
       transparent 1px
     );
   background-size: 50px 50px;
-  background-position: top center;
+  background-position: top left;
   background-attachment: scroll;
 }
 </style>

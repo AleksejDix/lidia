@@ -1,9 +1,9 @@
 <!-- TableHeader.vue -->
 <template>
   <thead>
-    <tr class="h-[50px]">
+    <tr class="h-[50px] uppercase text-xs text-white">
       <th
-        class="focus:outline-none text-left"
+        class="focus:outline-none text-left pr-2"
         v-for="column in columns"
         :key="column.key"
         scope="col"

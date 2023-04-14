@@ -1,9 +1,6 @@
 <!-- Table.vue -->
 <template>
-  <table
-    class="table-auto w-full border-separate border-2 border-white border-opacity-50"
-    :caption-id="captionId"
-  >
+  <table class="table-auto w-full border-2 border-transparent" :caption-id="captionId">
     <slot></slot>
   </table>
 </template>
