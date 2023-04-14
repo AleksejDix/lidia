@@ -1,3 +1,4 @@
+<!-- FieldInput -->
 <template>
   <input
     class="bg-black text-white border-white border-2"
@@ -35,7 +36,7 @@ const model: ComputedRef = computed({
       value.value = payload
       emit('update:modelValue', value.value)
     } else if (attrs.type === 'text') {
-      value.value = payload || undefined
+      value.value = payload || null
       emit('update:modelValue', value.value)
     } else {
     }

@@ -15,13 +15,26 @@
         </div>
       </div>
     </Field>
+
+    <div class="flex justify-end gap-[2px]">
+      <FormReset></FormReset>
+      <FormSubmit></FormSubmit>
+    </div>
   </Form>
 </template>
 
 <script lang="ts" setup>
 import { reactive } from 'vue'
 
-import { Form, Field, FieldLabel, FieldHelp, FieldInput } from '@/components/Form/src'
+import {
+  Form,
+  Field,
+  FieldLabel,
+  FieldHelp,
+  FieldInput,
+  FormSubmit,
+  FormReset
+} from '@/components/Form/src'
 
 const form = reactive({
   name: 'Aleksej',

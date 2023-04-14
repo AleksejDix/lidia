@@ -1,3 +1,4 @@
+<!-- Field.vue -->
 <template>
   <div class="border p-8">
     <slot></slot>
@@ -29,7 +30,7 @@ const value = computed({
     return fields[name.value]
   },
   set(value) {
-    fields[name.value] = value
+    fields.value[name.value] = value
   }
 })
 

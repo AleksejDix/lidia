@@ -1,14 +1,17 @@
+<!-- Form.vue -->
 <template>
   <form class="border p-8 space-y-4" @submit.prevent="submit">
-    <pre>{{ fields }}</pre>
+    <pre>{{ initialFields }}</pre>
+
+    <hr />
+    {{ fields }}
 
     <slot></slot>
-    <button type="submit">send</button>
   </form>
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue'
+import { onMounted, reactive, ref } from 'vue'
 import { provideFormContext } from '../use/useFormContext'
 
 const props = defineProps({
@@ -18,15 +21,26 @@ const props = defineProps({
   }
 })
 
+const initialFields = ref({})
+initialFields.value = props.modelValue
+
+const fields = ref({})
+onMounted(() => {
+  fields.value = { ...initialFields.value }
+})
+
 const emit = defineEmits(['submit'])
 
-const fields = reactive<Record<string, any>>(props.modelValue)
-
 function submit() {
-  emit('submit', fields)
+  emit('submit', fields.value)
+}
+
+const reset = () => {
+  fields.value = { ...initialFields.value }
 }
 
 provideFormContext({
-  fields
+  fields,
+  reset
 })
 </script>

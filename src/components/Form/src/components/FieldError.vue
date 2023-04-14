@@ -1,5 +1,6 @@
+<!-- FieldError.vue -->
 <template>
-  <div class="text-red-600">
+  <div class="text-red-600" aria-live="assertive">
     <slot>{{ error }}</slot>
   </div>
 </template>

@@ -1,3 +1,4 @@
+<!-- FieldLabel.vue -->
 <template>
   <label :for="inputId" class="font-bold block">
     <slot>Label</slot>
