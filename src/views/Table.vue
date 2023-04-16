@@ -15,6 +15,9 @@
       <TableCaption>User Table</TableCaption>
       <TableHeader></TableHeader>
       <TableBody>
+        <template #birthday="{ item }">
+          {{ formatter.format(item.birthday) }}
+        </template>
         <template #avatar="{ item }">
           <img :src="item.avatar" />
         </template>
@@ -59,11 +62,10 @@ import { faker } from '@faker-js/faker'
 function createRandomUser() {
   return {
     _id: faker.datatype.uuid(),
-    avatar: faker.image.avatar(),
-    birthday: faker.date.birthdate(),
-    email: faker.internet.email(),
     firstName: faker.name.firstName(),
     lastName: faker.name.lastName(),
+    birthday: faker.date.birthdate(),
+    email: faker.internet.email(),
     sex: faker.name.sexType(),
     subscriptionTier: faker.helpers.arrayElement(['free', 'basic', 'business'])
   }
@@ -72,6 +74,8 @@ function createRandomUser() {
 const users = ref<any[]>([])
 
 users.value = Array.from({ length: 10 }).map((_, i) => createRandomUser())
+
+const formatter = new Intl.DateTimeFormat('de-DE')
 
 const columns = computed(() => {
   return [
@@ -82,6 +86,14 @@ const columns = computed(() => {
     {
       key: 'lastName',
       label: 'lastName'
+    },
+    {
+      key: 'birthday',
+      label: 'birthday'
+    },
+    {
+      key: 'sex',
+      label: 'sex'
     }
   ]
 })
