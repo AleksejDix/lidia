@@ -1,5 +1,11 @@
 <template>
-  <td :class="{ border: isSelected(row) }">
+  <td
+    :class="{ border: isSelected(row) }"
+    @keydown.prevent.shift.up="selectPrev"
+    @keydown.prevent.shift.down="selectNext"
+    tabindex="0"
+    class="focus:bg-red-400"
+  >
     <input
       type="checkbox"
       v-model="selected"
@@ -11,7 +17,7 @@
 
 <script setup lang="ts">
 import { useTableContext } from '../use'
-const { selected, isSelected, shiftSelect } = useTableContext()
+const { selected, isSelected, shiftSelect, selectNext, selectPrev } = useTableContext()
 
 const props = defineProps({
   row: {

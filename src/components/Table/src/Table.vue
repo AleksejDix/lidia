@@ -38,6 +38,7 @@ const handleKeydown = (event: KeyboardEvent) => {
     if (key === 'ArrowUp' && row.previousElementSibling) {
       ;(row.previousElementSibling.children[cell.cellIndex] as HTMLElement).focus()
     } else if (key === 'ArrowDown' && row.nextElementSibling) {
+      console.log('hi')
       ;(row.nextElementSibling.children[cell.cellIndex] as HTMLElement).focus()
     } else if (key === 'ArrowLeft' && cell.previousElementSibling) {
       ;(cell.previousElementSibling as HTMLElement).focus()
@@ -89,7 +90,10 @@ const {
   deselectAll,
   isSelected,
   selectionState,
-  shiftSelect
+  shiftSelect,
+  selectByIndex,
+  selectNext,
+  selectPrev
 } = useArraySelection(_data)
 
 createTableContext({
@@ -105,6 +109,9 @@ createTableContext({
   deselectAll,
   isSelected,
   selectionState,
-  shiftSelect
+  shiftSelect,
+  selectByIndex,
+  selectNext,
+  selectPrev
 })
 </script>

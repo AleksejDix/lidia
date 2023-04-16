@@ -5,25 +5,15 @@ export function useArraySelection<T>(initial: Ref<T[]>) {
   const selected = ref<T[]>([]) as Ref<T[]>
   const shiftClick = ref<number>(-1)
 
-  watch(
-    selected,
-    (newValue, oldValue) => {
-      const addedItems = newValue.filter((item) => !oldValue.includes(item))
-
-      // Find all removed items
-      const removedItems = oldValue.filter((item) => !newValue.includes(item))
-
-      // Update the lastSelectedIndex with the index of the last added or removed item
-      if (addedItems.length > 0) {
-        shiftClick.value = items.value.indexOf(addedItems[addedItems.length - 1])
-      } else if (removedItems.length > 0) {
-        shiftClick.value = items.value.indexOf(removedItems[removedItems.length - 1])
-      }
-    },
-    { deep: true }
-  )
-
-  watch(shiftClick, (n, o) => console.log(n, o))
+  watch(selected, (newValue, oldValue) => {
+    const addedItems = newValue.filter((item) => !oldValue.includes(item))
+    const removedItems = oldValue.filter((item) => !newValue.includes(item))
+    if (addedItems.length > 0) {
+      shiftClick.value = items.value.indexOf(addedItems[addedItems.length - 1])
+    } else if (removedItems.length > 0) {
+      shiftClick.value = items.value.indexOf(removedItems[removedItems.length - 1])
+    }
+  })
 
   const length = computed(() => selected.value.length)
 
@@ -55,6 +45,49 @@ export function useArraySelection<T>(initial: Ref<T[]>) {
         selectRange(shiftClick.value, toIndex)
       }
       return
+    }
+  }
+
+  function selectByIndex(index: number): void {
+    if (index >= 0 && index < items.value.length) {
+      const item = items.value[index]
+      select(item)
+    }
+  }
+
+  function deselectByIndex(index: number): void {
+    if (index >= 0 && index < items.value.length) {
+      const item = items.value[index]
+      deselect(item)
+    }
+  }
+
+  function selectPrev(): void {
+    const prevIndex = shiftClick.value - 1
+    const nextIndex = shiftClick.value + 1
+
+    if (isSelected(items.value[prevIndex]) && !isSelected(items.value[nextIndex])) {
+      deselectByIndex(shiftClick.value)
+      shiftClick.value = prevIndex
+    } else {
+      if (prevIndex >= 0 && isSelected(items.value[shiftClick.value])) {
+        selectByIndex(prevIndex)
+        shiftClick.value = prevIndex
+      }
+    }
+  }
+
+  function selectNext(): void {
+    const nextIndex = shiftClick.value + 1
+    const prevIndex = shiftClick.value - 1
+    if (isSelected(items.value[nextIndex]) && !isSelected(items.value[prevIndex])) {
+      deselectByIndex(shiftClick.value)
+      shiftClick.value = nextIndex
+    } else {
+      if (nextIndex < items.value.length && isSelected(items.value[shiftClick.value])) {
+        selectByIndex(nextIndex)
+        shiftClick.value = nextIndex
+      }
     }
   }
 
@@ -117,6 +150,9 @@ export function useArraySelection<T>(initial: Ref<T[]>) {
     deselectRange,
     toggle,
     toggleAll,
-    shiftSelect
+    shiftSelect,
+    selectByIndex,
+    selectNext,
+    selectPrev
   }
 }

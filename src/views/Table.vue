@@ -2,14 +2,14 @@
   <div>
     <h1>Table</h1>
 
-    <div class="flex justify-between py-2">
+    <!-- <div class="flex justify-between py-2">
       <form>
         <input type="search" />
         <button type="submit">send</button>
       </form>
 
       <button class="border-2 h-[44px] px-4 border-white">create user</button>
-    </div>
+    </div> -->
 
     <Table :data="users" :columns="columns" caption-id="Users">
       <TableCaption>User Table</TableCaption>

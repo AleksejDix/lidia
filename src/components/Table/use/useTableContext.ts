@@ -16,6 +16,9 @@ interface TableContext {
   isSelected: (row: any) => boolean
   selectionState: ComputedRef<'none' | 'all' | 'some'>
   shiftSelect: (event: MouseEvent, row: any, toIndex: number) => void
+  selectByIndex(index: number): void
+  selectPrev(): void
+  selectNext(): void
 }
 
 const key: InjectionKey<TableContext> = Symbol('TableContext')
