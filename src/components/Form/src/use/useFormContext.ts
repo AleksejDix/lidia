@@ -1,10 +1,12 @@
 // useFormContext.ts
-import type { InjectionKey } from 'vue'
+import type { InjectionKey, ComputedRef } from 'vue'
 import { provide, inject } from 'vue'
 
 export interface FormContext {
   fields: Record<string, any>
   reset: () => void
+  errors: ComputedRef<any>
+  validateField: (name: string) => void
 }
 
 export const key: InjectionKey<FormContext> = Symbol('Form')

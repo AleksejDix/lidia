@@ -1,13 +1,20 @@
 // useTableContext.ts
-import type { InjectionKey, Ref } from 'vue'
+import type { InjectionKey, Ref, ComputedRef } from 'vue'
 import { provide, inject } from 'vue'
 
 interface TableContext {
-  data: any[]
+  data: Ref<unknown[]>
   columns: any[]
   captionId: string
   handleKeydown: (event: Event) => void
   sorting: Ref<any[]>
+  selected: Ref<any[]>
+  select: (row: any) => void
+  deselect: (row: any) => void
+  selectAll: () => void
+  deselectAll: () => void
+  isSelected: (row: any) => boolean
+  selectionState: ComputedRef<'none' | 'all' | 'some'>
 }
 
 const key: InjectionKey<TableContext> = Symbol('TableContext')

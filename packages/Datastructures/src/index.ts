@@ -1,5 +1,6 @@
 export * from './useStack'
 export * from './useArray'
+export * from './useArraySelection'
 export * from './useQueue'
 export * from './usePriorityQueue'
 export * from './useTrie'

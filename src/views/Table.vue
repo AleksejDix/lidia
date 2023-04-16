@@ -19,7 +19,11 @@
           <img :src="item.avatar" />
         </template>
         <template #actions="{ item }">
-          <ModalButton :name="item._id">edit</ModalButton>
+          <ModalButton
+            class="border-2 border-white transition hover:border-opacity-100 text-white px-4 py-2 font-bold tracking-wider rounded-md uppercase text-xs border-opacity-40"
+            :name="item._id"
+            >edit</ModalButton
+          >
           <Modal :name="item._id">
             <pre>{{ item }}</pre>
           </Modal>
@@ -67,7 +71,7 @@ function createRandomUser() {
 
 const users = ref<any[]>([])
 
-users.value = Array.from({ length: 100 }).map((_, i) => createRandomUser())
+users.value = Array.from({ length: 10 }).map((_, i) => createRandomUser())
 
 const columns = computed(() => {
   return [
@@ -78,14 +82,6 @@ const columns = computed(() => {
     {
       key: 'lastName',
       label: 'lastName'
-    },
-    {
-      key: 'subscriptionTier',
-      label: 'subscriptionTier'
-    },
-    {
-      key: 'avatar',
-      label: 'avatar'
     }
   ]
 })

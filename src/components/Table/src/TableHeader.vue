@@ -2,52 +2,82 @@
 <template>
   <thead>
     <tr class="h-[50px] uppercase text-xs text-white">
+      <TableSelectAllRows></TableSelectAllRows>
       <th
-        class="focus:outline-none text-left pr-2"
-        v-for="column in columns"
+        class="focus:outline-none text-left px-4 border-r relative cursor-pointer"
+        v-for="(column, index) in columns"
         :key="column.key"
         scope="col"
         tabindex="0"
-        @click.prevent="sort(column.key)"
+        :ref="(el) => (columnRefs[column.key] = el)"
         @keydown.prevent="handleKeydown"
       >
         <slot :name="`th-${column.key}`">
-          <div class="flex gap-2">
-            {{ column.label }}
-            <svg
-              v-if="direction(column.key) === 'asc'"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              style="fill: rgba(0, 0, 0, 1); transform: ; msfilter: "
+          <div class="flex gap-2 justify-between items-center">
+            <span>
+              {{ column.label }}
+            </span>
+            <button
+              class="w-8 h-8 rounded-full flex items-center justify-center"
+              @click="sort(column.key)"
             >
-              <path d="M6 4h12v2H6zm5 4v6H6l6 6 6-6h-5V8z"></path>
-            </svg>
-            <svg
-              v-else-if="direction(column.key) === 'desc'"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              style="fill: rgba(0, 0, 0, 1); transform: ; msfilter: "
-            >
-              <path d="M6 18h12v2H6zm6-14-6 6h5v6h2v-6h5z"></path>
-            </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                class="fill-current"
+                style="transform: ; msfilter: "
+              >
+                <path
+                  :class="{ 'text-red-400': direction(column.key) === 'asc' }"
+                  d="M12 3.5l-6.5 7h13z"
+                  stroke-linejoin="round"
+                  fill="currentColor"
+                  stroke="currentColor"
+                ></path>
+                <path
+                  :class="{ 'text-red-400': direction(column.key) === 'desc' }"
+                  d="M12 20.5l-6.5-7h13z"
+                  stroke-linejoin="round"
+                  fill="currentColor"
+                  stroke="currentColor"
+                ></path>
+              </svg>
+            </button>
           </div>
         </slot>
+        <div
+          class="resize-handle rounded cursor-col-resize bg-red-500 w-2 h-8 absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-10"
+          @mousedown.stop.prevent="onMouseDown($event, column.key)"
+          @click.stop.prevent
+          @dblclick.stop.prevent="resetWidth(column.key)"
+        ></div>
       </th>
-      <th class="text-left p-2" scope="col">
+      <th
+        class="text-left p-2 relative"
+        scope="col"
+        style="width: 0px"
+        :ref="(el) => (columnRefs['action'] = el)"
+      >
         <span class="sr-only">Actions</span>
+        <!-- <div
+          class="resize-handle cursor-col-resize bg-red-500 rounded w-2 h-8 absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-10"
+          @mousedown.stop="onMouseDown($event, 'action')"
+          @click.stop
+          @dblclick.stop="resetWidth('action')"
+        ></div> -->
       </th>
     </tr>
   </thead>
 </template>
 
 <script lang="ts" setup>
-import { useTableContext } from '../use/useTableContext'
+import { onMounted, onUnmounted, ref, reactive } from 'vue'
+import { useTableContext } from '../use/'
+import { TableSelectAllRows } from '.'
 
-const { columns, handleKeydown, sorting } = useTableContext()
+const { columns, handleKeydown, sorting, data } = useTableContext()
 
 const sort = (column: string) => {
   const index = sorting.value.findIndex((col) => col.key === column)
@@ -62,7 +92,71 @@ const sort = (column: string) => {
 }
 
 const direction = (key: string) => {
-  console.log(sorting.value, key)
   return sorting.value.find((x) => x.key === key)?.direction
 }
+
+const draggedHeader = ref<string | null>(null)
+const initialWidth = ref<number>(0)
+const initialX = ref<number>(0)
+const columnRefs: Record<string, HTMLElement | null> = reactive({})
+
+const onMouseDown = (event: MouseEvent, header: string) => {
+  draggedHeader.value = header
+  const thElement = columnRefs[header]
+  if (thElement) {
+    initialWidth.value = thElement.clientWidth
+    initialX.value = event.clientX
+  }
+  window.addEventListener('mousemove', onMouseMove)
+  window.addEventListener('mouseup', onMouseUp)
+}
+
+const onMouseMove = (event: MouseEvent) => {
+  if (!draggedHeader.value) return
+  const thElement = columnRefs[draggedHeader.value]
+  if (!thElement) return
+
+  const deltaX = event.clientX - initialX.value
+  const newWidth = initialWidth.value + deltaX
+  thElement.style.width = `${newWidth}px`
+}
+
+const onMouseUp = () => {
+  draggedHeader.value = null
+  window.removeEventListener('mousemove', onMouseMove)
+  window.removeEventListener('mouseup', onMouseUp)
+}
+
+const resetWidth = (key: string) => {
+  draggedHeader.value = key
+  if (!draggedHeader.value) return
+  const thElement = columnRefs[draggedHeader.value]
+  if (!thElement) return
+  thElement.style.width = `auto`
+}
+
+onMounted(() => {
+  window.addEventListener('mouseup', onMouseUp)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('mouseup', onMouseUp)
+})
 </script>
+
+<style scoped>
+.table-container {
+  overflow-x: auto;
+}
+
+.resize-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.resize-handle {
+  @apply absolute right-0;
+  cursor: col-resize;
+}
+</style>

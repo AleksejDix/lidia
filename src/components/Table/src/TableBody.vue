@@ -1,26 +1,28 @@
 <!-- TableBody.vue -->
 <template>
   <tbody>
-    <tr v-for="item in data" :key="item.id" class="focus-within:border-white border">
+    <tr v-for="row in data" :key="row.id">
+      <TableSelectRow :row="row" />
       <td
         @keydown.prevent="handleKeydown"
         v-for="column in columns"
         :key="column.key"
         tabindex="0"
-        class="text-left border-2 border-transparent pr-2"
+        class="text-left px-4 py-[12.5px]"
       >
-        <slot :name="column.key" :item="item">{{ item[column.key] }}</slot>
+        <slot :name="column.key" :item="row">{{ row[column.key] }}</slot>
       </td>
-      <td class="text-left border-2 border-transparent px-2">
+      <td class="text-left px-4">
         <!-- Add this cell -->
-        <slot name="actions" :item="item"> </slot>
+        <slot name="actions" :item="row"> </slot>
       </td>
     </tr>
   </tbody>
 </template>
 
 <script lang="ts" setup>
-import { useTableContext } from '../use/useTableContext'
+import { useTableContext } from '../use/'
+import { TableSelectRow } from '.'
 
 const { data, columns, handleKeydown } = useTableContext()
 </script>

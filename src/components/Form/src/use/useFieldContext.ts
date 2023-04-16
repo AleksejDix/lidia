@@ -1,5 +1,5 @@
 // useFieldContext.ts
-import type { InjectionKey, Ref } from 'vue'
+import type { InjectionKey, Ref, ComputedRef } from 'vue'
 import { provide, inject } from 'vue'
 
 export interface FieldContext {
@@ -7,6 +7,7 @@ export interface FieldContext {
   value: Ref<any>
   helpId: Ref<string | undefined>
   inputId: Ref<string | undefined>
+  messages: ComputedRef<string[]>
 }
 
 export const key: InjectionKey<FieldContext> = Symbol('Field')

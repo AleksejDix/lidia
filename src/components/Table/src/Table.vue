@@ -1,11 +1,12 @@
 <!-- Table.vue -->
 <template>
-  <table class="table-auto w-full border-2 border-transparent" :caption-id="captionId">
+  <table class="table-auto w-full" :caption-id="captionId">
     <slot></slot>
   </table>
 </template>
 
 <script lang="ts" setup>
+import { useArraySelection } from '@aleksejdix/datastructures/src'
 import { ref, computed } from 'vue'
 import { createTableContext } from '../use/useTableContext'
 
@@ -78,11 +79,23 @@ const sortedData = computed(() => {
   return multiSort(props.data, sorting.value)
 })
 
+const _data = ref(props.data)
+
+const { selected, select, deselect, selectAll, deselectAll, isSelected, selectionState } =
+  useArraySelection(_data)
+
 createTableContext({
   data: computed(() => sortedData.value),
   columns: computed(() => props.columns),
   captionId: props.captionId,
   handleKeydown,
-  sorting
+  sorting,
+  select,
+  selected,
+  deselect,
+  selectAll,
+  deselectAll,
+  isSelected,
+  selectionState
 })
 </script>

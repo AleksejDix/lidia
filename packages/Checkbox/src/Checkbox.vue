@@ -1,5 +1,6 @@
 <template>
   <input
+    v-bind="$attrs"
     type="checkbox"
     :checked="isChecked"
     @change="onChange"
@@ -39,7 +40,7 @@ const isChecked = computed(() => {
   if (Array.isArray(props.modelValue)) {
     return props.modelValue.includes(props.value)
   }
-  return !!props.modelValue
+  return props.modelValue === props.trueValue
 })
 
 const isIndeterminate = computed(() => props.modelValue === props.indeterminatedValue)

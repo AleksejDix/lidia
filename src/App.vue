@@ -61,6 +61,7 @@ useEventListener(document, 'keydown', (e) => {
   background-repeat: repeat;
 
   background-position: top left;
+  background-attachment: scroll;
 }
 
 html,

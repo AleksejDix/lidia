@@ -8,6 +8,8 @@
     :aria-describedby="helpId"
     :id="inputId"
   />
+
+  {{ model }} {{ value }}
 </template>
 
 <script lang="ts" setup>
@@ -36,7 +38,7 @@ const model: ComputedRef = computed({
       value.value = payload
       emit('update:modelValue', value.value)
     } else if (attrs.type === 'text') {
-      value.value = payload || null
+      value.value = payload || undefined
       emit('update:modelValue', value.value)
     } else {
     }

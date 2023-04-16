@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { useFormContext } from '../use'
 import { provideFieldContext } from '../use/useFieldContext'
 
@@ -17,7 +17,9 @@ const props = defineProps({
   }
 })
 
-const { fields } = useFormContext()
+const { fields, errors, validateField } = useFormContext()
+
+const messages = computed(() => errors.value?.[props.name as keyof typeof errors])
 
 const name = ref(props.name)
 
@@ -27,17 +29,22 @@ const inputId = ref()
 
 const value = computed({
   get() {
-    return fields[name.value]
+    return fields.value[name.value]
   },
   set(value) {
     fields.value[name.value] = value
   }
 })
 
+watch(value, () => {
+  validateField(props.name)
+})
+
 provideFieldContext({
   name,
   helpId,
   inputId,
-  value
+  value,
+  messages
 })
 </script>
