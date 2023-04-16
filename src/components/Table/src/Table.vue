@@ -81,8 +81,16 @@ const sortedData = computed(() => {
 
 const _data = ref(props.data)
 
-const { selected, select, deselect, selectAll, deselectAll, isSelected, selectionState } =
-  useArraySelection(_data)
+const {
+  selected,
+  select,
+  deselect,
+  selectAll,
+  deselectAll,
+  isSelected,
+  selectionState,
+  shiftSelect
+} = useArraySelection(_data)
 
 createTableContext({
   data: computed(() => sortedData.value),
@@ -96,6 +104,7 @@ createTableContext({
   selectAll,
   deselectAll,
   isSelected,
-  selectionState
+  selectionState,
+  shiftSelect
 })
 </script>

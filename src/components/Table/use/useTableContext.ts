@@ -15,6 +15,7 @@ interface TableContext {
   deselectAll: () => void
   isSelected: (row: any) => boolean
   selectionState: ComputedRef<'none' | 'all' | 'some'>
+  shiftSelect: (event: MouseEvent, row: any, toIndex: number) => void
 }
 
 const key: InjectionKey<TableContext> = Symbol('TableContext')

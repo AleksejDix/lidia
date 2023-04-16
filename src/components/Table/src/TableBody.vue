@@ -1,8 +1,8 @@
 <!-- TableBody.vue -->
 <template>
   <tbody>
-    <tr v-for="row in data" :key="row.id">
-      <TableSelectRow :row="row" />
+    <tr v-for="(row, index) in data" :key="row.id">
+      <TableSelectRow :row="row" :index="index" />
       <td
         @keydown.prevent="handleKeydown"
         v-for="column in columns"

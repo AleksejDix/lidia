@@ -1,8 +1,29 @@
-import { ref, computed, Ref, readonly } from 'vue'
+import { ref, computed, Ref, watch } from 'vue'
 
 export function useArraySelection<T>(initial: Ref<T[]>) {
   const items = ref<T[]>(initial.value) as Ref<T[]>
   const selected = ref<T[]>([]) as Ref<T[]>
+  const shiftClick = ref<number>(-1)
+
+  watch(
+    selected,
+    (newValue, oldValue) => {
+      const addedItems = newValue.filter((item) => !oldValue.includes(item))
+
+      // Find all removed items
+      const removedItems = oldValue.filter((item) => !newValue.includes(item))
+
+      // Update the lastSelectedIndex with the index of the last added or removed item
+      if (addedItems.length > 0) {
+        shiftClick.value = items.value.indexOf(addedItems[addedItems.length - 1])
+      } else if (removedItems.length > 0) {
+        shiftClick.value = items.value.indexOf(removedItems[removedItems.length - 1])
+      }
+    },
+    { deep: true }
+  )
+
+  watch(shiftClick, (n, o) => console.log(n, o))
 
   const length = computed(() => selected.value.length)
 
@@ -23,6 +44,17 @@ export function useArraySelection<T>(initial: Ref<T[]>) {
   function select(item: T): void {
     if (!isSelected(item)) {
       selected.value.push(item)
+    }
+  }
+
+  function shiftSelect(event: MouseEvent, row: any, toIndex: number) {
+    if (event.shiftKey) {
+      if (isSelected(row)) {
+        deselectRange(shiftClick.value, toIndex)
+      } else {
+        selectRange(shiftClick.value, toIndex)
+      }
+      return
     }
   }
 
@@ -84,6 +116,7 @@ export function useArraySelection<T>(initial: Ref<T[]>) {
     deselectAll,
     deselectRange,
     toggle,
-    toggleAll
+    toggleAll,
+    shiftSelect
   }
 }
