@@ -1,8 +1,6 @@
 import { ref, computed, Ref, watch } from 'vue'
 
-export function useArraySelection<T>(initial: Ref<T[]>) {
-  const items = ref<T[]>(initial.value) as Ref<T[]>
-  const selected = ref<T[]>([]) as Ref<T[]>
+export function useArraySelection<T>(items: Ref<T[]>, selected: Ref<T[]>) {
   const shiftClick = ref<number>(-1)
 
   watch(selected, (newValue, oldValue) => {

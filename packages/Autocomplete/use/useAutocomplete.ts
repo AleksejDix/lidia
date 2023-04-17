@@ -114,13 +114,11 @@ export function useAutocomplete(options: Autocomplete) {
 
     let globalIndex = 0
     const groupedCantonsArray = Object.entries(groupedCantons).map(([name, value]) => {
-      const children = value
-        .sort((a, b) => a[options.searchKey].localeCompare(b[options.searchKey]))
-        .map((canton) => {
-          const indexedCanton = { ...canton, index: globalIndex }
-          globalIndex += 1
-          return indexedCanton
-        })
+      const children = value.map((canton) => {
+        const indexedCanton = { ...canton, index: globalIndex }
+        globalIndex += 1
+        return indexedCanton
+      })
       return {
         name,
         children

@@ -1,7 +1,11 @@
 <!-- ModalCloseButton.vue -->
 <template>
   <button @click="modal.close">
-    <slot>
+    <slot
+      v-bind="{
+        close: modal.close
+      }"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"

@@ -1,5 +1,6 @@
 <!-- Table.vue -->
 <template>
+  {{ sel.length }}
   <table class="table-auto w-full" :caption-id="captionId">
     <slot></slot>
   </table>
@@ -7,12 +8,17 @@
 
 <script lang="ts" setup>
 import { useArraySelection } from '@aleksejdix/datastructures/src'
-import { ref, computed } from 'vue'
+import { ref, computed, type PropType, toRef } from 'vue'
 import { createTableContext } from '../use/useTableContext'
+import type { Data } from '@/api'
 
 const props = defineProps({
   data: {
-    type: Array,
+    type: Array as PropType<Data>,
+    default: () => []
+  },
+  modelValue: {
+    type: Array as PropType<Data>,
     default: () => []
   },
   columns: {
@@ -24,6 +30,8 @@ const props = defineProps({
     required: true
   }
 })
+
+const emits = defineEmits(['update:modelValue', 'update:columns'])
 
 const handleKeydown = (event: KeyboardEvent) => {
   const target = event.target as HTMLElement
@@ -80,10 +88,20 @@ const sortedData = computed(() => {
   return multiSort(props.data, sorting.value)
 })
 
-const _data = ref(props.data)
+const _data = toRef(props, 'data')
+
+const sel = computed({
+  get() {
+    return props.modelValue
+  },
+  set(value: any) {
+    emits('update:modelValue', value)
+  }
+})
+
+const hasData = computed(() => _data.value.length > 0)
 
 const {
-  selected,
   select,
   deselect,
   selectAll,
@@ -94,7 +112,7 @@ const {
   selectByIndex,
   selectNext,
   selectPrev
-} = useArraySelection(_data)
+} = useArraySelection(_data, sel)
 
 createTableContext({
   data: computed(() => sortedData.value),
@@ -103,7 +121,7 @@ createTableContext({
   handleKeydown,
   sorting,
   select,
-  selected,
+  selected: sel,
   deselect,
   selectAll,
   deselectAll,
@@ -112,6 +130,7 @@ createTableContext({
   shiftSelect,
   selectByIndex,
   selectNext,
-  selectPrev
+  selectPrev,
+  hasData
 })
 </script>

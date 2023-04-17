@@ -1,8 +1,6 @@
 import { ref, computed, type Ref } from 'vue'
 
-export function useArray<T>(initial: T[] = []) {
-  const items = ref<T[]>(initial) as Ref<T[]>
-
+export function useArray<T>(items: Ref<T[]>) {
   const length = computed(() => items.value.length)
 
   function add(item: T): void {

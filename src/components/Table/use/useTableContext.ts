@@ -19,6 +19,7 @@ interface TableContext {
   selectByIndex(index: number): void
   selectPrev(): void
   selectNext(): void
+  hasData: ComputedRef<boolean>
 }
 
 const key: InjectionKey<TableContext> = Symbol('TableContext')

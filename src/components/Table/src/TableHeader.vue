@@ -1,22 +1,37 @@
 <!-- TableHeader.vue -->
 <template>
-  <thead>
+  <thead v-if="hasData">
     <tr class="h-[50px] uppercase text-xs text-white">
-      <TableSelectAllRows></TableSelectAllRows>
+      <TableSelectAllRows
+        class="border text-left px-2"
+        draggable="true"
+        @dragstart="startDrag($event, index, column.key)"
+        @dragover.prevent
+        @drop="drop($event, index, column.key)"
+      ></TableSelectAllRows>
       <th
-        class="focus:outline-none text-left px-4 border-r relative cursor-pointer"
+        class="focus:outline-none text-left border relative cursor-pointer px-2"
         v-for="(column, index) in columns"
         :key="column.key"
         scope="col"
         tabindex="0"
+        draggable="true"
+        @dragstart="startDrag($event, index, column.key)"
+        @dragover.prevent
+        @drop="drop($event, index, column.key)"
         :ref="(el) => (columnRefs[column.key] = el)"
         @keydown.prevent="handleKeydown"
       >
-        <slot :name="`th-${column.key}`">
+        <slot :name="`th-${column.key}`" v-bind="{ column }">
           <div class="flex gap-2 justify-between items-center">
-            <span>
+            <!-- <button v-if="index - 1 > 0" @click="swap(index, index - 1)">move left</button>
+            <button v-if="index + 1 !== columns.length" @click="swap(index, index + 1)">
+              move right
+            </button>
+             -->
+            <button class="block border cursor-move">
               {{ column.label }}
-            </span>
+            </button>
             <button
               class="w-8 h-8 rounded-full flex items-center justify-center"
               @click="sort(column.key)"
@@ -73,11 +88,24 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, onUnmounted, ref, reactive } from 'vue'
+import { onMounted, onUnmounted, ref, reactive, onBeforeUpdate, watchEffect } from 'vue'
 import { useTableContext } from '../use/'
 import { TableSelectAllRows } from '.'
+import { useArray } from '@aleksejdix/datastructures/src'
 
-const { columns, handleKeydown, sorting, data } = useTableContext()
+const { columns, handleKeydown, sorting, hasData } = useTableContext()
+
+const { swap } = useArray(columns)
+
+function startDrag(event: DragEvent, index: number, key: string) {
+  event.dataTransfer.setData('text/plain', index.toString())
+}
+
+function drop(event: DragEvent, index: number) {
+  event.preventDefault()
+  const fromIndex = parseInt(event.dataTransfer.getData('text/plain'))
+  swap(fromIndex, index)
+}
 
 const sort = (column: string) => {
   const index = sorting.value.findIndex((col) => col.key === column)

@@ -4,7 +4,7 @@
     @keydown.prevent.shift.up="selectPrev"
     @keydown.prevent.shift.down="selectNext"
     tabindex="0"
-    class="focus:bg-red-400"
+    class="focus:bg-red-100 px-2"
   >
     <input
       type="checkbox"

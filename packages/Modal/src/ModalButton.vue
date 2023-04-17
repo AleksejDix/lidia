@@ -1,6 +1,6 @@
 <!-- ModalButton.vue -->
 <template>
-  <button @click="modalStore.create(name)" aria-label="Open Modal">
+  <button @click="modalStore.create(name)">
     <slot></slot>
   </button>
 </template>

@@ -2,40 +2,90 @@
   <div>
     <h1>Table</h1>
 
-    <!-- <div class="flex justify-between py-2">
-      <form>
-        <input type="search" />
+    <select v-model="selectedAction" class="text-black">
+      <option value="undefined">-</option>
+      <option v-for="action in actions" :value="action" :key="action">{{ action }}</option>
+    </select>
+
+    <div class="flex justify-between py-2">
+      <form @submit.prevent="onSearch">
+        <input type="search" v-model="query" />
         <button type="submit">send</button>
       </form>
 
       <button class="border-2 h-[44px] px-4 border-white">create user</button>
-    </div> -->
+    </div>
 
-    <Table :data="users" :columns="columns" caption-id="Users">
+    <Dropdown>
+      <DropdownButton
+        id="autocompleteStaticMulti"
+        class="bg-blue-800 text-white min-h-[46px] max-h-[46px] whitespace-nowrap truncate px-3 w-[200px] border-white text-left"
+        >Columns Visible: {{ selectedColumns.length }}/{{ columns.length }}</DropdownButton
+      >
+      <DropdownContent>
+        <Autocomplete
+          :options="columns"
+          v-model="selectedColumns"
+          uniqueKey="key"
+          searchKey="label"
+        >
+          <Suggestions></Suggestions>
+          <NoSuggestions></NoSuggestions>
+        </Autocomplete>
+      </DropdownContent>
+    </Dropdown>
+
+    <Table
+      :data="tableData"
+      v-model:columns="selectedColumns"
+      v-model="tableSelection"
+      caption-id="Users"
+    >
       <TableCaption>User Table</TableCaption>
       <TableHeader></TableHeader>
       <TableBody>
-        <template #birthday="{ item }">
-          {{ formatter.format(item.birthday) }}
+        <template #children="{ row }">
+          {{ row.children.length }}
         </template>
-        <template #avatar="{ item }">
-          <img :src="item.avatar" />
-        </template>
-        <template #actions="{ item }">
+        <template #actions="{ row }">
           <ModalButton
-            class="border-2 border-white transition hover:border-opacity-100 text-white px-4 py-2 font-bold tracking-wider rounded-md uppercase text-xs border-opacity-40"
-            :name="item._id"
-            >edit</ModalButton
+            class="border-2 border-red-500 text-red-600 transition hover:border-opacity-100 px-4 py-2 font-bold tracking-wider rounded-md uppercase text-xs border-opacity-60"
+            :name="row.id"
           >
-          <Modal :name="item._id">
-            <pre>{{ item }}</pre>
+            <span class="sr-only">open delete modal</span>
+            <svg
+              class="fill-current"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              style="transform: ; msfilter: "
+            >
+              <path
+                d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z"
+              ></path>
+              <path d="M9 10h2v8H9zm4 0h2v8h-2z"></path>
+            </svg>
+          </ModalButton>
+          <Modal :name="row.id">
+            <div class="p-10">
+              <p>This will remove the row forever</p>
+              <form @submit.prevent="onDeletConfirm(row)">
+                <input type="hidden" :value="row.id" />
+                <button class="border bg-red-600 text-white p-10">delete</button>
+              </form>
+            </div>
           </Modal>
         </template>
       </TableBody>
     </Table>
 
     <div class="pt-[11px]">
-      <Pagination class="flex justify-between gap-1" :total-items="100">
+      <Pagination
+        v-if="tableData.length > 0"
+        class="flex justify-between gap-1"
+        :total-items="totalItems"
+      >
         <PaginationPageList></PaginationPageList>
         <div class="flex -space-x-[2px]">
           <PaginationPrev></PaginationPrev>
@@ -47,54 +97,108 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watch, watchEffect } from 'vue'
+import { useArrayActions } from '@aleksejdix/datastructures/src'
 import { Table, TableCaption, TableHeader, TableBody } from '@/components/Table/src'
-import { ModalButton, Modal } from '@aleksejdix/modal/src'
+import { Autocomplete, NoSuggestions, Suggestions } from '@aleksejdix/autocomplete/src'
+import { DropdownContent, Dropdown, DropdownButton } from '@/components/Dropdown'
+import { ModalButton, Modal, useModalStore } from '@aleksejdix/modal/src'
+import { search, remove, type Data } from '@/api'
+import { useRoute, type LocationQuery } from 'vue-router'
 import {
   Pagination,
   PaginationPrev,
   PaginationNext,
   PaginationPageList
 } from '@aleksejdix/pagination/src'
+import router from '@/router'
 
-import { faker } from '@faker-js/faker'
-
-function createRandomUser() {
-  return {
-    _id: faker.datatype.uuid(),
-    firstName: faker.name.firstName(),
-    lastName: faker.name.lastName(),
-    birthday: faker.date.birthdate(),
-    email: faker.internet.email(),
-    sex: faker.name.sexType(),
-    subscriptionTier: faker.helpers.arrayElement(['free', 'basic', 'business'])
-  }
-}
-
-const users = ref<any[]>([])
-
-users.value = Array.from({ length: 10 }).map((_, i) => createRandomUser())
+const query = ref()
 
 const formatter = new Intl.DateTimeFormat('de-DE')
 
-const columns = computed(() => {
-  return [
-    {
-      key: 'firstName',
-      label: 'firstName'
-    },
-    {
-      key: 'lastName',
-      label: 'lastName'
-    },
-    {
-      key: 'birthday',
-      label: 'birthday'
-    },
-    {
-      key: 'sex',
-      label: 'sex'
+const route = useRoute()
+
+const tableData = ref<Data>([])
+const tableSelection = ref<Data>([])
+const totalItems = ref()
+
+async function getData(query: LocationQuery) {
+  const response = await search(query)
+  console.log(response)
+  tableData.value = response.data
+  totalItems.value = response.totalItems
+}
+
+watch(
+  () => route.query,
+  (query) => {
+    getData(query)
+  },
+  { immediate: true }
+)
+
+function onSearch() {
+  router.push({ ...route, query: { ...route.query, seach: query.value } })
+}
+
+const selectedColumns = ref<any[]>([])
+
+function extractKeys(obj: NestedObject): string[] {
+  let keys: string[] = []
+
+  // Extract keys from the current object
+  for (const key in obj) {
+    if (key !== 'children') {
+      keys.push(key)
     }
-  ]
+  }
+
+  // Recursively extract keys from children
+  if (Array.isArray(obj.children)) {
+    obj.children.forEach((child) => {
+      keys = keys.concat(extractKeys(child))
+    })
+  }
+
+  // Remove duplicates and return the keys
+  return Array.from(new Set(keys))
+}
+
+const columns = computed(() => {
+  return Array.from(new Set(tableData.value.flatMap((item) => extractKeys(item)))).map((key) => ({
+    key,
+    label: key
+  }))
+})
+
+watchEffect(() => {
+  selectedColumns.value = [...columns.value]
+})
+
+const actions = ref(['log', 'remove'])
+
+const selectedAction = ref()
+
+const actionsRegistry = {
+  log: console.log,
+  remove: remove
+}
+
+const { applyActionToSelected } = useArrayActions(tableSelection)
+
+const modal = useModalStore()
+function onDeletConfirm(item: any) {
+  remove(item)
+  modal.destroy(item.id)
+  getData(route.query)
+}
+
+watchEffect(() => {
+  if (!selectedAction.value) return
+  applyActionToSelected(actionsRegistry[selectedAction.value as keyof typeof actionsRegistry])
+  selectedAction.value = undefined
+  tableSelection.value = []
+  getData(route.query)
 })
 </script>
