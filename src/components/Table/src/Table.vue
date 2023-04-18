@@ -1,9 +1,14 @@
 <!-- Table.vue -->
 <template>
-  {{ sel.length }}
-  <table class="table-auto w-full" :caption-id="captionId">
-    <slot></slot>
-  </table>
+  <div class="relative">
+    <table
+      class="table-auto w-full border-separate border-spacing-0"
+      :caption-id="captionId"
+      v-bind="$attrs"
+    >
+      <slot></slot>
+    </table>
+  </div>
 </template>
 
 <script lang="ts" setup>

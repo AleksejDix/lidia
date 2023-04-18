@@ -69,7 +69,7 @@ body,
 #app {
   @apply h-full w-full inset-0 fixed;
 }
-
+/**
 html {
   background: linear-gradient(
       to bottom,
@@ -108,7 +108,7 @@ body {
   background-size: 50px 50px;
   background-position: top left;
   background-attachment: scroll;
-}
+}**/
 </style>
 
 <style src="@aleksejdix/focus/dist/style.css"></style>

@@ -1,16 +1,26 @@
 <!-- TableHeader.vue -->
 <template>
-  <thead v-if="hasData">
+  <colgroup>
+    <col style="width: 0px" />
+    <col
+      :style="`width: ${(index + 2) * 50}px`"
+      class="hover:bg-black hover:bg-opacity-20"
+      v-for="(column, index) in columns"
+    />
+
+    <col style="width: 0px" class="hover:bg-black hover:bg-opacity-20" />
+  </colgroup>
+  <thead v-if="hasData" class="sticky top-0">
     <tr class="h-[50px] uppercase text-xs text-white">
       <TableSelectAllRows
-        class="border text-left px-2"
+        class="text-left px-4"
         draggable="true"
         @dragstart="startDrag($event, index, column.key)"
         @dragover.prevent
         @drop="drop($event, index, column.key)"
       ></TableSelectAllRows>
       <th
-        class="focus:outline-none text-left border relative cursor-pointer px-2"
+        class="focus:outline-none text-left relative px-2 cursor-move"
         v-for="(column, index) in columns"
         :key="column.key"
         scope="col"
@@ -29,9 +39,9 @@
               move right
             </button>
              -->
-            <button class="block border cursor-move">
+            <span class="block text-ellipsis">
               {{ column.label }}
-            </button>
+            </span>
             <button
               class="w-8 h-8 rounded-full flex items-center justify-center"
               @click="sort(column.key)"
@@ -70,7 +80,7 @@
         ></div>
       </th>
       <th
-        class="text-left p-2 relative"
+        class="text-left"
         scope="col"
         style="width: 0px"
         :ref="(el) => (columnRefs['action'] = el)"

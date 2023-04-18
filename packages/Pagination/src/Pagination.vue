@@ -1,6 +1,6 @@
 <!-- Pagination.vue -->
 <template>
-  <nav class="flex gap-2 border-white border-2 p-[2px] h-[50px]" aria-label="Pagination Navigation">
+  <nav class="flex gap-2 h-[50px]" aria-label="Pagination Navigation">
     <slot></slot>
   </nav>
 </template>

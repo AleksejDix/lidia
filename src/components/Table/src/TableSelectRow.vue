@@ -1,10 +1,10 @@
+<!-- TableSelectRow.vue -->
 <template>
   <td
-    :class="{ border: isSelected(row) }"
     @keydown.prevent.shift.up="selectPrev"
     @keydown.prevent.shift.down="selectNext"
     tabindex="0"
-    class="focus:bg-red-100 px-2"
+    class="px-4"
   >
     <input
       type="checkbox"

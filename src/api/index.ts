@@ -48,9 +48,9 @@ export type Data = {
   date: string
 }[]
 
-let data: Data = generateMockData(100)
+let data: Data = generateMockData(1000)
 
-export function search(query: any = { page: 1, perPage: 10 }): Promise<{
+export function search(query: any): Promise<{
   data: Data
   totalPages: number
   totalItems: number
