@@ -8,6 +8,7 @@
       :false-value="'none'"
       :indeterminated-value="'some'"
     />
+    <span></span>
   </th>
 </template>
 

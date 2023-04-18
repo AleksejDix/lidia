@@ -1,15 +1,22 @@
 <!-- TableHeader.vue -->
 <template>
-  <thead v-if="hasData" class="sticky top-0 shadow shadow-black bg-inherit z-10">
+  <thead v-if="hasData" class="sticky top-0 shadow shadow-black z-10 bg-inherit">
     <slot>
-      <tr class="h-[50px] uppercase text-xs text-white">
+      <tr class="h-[50px] uppercase text-xs text-white bg-inherit">
         <TableSelectAllRows
-          class="text-left px-4"
+          class="text-left px-4 sticky left-0 border-r"
           draggable="true"
           @dragstart="startDrag($event, index, column.key)"
           @dragover.prevent
           @drop="drop($event, index, column.key)"
-        ></TableSelectAllRows>
+        >
+          <div
+            class="resize-handle rounded cursor-col-resize bg-red-500 w-2 h-8 absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-10"
+            @mousedown.stop.prevent="onMouseDown($event, column.key)"
+            @click.stop.prevent
+            @dblclick.stop.prevent="resetWidth(column.key)"
+          ></div>
+        </TableSelectAllRows>
         <th
           class="focus:outline-none text-left relative px-2 cursor-move"
           v-for="(column, index) in columns"
@@ -71,7 +78,7 @@
           ></div>
         </th>
         <th
-          class="text-left"
+          class="text-left sticky right-0 border-l bg-inherit z-10"
           scope="col"
           style="width: 0px"
           :ref="(el) => (columnRefs['action'] = el)"

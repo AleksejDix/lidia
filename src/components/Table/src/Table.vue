@@ -1,6 +1,6 @@
 <!-- Table.vue -->
 <template>
-  <div class="relative h-[500px] overflow-auto bg-black-100">
+  <div class="relative overflow-auto bg-black-100">
     <table
       class="table-auto w-full border-separate border-spacing-0 bg-gray-700"
       :caption-id="captionId"

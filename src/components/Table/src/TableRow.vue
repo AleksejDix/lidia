@@ -3,18 +3,20 @@
   <tr v-bind="$attrs" class="bg-inherit">
     <slot>
       <TableSelectRow
-        class="px-2 focus:bg-red-100 h-12 whitespace-nowrap sticky left-0 bg-inherit shadow-md shadow-black"
+        v-if="depth === 0"
+        class="px-2 focus:bg-red-100 h-12 whitespace-nowrap sticky left-0 bg-inherit border-r"
         :row="row"
         :index="index"
         tabindex="0"
         @keydown.prevent="handleKeydown"
       />
+      <td v-else class="sticky left-0 bg-inherit border-r"></td>
       <td
         v-for="(column, index) in columns"
         :key="column.key"
         tabindex="0"
         @keydown.prevent="handleKeydown"
-        class="text-left px-2 focus:outline-double h-12 whitespace-nowrap"
+        class="text-left px-2 focus:outline-double h-12 whitespace-nowrap bg-inherit"
       >
         <div
           v-if="index === 0"
@@ -72,11 +74,7 @@
           <slot :name="column.key" :row="row">{{ row[column.key] }}</slot>
         </div>
       </td>
-      <td
-        tabindex="0"
-        @keydown.prevent="handleKeydown"
-        class="sticky right-0 bg-inherit shadow-md shadow-black"
-      >
+      <td tabindex="0" @keydown.prevent="handleKeydown" class="sticky right-0 bg-inherit border-l">
         <slot name="actions" :row="row"> </slot>
       </td>
     </slot>
