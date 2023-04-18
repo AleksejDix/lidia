@@ -12,13 +12,13 @@
         </TableCaption>
         <slot name="table-head">
           <TableHead>
-            <template #key="props" v-for="{ key } in columns">
+            <template v-slot:[`th-${key}`]="props" v-for="{ key } in columns">
               <slot :name="`th-${key}`" v-bind="props"></slot>
             </template>
           </TableHead>
         </slot>
         <slot name="table-body">
-          <TableBody> </TableBody>
+          <TableBody></TableBody>
         </slot>
         <slot name="table-foot">
           <TableFoot></TableFoot>

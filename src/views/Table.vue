@@ -4,9 +4,10 @@
 
     <Table :columns="columns" caption-id="newtable" :data="tableData">
       <template #table-caption> Caption slot </template>
-      <template #th-id>HOLA JUANITO</template>
+      <template #th-id> what ever i want </template>
+      <template #th-name> what ever i want </template>
+      <template #th-email> what ever i want </template>
     </Table>
-    {{ tableSelection }}
 
     <!-- <select v-model="selectedAction" class="text-black">
       <option value="undefined">-</option>
