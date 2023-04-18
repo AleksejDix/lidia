@@ -2,6 +2,26 @@
   <div>
     <h1>Table</h1>
 
+    <Table caption-id="newtable" :data="tableData">
+      <TableCaption>This is my new table</TableCaption>
+      <TableHead>
+        <TableRow>
+          <TableHeaderCell>0</TableHeaderCell>
+          <TableHeaderCell>1</TableHeaderCell>
+          <TableHeaderCell>2</TableHeaderCell>
+          <TableHeaderCell>3</TableHeaderCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        <TableRow>
+          <TableHeaderCell>1</TableHeaderCell>
+          <TableCell>nice</TableCell>
+          <TableCell>nice</TableCell>
+          <TableCell>nice</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+
     <select v-model="selectedAction" class="text-black">
       <option value="undefined">-</option>
       <option v-for="action in actions" :value="action" :key="action">{{ action }}</option>
@@ -42,14 +62,14 @@
       caption-id="Users"
     >
       <TableCaption>User Table</TableCaption>
-      <TableHeader></TableHeader>
+      <TableHead></TableHead>
       <TableBody>
         <template #children="{ row }">
           {{ row.children.length }}
         </template>
         <template #actions="{ row }">
           <ModalButton
-            class="border-2 border-red-500 text-red-600 transition hover:border-opacity-100 px-4 py-2 font-bold tracking-wider rounded-md uppercase text-xs border-opacity-60"
+            class="text-white text-opacity-50 hover:text-opacity-100 transition hover:border-opacity-100 px-4 py-2 font-bold tracking-wider rounded-md uppercase text-xs border-opacity-60"
             :name="row.id"
           >
             <span class="sr-only">open delete modal</span>
@@ -99,7 +119,15 @@
 <script lang="ts" setup>
 import { ref, computed, watch, watchEffect } from 'vue'
 import { useArrayActions } from '@aleksejdix/datastructures/src'
-import { Table, TableCaption, TableHeader, TableBody } from '@/components/Table/src'
+import {
+  Table,
+  TableCaption,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableHeaderCell,
+  TableCell
+} from '@/components/Table/src'
 import { Autocomplete, NoSuggestions, Suggestions } from '@aleksejdix/autocomplete/src'
 import { DropdownContent, Dropdown, DropdownButton } from '@/components/Dropdown'
 import { ModalButton, Modal, useModalStore } from '@aleksejdix/modal/src'

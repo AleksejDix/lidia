@@ -1,105 +1,97 @@
 <!-- TableHeader.vue -->
 <template>
-  <colgroup>
-    <col style="width: 0px" />
-    <col
-      :style="`width: ${(index + 2) * 50}px`"
-      class="hover:bg-black hover:bg-opacity-20"
-      v-for="(column, index) in columns"
-    />
-
-    <col style="width: 0px" class="hover:bg-black hover:bg-opacity-20" />
-  </colgroup>
-  <thead v-if="hasData" class="sticky top-0">
-    <tr class="h-[50px] uppercase text-xs text-white">
-      <TableSelectAllRows
-        class="text-left px-4"
-        draggable="true"
-        @dragstart="startDrag($event, index, column.key)"
-        @dragover.prevent
-        @drop="drop($event, index, column.key)"
-      ></TableSelectAllRows>
-      <th
-        class="focus:outline-none text-left relative px-2 cursor-move"
-        v-for="(column, index) in columns"
-        :key="column.key"
-        scope="col"
-        tabindex="0"
-        draggable="true"
-        @dragstart="startDrag($event, index, column.key)"
-        @dragover.prevent
-        @drop="drop($event, index, column.key)"
-        :ref="(el) => (columnRefs[column.key] = el)"
-        @keydown.prevent="handleKeydown"
-      >
-        <slot :name="`th-${column.key}`" v-bind="{ column }">
-          <div class="flex gap-2 justify-between items-center">
-            <!-- <button v-if="index - 1 > 0" @click="swap(index, index - 1)">move left</button>
+  <thead v-if="hasData" class="sticky top-0 shadow shadow-black bg-inherit z-10">
+    <slot>
+      <tr class="h-[50px] uppercase text-xs text-white">
+        <TableSelectAllRows
+          class="text-left px-4"
+          draggable="true"
+          @dragstart="startDrag($event, index, column.key)"
+          @dragover.prevent
+          @drop="drop($event, index, column.key)"
+        ></TableSelectAllRows>
+        <th
+          class="focus:outline-none text-left relative px-2 cursor-move"
+          v-for="(column, index) in columns"
+          :key="column.key"
+          scope="col"
+          tabindex="0"
+          draggable="true"
+          @dragstart="startDrag($event, index, column.key)"
+          @dragover.prevent
+          @drop="drop($event, index, column.key)"
+          :ref="(el) => (columnRefs[column.key] = el)"
+          @keydown.prevent="handleKeydown"
+        >
+          <slot :name="`th-${column.key}`" v-bind="{ column }">
+            <div class="flex gap-2 justify-between items-center">
+              <!-- <button v-if="index - 1 > 0" @click="swap(index, index - 1)">move left</button>
             <button v-if="index + 1 !== columns.length" @click="swap(index, index + 1)">
               move right
             </button>
              -->
-            <span class="block text-ellipsis">
-              {{ column.label }}
-            </span>
-            <button
-              class="w-8 h-8 rounded-full flex items-center justify-center"
-              @click="sort(column.key)"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                class="fill-current"
-                style="transform: ; msfilter: "
+              <span class="block text-ellipsis">
+                {{ column.label }}
+              </span>
+              <button
+                class="w-8 h-8 rounded-full flex items-center justify-center"
+                @click="sort(column.key)"
               >
-                <path
-                  :class="{ 'text-red-400': direction(column.key) === 'asc' }"
-                  d="M12 3.5l-6.5 7h13z"
-                  stroke-linejoin="round"
-                  fill="currentColor"
-                  stroke="currentColor"
-                ></path>
-                <path
-                  :class="{ 'text-red-400': direction(column.key) === 'desc' }"
-                  d="M12 20.5l-6.5-7h13z"
-                  stroke-linejoin="round"
-                  fill="currentColor"
-                  stroke="currentColor"
-                ></path>
-              </svg>
-            </button>
-          </div>
-        </slot>
-        <div
-          class="resize-handle rounded cursor-col-resize bg-red-500 w-2 h-8 absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-10"
-          @mousedown.stop.prevent="onMouseDown($event, column.key)"
-          @click.stop.prevent
-          @dblclick.stop.prevent="resetWidth(column.key)"
-        ></div>
-      </th>
-      <th
-        class="text-left"
-        scope="col"
-        style="width: 0px"
-        :ref="(el) => (columnRefs['action'] = el)"
-      >
-        <span class="sr-only">Actions</span>
-        <!-- <div
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  class="fill-current"
+                  style="transform: ; msfilter: "
+                >
+                  <path
+                    :class="{ 'text-red-400': direction(column.key) === 'asc' }"
+                    d="M12 3.5l-6.5 7h13z"
+                    stroke-linejoin="round"
+                    fill="currentColor"
+                    stroke="currentColor"
+                  ></path>
+                  <path
+                    :class="{ 'text-red-400': direction(column.key) === 'desc' }"
+                    d="M12 20.5l-6.5-7h13z"
+                    stroke-linejoin="round"
+                    fill="currentColor"
+                    stroke="currentColor"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </slot>
+          <div
+            class="resize-handle rounded cursor-col-resize bg-red-500 w-2 h-8 absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-10"
+            @mousedown.stop.prevent="onMouseDown($event, column.key)"
+            @click.stop.prevent
+            @dblclick.stop.prevent="resetWidth(column.key)"
+          ></div>
+        </th>
+        <th
+          class="text-left"
+          scope="col"
+          style="width: 0px"
+          :ref="(el) => (columnRefs['action'] = el)"
+        >
+          <span class="sr-only">Actions</span>
+          <!-- <div
           class="resize-handle cursor-col-resize bg-red-500 rounded w-2 h-8 absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-10"
           @mousedown.stop="onMouseDown($event, 'action')"
           @click.stop
           @dblclick.stop="resetWidth('action')"
         ></div> -->
-      </th>
-    </tr>
+        </th>
+      </tr>
+    </slot>
   </thead>
 </template>
 
 <script lang="ts" setup>
 import { onMounted, onUnmounted, ref, reactive, onBeforeUpdate, watchEffect } from 'vue'
-import { useTableContext } from '../use/'
+import { useTableContext } from '../use'
 import { TableSelectAllRows } from '.'
 import { useArray } from '@aleksejdix/datastructures/src'
 

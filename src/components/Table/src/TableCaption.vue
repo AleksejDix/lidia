@@ -1,9 +1,6 @@
 <!-- TableCaption.vue -->
 <template>
-  <caption
-    :id="captionId"
-    class="caption-bottom bg-white min-h-[25px] text-blue-600 text-right px-2 uppercase leading-[25px] text-xs"
-  >
+  <caption :id="captionId">
     <slot></slot>
   </caption>
 </template>
