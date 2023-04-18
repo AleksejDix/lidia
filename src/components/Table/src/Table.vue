@@ -6,7 +6,24 @@
       :caption-id="captionId"
       v-bind="$attrs"
     >
-      <slot></slot>
+      <slot>
+        <TableCaption v-if="$slots['table-caption']">
+          <slot name="table-caption"> I am a default table caption slot</slot>
+        </TableCaption>
+        <slot name="table-head">
+          <TableHead>
+            <template #key="props" v-for="{ key } in columns">
+              <slot :name="`th-${key}`" v-bind="props"></slot>
+            </template>
+          </TableHead>
+        </slot>
+        <slot name="table-body">
+          <TableBody> </TableBody>
+        </slot>
+        <slot name="table-foot">
+          <TableFoot></TableFoot>
+        </slot>
+      </slot>
     </table>
   </div>
 </template>
@@ -15,6 +32,7 @@
 import { useArraySelection } from '@aleksejdix/datastructures/src'
 import { ref, computed, type PropType, toRef } from 'vue'
 import { createTableContext } from '../use/useTableContext'
+import { TableHead, TableBody, TableCaption, TableFoot } from '.'
 import type { Data } from '@/api'
 
 const props = defineProps({

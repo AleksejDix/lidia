@@ -2,27 +2,13 @@
   <div>
     <h1>Table</h1>
 
-    <Table caption-id="newtable" :data="tableData">
-      <TableCaption>This is my new table</TableCaption>
-      <TableHead>
-        <TableRow>
-          <TableHeaderCell>0</TableHeaderCell>
-          <TableHeaderCell>1</TableHeaderCell>
-          <TableHeaderCell>2</TableHeaderCell>
-          <TableHeaderCell>3</TableHeaderCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        <TableRow>
-          <TableHeaderCell>1</TableHeaderCell>
-          <TableCell>nice</TableCell>
-          <TableCell>nice</TableCell>
-          <TableCell>nice</TableCell>
-        </TableRow>
-      </TableBody>
+    <Table :columns="columns" caption-id="newtable" :data="tableData">
+      <template #table-caption> Caption slot </template>
+      <template #th-id>HOLA JUANITO</template>
     </Table>
+    {{ tableSelection }}
 
-    <select v-model="selectedAction" class="text-black">
+    <!-- <select v-model="selectedAction" class="text-black">
       <option value="undefined">-</option>
       <option v-for="action in actions" :value="action" :key="action">{{ action }}</option>
     </select>
@@ -112,7 +98,7 @@
           <PaginationNext></PaginationNext>
         </div>
       </Pagination>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -126,7 +112,9 @@ import {
   TableBody,
   TableRow,
   TableHeaderCell,
-  TableCell
+  TableCell,
+  TableSelectAllRows,
+  TableSelectRow
 } from '@/components/Table/src'
 import { Autocomplete, NoSuggestions, Suggestions } from '@aleksejdix/autocomplete/src'
 import { DropdownContent, Dropdown, DropdownButton } from '@/components/Dropdown'
@@ -142,14 +130,20 @@ import {
 import router from '@/router'
 
 const query = ref()
-
 const formatter = new Intl.DateTimeFormat('de-DE')
-
 const route = useRoute()
-
 const tableData = ref<Data>([])
 const tableSelection = ref<Data>([])
 const totalItems = ref()
+const selectedColumns = ref<any[]>([])
+const actions = ref(['log', 'remove'])
+const selectedAction = ref()
+const actionsRegistry = {
+  log: console.log,
+  remove: remove
+}
+const { applyActionToSelected } = useArrayActions(tableSelection)
+const modal = useModalStore()
 
 async function getData(query: LocationQuery) {
   const response = await search(query)
@@ -158,19 +152,9 @@ async function getData(query: LocationQuery) {
   totalItems.value = response.totalItems
 }
 
-watch(
-  () => route.query,
-  (query) => {
-    getData(query)
-  },
-  { immediate: true }
-)
-
 function onSearch() {
   router.push({ ...route, query: { ...route.query, seach: query.value } })
 }
-
-const selectedColumns = ref<any[]>([])
 
 function extractKeys(obj: NestedObject): string[] {
   let keys: string[] = []
@@ -200,27 +184,23 @@ const columns = computed(() => {
   }))
 })
 
-watchEffect(() => {
-  selectedColumns.value = [...columns.value]
-})
-
-const actions = ref(['log', 'remove'])
-
-const selectedAction = ref()
-
-const actionsRegistry = {
-  log: console.log,
-  remove: remove
-}
-
-const { applyActionToSelected } = useArrayActions(tableSelection)
-
-const modal = useModalStore()
 function onDeletConfirm(item: any) {
   remove(item)
   modal.destroy(item.id)
   getData(route.query)
 }
+
+watch(
+  () => route.query,
+  (query) => {
+    getData(query)
+  },
+  { immediate: true }
+)
+
+watchEffect(() => {
+  selectedColumns.value = [...columns.value]
+})
 
 watchEffect(() => {
   if (!selectedAction.value) return

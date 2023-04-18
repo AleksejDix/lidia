@@ -1,7 +1,7 @@
 <!-- TableBody.vue -->
 <template>
   <tbody v-if="hasData" class="bg-inherit">
-    <slot>
+    <slot :rows="data">
       <TableRow v-for="(row, index) in data" :key="row.id" :row="row" :index="index">
         <template v-slot:[slotname]="props" v-for="slotname in Object.keys(row)" :key="slotname">
           <slot :name="slotname" v-bind="props"></slot>

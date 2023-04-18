@@ -16,12 +16,13 @@
 </template>
 
 <script setup lang="ts">
+import type { PropType } from 'vue'
 import { useTableContext } from '../use'
 const { selected, isSelected, shiftSelect, selectNext, selectPrev } = useTableContext()
 
 const props = defineProps({
   row: {
-    type: Object,
+    type: Object as PropType<unknown>,
     required: true
   },
   index: {
