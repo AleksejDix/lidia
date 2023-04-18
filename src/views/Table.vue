@@ -4,9 +4,12 @@
 
     <Table :columns="columns" caption-id="newtable" :data="tableData">
       <template #table-caption> Caption slot </template>
-      <template #th-id> what ever i want </template>
-      <template #th-name> what ever i want </template>
-      <template #th-email> what ever i want </template>
+      <template #tr-name="scopedData">
+        <div class="grid items-center justify-center">
+          <img class="rounded-full shadow" :src="scopedData.row.avatar" alt="" />
+          {{ scopedData.row.name }}
+        </div>
+      </template>
     </Table>
 
     <!-- <select v-model="selectedAction" class="text-black">

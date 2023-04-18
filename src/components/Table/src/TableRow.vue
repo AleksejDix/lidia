@@ -23,7 +23,7 @@
           class="flex items-start gap-2"
           :style="{ 'padding-left': depth * 24 + 'px' }"
         >
-          <button v-if="row.children && row.children.length" @dblclick="toggleChildren">
+          <button v-if="row?.children && row.children.length" @dblclick="toggleChildren">
             <svg
               v-if="!showChildren"
               xmlns="http://www.w3.org/2000/svg"
@@ -68,10 +68,10 @@
             ></path>
           </svg>
 
-          <slot :name="column.key" :row="row">{{ row[column.key] }}</slot>
+          <slot :name="`tr-${column.key}`" :row="row">{{ row[column.key] }}</slot>
         </div>
         <div v-else>
-          <slot :name="column.key" :row="row">{{ row[column.key] }}</slot>
+          <slot :name="`tr-${column.key}`" :row="row">{{ row[column.key] }}</slot>
         </div>
       </td>
       <td tabindex="0" @keydown.prevent="handleKeydown" class="sticky right-0 bg-inherit border-l">
@@ -87,8 +87,8 @@
       :row="child"
       :depth="depth + 1"
     >
-      <template v-slot:[slotname]="props" v-for="slotname in Object.keys(child)">
-        <slot :name="slotname" v-bind="props"></slot>
+      <template v-slot:[`tr-${slotname}`]="props" v-for="slotname in Object.keys(child)">
+        <slot :name="`tr-${slotname}`" v-bind="props"></slot>
       </template>
       <template v-slot:actions="props">
         <slot name="actions" v-bind="props"></slot>

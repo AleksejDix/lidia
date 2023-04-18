@@ -18,7 +18,15 @@
           </TableHead>
         </slot>
         <slot name="table-body">
-          <TableBody></TableBody>
+          <TableBody>
+            <template #default="{ rows }">
+              <TableRow v-for="(row, index) in rows" :key="row.id" :row="row" :index="index">
+                <template v-slot:[`tr-${key}`]="scopedData" v-for="key in Object.keys(row)">
+                  <slot :name="`tr-${key}`" v-bind="scopedData"></slot>
+                </template>
+              </TableRow>
+            </template>
+          </TableBody>
         </slot>
         <slot name="table-foot">
           <TableFoot></TableFoot>
@@ -32,7 +40,7 @@
 import { useArraySelection } from '@aleksejdix/datastructures/src'
 import { ref, computed, type PropType, toRef } from 'vue'
 import { createTableContext } from '../use/useTableContext'
-import { TableHead, TableBody, TableCaption, TableFoot } from '.'
+import { TableHead, TableBody, TableCaption, TableFoot, TableRow } from '.'
 import type { Data } from '@/api'
 
 const props = defineProps({
