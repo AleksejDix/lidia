@@ -1,5 +1,9 @@
 import { faker } from '@faker-js/faker'
 
+function randomInteger(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
 function generateMockData(n: number) {
   const data = []
 
@@ -7,34 +11,18 @@ function generateMockData(n: number) {
     data.push({
       id: faker.datatype.uuid(),
       name: faker.name.firstName(),
-      children: [
-        {
+      children: [...Array(randomInteger(0, 3)).keys()].map((i) => ({
+        id: faker.datatype.uuid(),
+        name: faker.name.firstName(),
+        email: faker.internet.email(),
+        date: faker.date.month(),
+        children: [...Array(randomInteger(0, 3)).keys()].map((i) => ({
           id: faker.datatype.uuid(),
           name: faker.name.firstName(),
           email: faker.internet.email(),
           date: faker.date.month()
-        },
-        {
-          id: faker.datatype.uuid(),
-          name: faker.name.firstName(),
-
-          children: [
-            {
-              id: faker.datatype.uuid(),
-              name: faker.name.firstName(),
-
-              children: [
-                {
-                  id: faker.datatype.uuid(),
-                  name: faker.name.firstName(),
-                  email: faker.internet.email(),
-                  date: faker.date.month()
-                }
-              ]
-            }
-          ]
-        }
-      ]
+        }))
+      }))
     })
   }
 
