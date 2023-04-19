@@ -62,6 +62,9 @@ const props = defineProps({
   }
 })
 
+const sorting = ref<Sorting[]>([])
+const _data = toRef(props, 'data')
+
 const emits = defineEmits(['update:modelValue', 'update:columns'])
 
 const handleKeydown = (event: KeyboardEvent) => {
@@ -94,8 +97,6 @@ interface Sorting {
   direction: SortingDirection
 }
 
-const sorting = ref<Sorting[]>([])
-
 function multiSort(array: any[], sortKeys: Sorting[]) {
   if (!sortKeys || sortKeys.length === 0) return array
 
@@ -118,8 +119,6 @@ const sortedData = computed(() => {
 
   return multiSort(props.data, sorting.value)
 })
-
-const _data = toRef(props, 'data')
 
 const sel = computed({
   get() {

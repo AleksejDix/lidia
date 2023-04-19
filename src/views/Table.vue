@@ -2,7 +2,7 @@
   <div>
     <h1>Table</h1>
 
-    <Table :columns="columns" caption-id="newtable" :data="tableData">
+    <Table :columns="columns" caption-id="newtable" :data="tableData" v-model="tableSelection">
       <template #table-caption> Caption slot </template>
       <template #tr-name="scopedData">
         <div class="grid items-center justify-center">
