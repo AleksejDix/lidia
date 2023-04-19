@@ -9,6 +9,11 @@ const router = createRouter({
       component: Home
     },
     {
+      path: '/calendar',
+      name: 'calendar',
+      component: () => import('@/views/Calendar.vue')
+    },
+    {
       path: '/modal',
       name: 'modal',
       component: () => import('@/views/Modal.vue')
